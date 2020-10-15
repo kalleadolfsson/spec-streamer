@@ -1,9 +1,13 @@
 """
-by K. Adolfsson
-(Video feed using QtDesigner OpenCV is based on tutorial by Berrouba.A)
+In this example, we demonstrate how to create simple camera viewer using Opencv3 and PyQt5
+
+Author: Berrouba.A
+Last edited: 21 Feb 2018
 """
 
+import os
 
+import re
 
 # import system module
 import sys
@@ -14,7 +18,9 @@ from PyQt5.QtWidgets import QWidget
 from PyQt5.QtGui import QImage
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import QTimer
-import subprocess
+
+#import configparser to read from conf file
+import configparser
 
 #import numpy and math for easy data handling
 import numpy as np
@@ -37,26 +43,10 @@ class MainWindow(QWidget):
         self.ui = Ui_Form()
         self.ui.setupUi(self)
 
-        # spectrum variables
-        self.start = 840
-        self.stop = 1085
-        self.bins = self.stop-self.start
-        self.line = 606
-        self.rotation = 88
-        self.averages = 10
-        self.waves = np.arange(400,650,250/self.bins)
-        self.cntr = 0
-        self.intensities = np.zeros(self.bins)
 
-        self.intensitiesDark = np.zeros(self.bins)
-        self.intensitiesReference = np.zeros(self.bins)
-        self.intensitiesSample = np.zeros(self.bins)
-        self.intensitiesTransmission = np.zeros(self.bins)
-
-        self.acquireDark = False
-        self.acquireReference = False
-        self.acquireSample = False
-
+        # Read acquisition params from spectrometer conf file if available
+        self.read_from_file = True
+        self.set_params('conf/Laptop_teaching.conf')
 
         # create a timer
         self.timer = QTimer()
@@ -73,6 +63,67 @@ class MainWindow(QWidget):
         # if button for "acquire sample spectrum" has been pressed
         self.ui.sample_button.clicked.connect(self.acquireSampleSpectrum)
 
+    def set_params(self, config_path = ''):
+
+        if(self.read_from_file):
+            path_ = re.split('\/',config_path)
+            config_path = os.path.join( path_[0], path_[1])
+
+            config = configparser.ConfigParser()
+            # change this to param set from terminal or from file selected in UI
+            config.read(config_path)
+
+            # set spectrum variables from config file
+            self.detector = config['SpectrometerConfig']['detector']
+            self.width = config['SpectrometerConfig'].getint('width')
+            self.height = config['SpectrometerConfig'].getint('height')
+            self.flip90 = config['SpectrometerConfig'].getboolean('flip90')
+            self.flip180 = config['SpectrometerConfig'].getboolean('flip180')
+            self.reverse_order = config['SpectrometerConfig'].getboolean('reverse_order')
+            self.fine_tilt = config['SpectrometerConfig'].getfloat('fine_tilt')
+            self.central_line = config['SpectrometerConfig'].getint('central_line')
+            self.no_of_lines = config['SpectrometerConfig'].getint('no_of_lines')
+            self.start = config['SpectrometerConfig'].getint('start')
+            self.stop = config['SpectrometerConfig'].getint('stop')
+            self.averages = config['SpectrometerConfig'].getint('averages')
+            self.scale = config['SpectrometerConfig'].getfloat('scale')
+            self.crop = config['SpectrometerConfig'].getboolean('crop')
+        else:
+            # set spectrum variables manually
+            self.detector = '-'
+            self.width = 1280
+            self.height = 1024
+            self.flip90 = False
+            self.flip180 = False
+            self.reverse_order = False
+            self.fine_tilt = 0
+            self.central_line = 585
+            self.no_of_lines =5
+            self.start = 490
+            self.stop = 860
+            self.averages = 2
+            self.scale = 40
+            self.crop = False
+
+        # Additional acquisition params
+        self.bins = self.stop-self.start
+
+        # Needs to be defined in a more dynamic way
+        self.waves = np.arange(300,700,400/self.bins)
+
+        self.cntr = 0
+        self.intensities = np.zeros(self.bins)
+
+        self.intensitiesDark = np.zeros(self.bins)
+        self.intensitiesReference = np.zeros(self.bins)
+        self.intensitiesSample = np.zeros(self.bins)
+        self.intensitiesTransmission = np.zeros(self.bins)
+
+        self.acquireDark = False
+        self.acquireReference = False
+        self.acquireSample = False
+
+
     # view camera
     def viewCam(self):
 
@@ -81,23 +132,32 @@ class MainWindow(QWidget):
 
         # convert image to RGB format
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        height, width, channel = image.shape
+
+        # If projection is primarily vertical
+        if(self.flip90):
+            image = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
+
+        if(self.flip180):
+            image = cv2.rotate(image, cv2.ROTATE_180)
 
 
-        num_rows, num_cols = image.shape[:2]
-        rotation_matrix = cv2.getRotationMatrix2D((num_cols/2, num_rows/2), self.rotation, 1)
-        image = cv2.warpAffine(image, rotation_matrix, (num_cols, num_rows))
-
-
+        # Fine tune tilt angle compensation
+        M = cv2.getRotationMatrix2D((round((self.start+self.stop)/2),self.central_line) , self.fine_tilt, 1.0)
+        (h, w) = image.shape[:2]
+        image = cv2.warpAffine(image, M, (w, h))
+        print(image.shape)
         # extract spectral data
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-        self.intensities = self.intensities + gray[self.line][self.start:self.stop]
+        line_range = round(self.no_of_lines/2)
+        for n in range(-line_range,line_range):
+            self.intensities = self.intensities + gray[self.central_line+int(n)][self.start:self.stop]
 
         # if the number of averages has been met, proceed to calculate averaged spectrum and plot
         if (self.cntr == self.averages - 1):
             self.intensities = self.intensities/self.averages
-            self.intensities = np.flip(self.intensities)
+            if(self.reverse_order):
+                self.intensities = np.flip(self.intensities)
 
         # check if any special acqusition has been selected (i.e. dark, ref or sample)
             if (self.acquireDark):
@@ -124,19 +184,25 @@ class MainWindow(QWidget):
         self.cntr = self.cntr + 1
 
         # highlight the data-line
-        image[self.line][self.start:self.stop][:] = 255
+        image[self.central_line-round(self.no_of_lines/2)][self.start:self.stop][:] = 255
+        image[self.central_line+round(self.no_of_lines/2)][self.start:self.stop][:] = 255
+
 
         height, width, channel = image.shape
 
 
-        scale_percent = 40 # percent of original size
-        width = int(image.shape[1] * scale_percent / 100)
-        height = int(image.shape[0] * scale_percent / 100)
-        dim = (width, height)
+        # Crop image
+        if(self.crop):
+            image = image[self.central_line-round(self.no_of_lines/2)-30:self.central_line+round(self.no_of_lines/2)+30, self.start-5:self.stop+5]
+
         # resize image
+        width = int(image.shape[1] * self.scale / 100)
+        height = int(image.shape[0] * self.scale / 100)
+        dim = (width, height)
         resized = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
 
         step = channel * width
+
         # create QImage from image
         qImg = QImage(resized.data, width, height, step, QImage.Format_RGB888)
         # show image in img_label
@@ -177,8 +243,8 @@ class MainWindow(QWidget):
         self.ui.spec_plot.fig.set_xlabel('Wavelength(nm)')
         self.ui.spec_plot.fig.set_ylabel('Intensity')
         self.ui.spec_plot.fig.set_title('Spectrum')
-        self.ui.spec_plot.fig.set_xlim(450,650)
-        self.ui.spec_plot.fig.set_ylim(0, 255)
+        self.ui.spec_plot.fig.set_xlim(300,700)
+        self.ui.spec_plot.fig.set_ylim(0, 255*0.3*self.no_of_lines)
         self.ui.spec_plot.fig.grid(True)
         self.ui.spec_plot.draw()
         self.ui.spec_plot.update()
@@ -194,8 +260,8 @@ class MainWindow(QWidget):
         self.ui.calc_plot.fig.set_xlabel('Wavelength(nm)')
         self.ui.calc_plot.fig.set_ylabel('Intensity')
         self.ui.calc_plot.fig.set_title('Transmission spectrum')
-        self.ui.calc_plot.fig.set_xlim(450,650)
-        self.ui.calc_plot.fig.set_ylim(0, 1.2) #max(self.intensitiesTransmission))
+        self.ui.calc_plot.fig.set_xlim(300,700)
+        self.ui.calc_plot.fig.set_ylim(0, max(self.intensitiesTransmission))
         self.ui.calc_plot.fig.grid(True)
         self.ui.calc_plot.draw()
         self.ui.calc_plot.update()
@@ -206,17 +272,18 @@ class MainWindow(QWidget):
         # if timer is stopped
         if not self.timer.isActive():
             # create video capture
-            self.cap = cv2.VideoCapture(1)
+            self.cap = cv2.VideoCapture(0)
+            self.cap.set(cv2.CAP_PROP_AUTO_EXPOSURE, 0.25)
+            #self.cap.set(cv2.CAP_PROP_EXPOSURE,-1)
+            #self.cap.set(cv2.CAP_PROP_GAIN, 1)
+
 
             # set width and height
-            self.cap.set(3,1920)
-            self.cap.set(4,1080)
+            self.cap.set(3,1280)
+            self.cap.set(4,1024)
 
             # start timer
-            self.timer.start(30)
-
-            self.cap.set(cv2.CAP_PROP_EXPOSURE,-10)
-
+            self.timer.start(20)
             # update control_bt text
             self.ui.control_bt.setText("Stop")
         # if timer is started
