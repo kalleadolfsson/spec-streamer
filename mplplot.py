@@ -18,6 +18,7 @@ class MplPlot(FigureCanvas):
 
         self.setParent(parent)
         self.figure = Figure(dpi=dpi)
+        self.figure.patch.set_alpha(0.)
         self.canvas = FigureCanvas(self.figure)
-        
+
         self.fig = self.figure.add_subplot(111)
