@@ -1,1 +1,1 @@
-python -m PyQt5.uic.pyuic -x [FILENAME].ui -o [FILENAME].py
+python3 -m PyQt5.uic.pyuic -x ui_main_window.ui -o ui_main_window.py
