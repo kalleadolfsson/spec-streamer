@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1327</width>
-    <height>850</height>
+    <width>1329</width>
+    <height>849</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,63 +16,10 @@
   <property name="styleSheet">
    <string notr="true">background-color: white</string>
   </property>
-  <widget class="QLabel" name="image_label">
-   <property name="geometry">
-    <rect>
-     <x>699</x>
-     <y>142</y>
-     <width>541</width>
-     <height>311</height>
-    </rect>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>800</width>
-     <height>16777215</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">outline-color: #8d93ab;
-outline-width: 4ps;
-border-radius: 2px;
-border-style: solid;
-border-width: 1px;
-border-color: #8d93ab;</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="MplPlot" name="spec_plot" native="true">
-   <property name="geometry">
-    <rect>
-     <x>643</x>
-     <y>480</y>
-     <width>650</width>
-     <height>350</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="MplPlot" name="calc_plot" native="true">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>642</x>
-     <y>110</y>
-     <width>650</width>
-     <height>350</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLabel" name="junkyard_photonics_label">
    <property name="geometry">
     <rect>
-     <x>1190</x>
+     <x>1189</x>
      <y>-1</y>
      <width>141</width>
      <height>20</height>
@@ -95,16 +42,16 @@ color:#14274e;</string>
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QTabWidget" name="tab_container">
+  <widget class="QTabWidget" name="main_menu_tab">
    <property name="enabled">
     <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>70</y>
-     <width>591</width>
-     <height>761</height>
+     <x>35</x>
+     <y>66</y>
+     <width>1291</width>
+     <height>781</height>
     </rect>
    </property>
    <property name="palette">
@@ -198,6 +145,11 @@ color:#14274e;</string>
      </disabled>
     </palette>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
    <property name="autoFillBackground">
     <bool>false</bool>
    </property>
@@ -211,148 +163,21 @@ border: 0px;</string>
     <enum>QTabWidget::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>2</number>
    </property>
    <property name="tabBarAutoHide">
     <bool>true</bool>
    </property>
-   <widget class="QWidget" name="acquisition_containerPage1" native="true">
+   <widget class="QWidget" name="acquisition_containerPage1">
     <attribute name="title">
      <string/>
     </attribute>
-    <widget class="QLabel" name="image_scale_cropped_label">
-     <property name="geometry">
-      <rect>
-       <x>350</x>
-       <y>117</y>
-       <width>121</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>Scale cropped (%):</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="detector_width_input">
-     <property name="geometry">
-      <rect>
-       <x>136</x>
-       <y>170</y>
-       <width>41</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: white;
-border-radius: 1px;
-border-style: solid;
-border-width: 0.5px;
-border-color: #d6e0f0;
-color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>1280</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="image_crop_label">
-     <property name="geometry">
-      <rect>
-       <x>355</x>
-       <y>143</y>
-       <width>121</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>Crop to spectrum:</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="detector_resolution_label">
-     <property name="geometry">
-      <rect>
-       <x>22</x>
-       <y>170</y>
-       <width>111</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>Resolution (WxH):</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="image_camera_no_input">
-     <property name="geometry">
-      <rect>
-       <x>469</x>
-       <y>171</y>
-       <width>51</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: white;
-border-radius: 1px;
-border-style: solid;
-border-width: 0.5px;
-border-color: #d6e0f0;
-color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>0</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="x_label">
-     <property name="geometry">
-      <rect>
-       <x>181</x>
-       <y>169</y>
-       <width>16</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>x</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="spectrum_rotation_global_input">
-     <property name="geometry">
-      <rect>
-       <x>184</x>
-       <y>264</y>
-       <width>51</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: white;
-border-radius: 1px;
-border-style: solid;
-border-width: 0.5px;
-border-color: #d6e0f0;
-color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>0</string>
-     </property>
-    </widget>
     <widget class="QFrame" name="detector_frame">
      <property name="geometry">
       <rect>
-       <x>16</x>
+       <x>43</x>
        <y>77</y>
-       <width>251</width>
+       <width>241</width>
        <height>141</height>
       </rect>
      </property>
@@ -374,8 +199,8 @@ border-color: #8d93ab;</string>
     <widget class="QLineEdit" name="spectrometer_name_input">
      <property name="geometry">
       <rect>
-       <x>346</x>
-       <y>265</y>
+       <x>326</x>
+       <y>251</y>
        <width>181</width>
        <height>21</height>
       </rect>
@@ -392,27 +217,11 @@ color: #24262b;</string>
       <string>ELP</string>
      </property>
     </widget>
-    <widget class="QLabel" name="spectrum_stop_label">
-     <property name="geometry">
-      <rect>
-       <x>101</x>
-       <y>345</y>
-       <width>81</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>Stop (x-val):</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="load_acquisition_settings_button">
      <property name="geometry">
       <rect>
-       <x>17</x>
-       <y>35</y>
+       <x>42</x>
+       <y>20</y>
        <width>71</width>
        <height>25</height>
       </rect>
@@ -437,9 +246,9 @@ border-color: #626470;</string>
     <widget class="QFrame" name="image_frame">
      <property name="geometry">
       <rect>
-       <x>310</x>
+       <x>300</x>
        <y>77</y>
-       <width>251</width>
+       <width>231</width>
        <height>141</height>
       </rect>
      </property>
@@ -461,7 +270,7 @@ border-color: #8d93ab;</string>
     <widget class="QLabel" name="image_settings_label">
      <property name="geometry">
       <rect>
-       <x>400</x>
+       <x>370</x>
        <y>69</y>
        <width>61</width>
        <height>16</height>
@@ -484,80 +293,11 @@ border-color: #8d93ab;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="spectrum_line_label">
-     <property name="geometry">
-      <rect>
-       <x>104</x>
-       <y>369</y>
-       <width>81</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>Line (y-val):</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="spectrum_rotation_global_label">
-     <property name="geometry">
-      <rect>
-       <x>83</x>
-       <y>265</y>
-       <width>101</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>Rotation global:</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="detector_integration_time_label">
-     <property name="geometry">
-      <rect>
-       <x>46</x>
-       <y>94</y>
-       <width>131</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>Integration time (ms):</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="detector_gain_input">
-     <property name="geometry">
-      <rect>
-       <x>184</x>
-       <y>143</y>
-       <width>51</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: white;
-border-radius: 1px;
-border-style: solid;
-border-width: 0.5px;
-border-color: #d6e0f0;
-color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>20</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="spectrum_settings_label">
      <property name="geometry">
       <rect>
-       <x>84</x>
-       <y>245</y>
+       <x>100</x>
+       <y>231</y>
        <width>121</width>
        <height>16</height>
       </rect>
@@ -579,32 +319,11 @@ color: #24262b;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLineEdit" name="spectrum_start_input">
-     <property name="geometry">
-      <rect>
-       <x>183</x>
-       <y>317</y>
-       <width>51</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: white;
-border-radius: 1px;
-border-style: solid;
-border-width: 0.5px;
-border-color: #d6e0f0;
-color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>750</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="spectrometer_name_label">
      <property name="geometry">
       <rect>
-       <x>370</x>
-       <y>244</y>
+       <x>340</x>
+       <y>230</y>
        <width>131</width>
        <height>16</height>
       </rect>
@@ -623,47 +342,10 @@ color: #24262b;</string>
       <string>Spectrometer name</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="detector_height_input">
-     <property name="geometry">
-      <rect>
-       <x>193</x>
-       <y>170</y>
-       <width>41</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: white;
-border-radius: 1px;
-border-style: solid;
-border-width: 0.5px;
-border-color: #d6e0f0;
-color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>1024</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="detector_gain_label">
-     <property name="geometry">
-      <rect>
-       <x>97</x>
-       <y>144</y>
-       <width>81</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>Gain (0-100):</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="detector_settings_label">
      <property name="geometry">
       <rect>
-       <x>103</x>
+       <x>119</x>
        <y>69</y>
        <width>81</width>
        <height>16</height>
@@ -686,69 +368,11 @@ color: #24262b;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLineEdit" name="spectrum_stop_input">
-     <property name="geometry">
-      <rect>
-       <x>182</x>
-       <y>343</y>
-       <width>51</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: white;
-border-radius: 1px;
-border-style: solid;
-border-width: 0.5px;
-border-color: #d6e0f0;
-color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>1230</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="image_scale_overview_input">
-     <property name="geometry">
-      <rect>
-       <x>470</x>
-       <y>91</y>
-       <width>51</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: white;
-border-radius: 1px;
-border-style: solid;
-border-width: 0.5px;
-border-color: #d6e0f0;
-color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>40</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="image_scale_overview_label">
-     <property name="geometry">
-      <rect>
-       <x>346</x>
-       <y>92</y>
-       <width>121</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>Scale overview (%):</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="save_acquisition_settings_button">
      <property name="geometry">
       <rect>
-       <x>89</x>
-       <y>35</y>
+       <x>114</x>
+       <y>20</y>
        <width>71</width>
        <height>25</height>
       </rect>
@@ -770,34 +394,12 @@ border-color: #626470;</string>
       <string>Save</string>
      </property>
     </widget>
-    <widget class="QCheckBox" name="image_crop_box">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>470</x>
-       <y>144</y>
-       <width>31</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="checkable">
-      <bool>true</bool>
-     </property>
-     <property name="checked">
-      <bool>false</bool>
-     </property>
-    </widget>
     <widget class="QFrame" name="spectrometer_name_frame">
      <property name="geometry">
       <rect>
-       <x>310</x>
-       <y>254</y>
-       <width>251</width>
+       <x>300</x>
+       <y>240</y>
+       <width>231</width>
        <height>51</height>
       </rect>
      </property>
@@ -819,9 +421,9 @@ border-color: #8d93ab;</string>
     <widget class="QPushButton" name="apply_acquisition_settings_button">
      <property name="geometry">
       <rect>
-       <x>310</x>
-       <y>335</y>
-       <width>131</width>
+       <x>302</x>
+       <y>317</y>
+       <width>121</width>
        <height>41</height>
       </rect>
      </property>
@@ -837,86 +439,12 @@ border-color: #626470;</string>
       <string>Apply settings</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="spectrum_line_input">
-     <property name="geometry">
-      <rect>
-       <x>182</x>
-       <y>369</y>
-       <width>51</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: white;
-border-radius: 1px;
-border-style: solid;
-border-width: 0.5px;
-border-color: #d6e0f0;
-color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>500</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="spectrum_rotation_spectrum_label">
-     <property name="geometry">
-      <rect>
-       <x>62</x>
-       <y>291</y>
-       <width>121</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>Rotation spectrum:</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="detector_averages_label">
-     <property name="geometry">
-      <rect>
-       <x>114</x>
-       <y>119</y>
-       <width>60</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>Averages:</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="spectrum_rotation_spectrum_input">
-     <property name="geometry">
-      <rect>
-       <x>183</x>
-       <y>290</y>
-       <width>51</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: white;
-border-radius: 1px;
-border-style: solid;
-border-width: 0.5px;
-border-color: #d6e0f0;
-color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>0</string>
-     </property>
-    </widget>
     <widget class="QFrame" name="spectrum_frame">
      <property name="geometry">
       <rect>
-       <x>17</x>
-       <y>254</y>
-       <width>251</width>
+       <x>43</x>
+       <y>240</y>
+       <width>241</width>
        <height>171</height>
       </rect>
      </property>
@@ -938,9 +466,9 @@ border-color: #8d93ab;</string>
     <widget class="QPushButton" name="live_button">
      <property name="geometry">
       <rect>
-       <x>460</x>
-       <y>334</y>
-       <width>101</width>
+       <x>440</x>
+       <y>318</y>
+       <width>91</width>
        <height>91</height>
       </rect>
      </property>
@@ -961,181 +489,589 @@ border-color: #626470;</string>
       <string>Live</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="image_scale_cropped_input">
+    <widget class="QLabel" name="image_label">
      <property name="geometry">
       <rect>
-       <x>470</x>
-       <y>118</y>
-       <width>51</width>
-       <height>21</height>
+       <x>700</x>
+       <y>77</y>
+       <width>541</width>
+       <height>331</height>
       </rect>
      </property>
+     <property name="maximumSize">
+      <size>
+       <width>800</width>
+       <height>16777215</height>
+      </size>
+     </property>
      <property name="styleSheet">
-      <string notr="true">background-color: white;
+      <string notr="true">outline-color: #8d93ab;
+outline-width: 4ps;
+border-radius: 2px;
+border-style: solid;
+border-width: 1px;
+border-color: #8d93ab;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QWidget" name="verticalLayoutWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>216</x>
+       <y>253</y>
+       <width>61</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLineEdit" name="spectrum_rotation_global_input">
+        <property name="styleSheet">
+         <string notr="true">background-color: white;
 border-radius: 1px;
 border-style: solid;
 border-width: 0.5px;
 border-color: #d6e0f0;
 color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>150</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="spectrum_start_label">
-     <property name="geometry">
-      <rect>
-       <x>101</x>
-       <y>317</y>
-       <width>81</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>Start (x-val):</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="spectrum_lines_label">
-     <property name="geometry">
-      <rect>
-       <x>109</x>
-       <y>394</y>
-       <width>71</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>No of lines:</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="spectrum_lines_input">
-     <property name="geometry">
-      <rect>
-       <x>182</x>
-       <y>394</y>
-       <width>51</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: white;
+        </property>
+        <property name="text">
+         <string>0</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="spectrum_rotation_spectrum_input">
+        <property name="styleSheet">
+         <string notr="true">background-color: white;
 border-radius: 1px;
 border-style: solid;
 border-width: 0.5px;
 border-color: #d6e0f0;
 color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>5</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="image_camera_no_label">
-     <property name="geometry">
-      <rect>
-       <x>401</x>
-       <y>173</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>Camera #:</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="detector_integration_time_input">
-     <property name="geometry">
-      <rect>
-       <x>184</x>
-       <y>91</y>
-       <width>51</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: white;
+        </property>
+        <property name="text">
+         <string>0</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="spectrum_start_x_input">
+        <property name="styleSheet">
+         <string notr="true">background-color: white;
 border-radius: 1px;
 border-style: solid;
 border-width: 0.5px;
 border-color: #d6e0f0;
 color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>20</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="detector_averages_input">
-     <property name="geometry">
-      <rect>
-       <x>184</x>
-       <y>117</y>
-       <width>51</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: white;
+        </property>
+        <property name="text">
+         <string>750</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="spectrum_stop_x_input">
+        <property name="styleSheet">
+         <string notr="true">background-color: white;
 border-radius: 1px;
 border-style: solid;
 border-width: 0.5px;
 border-color: #d6e0f0;
 color: #24262b;</string>
-     </property>
-     <property name="text">
-      <string>5</string>
-     </property>
+        </property>
+        <property name="text">
+         <string>1230</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="spectrum_line_input">
+        <property name="styleSheet">
+         <string notr="true">background-color: white;
+border-radius: 1px;
+border-style: solid;
+border-width: 0.5px;
+border-color: #d6e0f0;
+color: #24262b;</string>
+        </property>
+        <property name="text">
+         <string>500</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="spectrum_lines_input">
+        <property name="styleSheet">
+         <string notr="true">background-color: white;
+border-radius: 1px;
+border-style: solid;
+border-width: 0.5px;
+border-color: #d6e0f0;
+color: #24262b;</string>
+        </property>
+        <property name="text">
+         <string>5</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
+    <widget class="QWidget" name="gridLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>56</x>
+       <y>90</y>
+       <width>221</width>
+       <height>112</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="detector_width_input">
+        <property name="styleSheet">
+         <string notr="true">background-color: white;
+border-radius: 1px;
+border-style: solid;
+border-width: 0.5px;
+border-color: #d6e0f0;
+color: #24262b;</string>
+        </property>
+        <property name="text">
+         <string>1280</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="detector_integration_time_label">
+        <property name="styleSheet">
+         <string notr="true">color: #24262b;
+outline:0px;
+border-width:0px,</string>
+        </property>
+        <property name="text">
+         <string>Integration time (ms):</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="detector_gain_label">
+        <property name="styleSheet">
+         <string notr="true">color: #24262b;
+outline:0px;
+border-width:0px,</string>
+        </property>
+        <property name="text">
+         <string>Gain (0-100):</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="detector_averages_label">
+        <property name="styleSheet">
+         <string notr="true">color: #24262b;
+outline:0px;
+border-width:0px,</string>
+        </property>
+        <property name="text">
+         <string>Averages:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="detector_gain_input">
+        <property name="styleSheet">
+         <string notr="true">background-color: white;
+border-radius: 1px;
+border-style: solid;
+border-width: 0.5px;
+border-color: #d6e0f0;
+color: #24262b;</string>
+        </property>
+        <property name="text">
+         <string>20</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="detector_averages_input">
+        <property name="styleSheet">
+         <string notr="true">background-color: white;
+border-radius: 1px;
+border-style: solid;
+border-width: 0.5px;
+border-color: #d6e0f0;
+color: #24262b;</string>
+        </property>
+        <property name="text">
+         <string>5</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QLineEdit" name="detector_height_input">
+        <property name="styleSheet">
+         <string notr="true">background-color: white;
+border-radius: 1px;
+border-style: solid;
+border-width: 0.5px;
+border-color: #d6e0f0;
+color: #24262b;</string>
+        </property>
+        <property name="text">
+         <string>1024</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="detector_resolution_label">
+        <property name="styleSheet">
+         <string notr="true">color: #24262b;
+outline:0px;
+border-width:0px,</string>
+        </property>
+        <property name="text">
+         <string>Resolution (WxH):</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="detector_integration_time_input">
+        <property name="styleSheet">
+         <string notr="true">background-color: white;
+border-radius: 1px;
+border-style: solid;
+border-width: 0.5px;
+border-color: #d6e0f0;
+color: #24262b;</string>
+        </property>
+        <property name="text">
+         <string>20</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QLabel" name="detector_resolution_x_label">
+        <property name="styleSheet">
+         <string notr="true">color: #24262b;
+outline:0px;
+border-width:0px,</string>
+        </property>
+        <property name="text">
+         <string>x</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="verticalLayoutWidget_4">
+     <property name="geometry">
+      <rect>
+       <x>92</x>
+       <y>253</y>
+       <width>121</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="spectrum_rotation_global_label">
+        <property name="styleSheet">
+         <string notr="true">color: #24262b;
+outline:0px;
+border-width:0px,</string>
+        </property>
+        <property name="text">
+         <string>Rotation global:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="spectrum_rotation_spectrum_label">
+        <property name="styleSheet">
+         <string notr="true">color: #24262b;
+outline:0px;
+border-width:0px,</string>
+        </property>
+        <property name="text">
+         <string>Rotation spectrum:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="spectrum_start_x_label">
+        <property name="styleSheet">
+         <string notr="true">color: #24262b;
+outline:0px;
+border-width:0px,</string>
+        </property>
+        <property name="text">
+         <string>Start (x-val):</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="spectrum_stop_x_label">
+        <property name="styleSheet">
+         <string notr="true">color: #24262b;
+outline:0px;
+border-width:0px,</string>
+        </property>
+        <property name="text">
+         <string>Stop (x-val):</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="spectrum_line_label">
+        <property name="styleSheet">
+         <string notr="true">color: #24262b;
+outline:0px;
+border-width:0px;
+
+</string>
+        </property>
+        <property name="text">
+         <string>Line (y-val):</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="spectrum_lines_label">
+        <property name="styleSheet">
+         <string notr="true">color: #24262b;
+outline:0px;
+border-width:0px;
+</string>
+        </property>
+        <property name="text">
+         <string>No of lines:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="verticalLayoutWidget_8">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>90</y>
+       <width>160</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_8">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="image_scale_cropped_label">
+        <property name="styleSheet">
+         <string notr="true">color: #24262b;
+outline:0px;
+border-width:0px,</string>
+        </property>
+        <property name="text">
+         <string>Scale cropped (%):</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="image_crop_label">
+        <property name="styleSheet">
+         <string notr="true">color: #24262b;
+outline:0px;
+border-width:0px,</string>
+        </property>
+        <property name="text">
+         <string>Crop to spectrum:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="image_scale_overview_label">
+        <property name="styleSheet">
+         <string notr="true">color: #24262b;
+outline:0px;
+border-width:0px,</string>
+        </property>
+        <property name="text">
+         <string>Scale overview (%):</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="image_camera_no_label">
+        <property name="styleSheet">
+         <string notr="true">color: #24262b;
+outline:0px;
+border-width:0px,</string>
+        </property>
+        <property name="text">
+         <string>Camera #:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="verticalLayoutWidget_7">
+     <property name="geometry">
+      <rect>
+       <x>483</x>
+       <y>90</y>
+       <width>41</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_7">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLineEdit" name="image_scale_overview_input">
+        <property name="styleSheet">
+         <string notr="true">background-color: white;
+border-radius: 1px;
+border-style: solid;
+border-width: 0.5px;
+border-color: #d6e0f0;
+color: #24262b;</string>
+        </property>
+        <property name="text">
+         <string>40</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="image_scale_cropped_input">
+        <property name="styleSheet">
+         <string notr="true">background-color: white;
+border-radius: 1px;
+border-style: solid;
+border-width: 0.5px;
+border-color: #d6e0f0;
+color: #24262b;</string>
+        </property>
+        <property name="text">
+         <string>150</string>
+        </property>
+       </widget>
+      </item>
+      <item alignment="Qt::AlignHCenter">
+       <widget class="QCheckBox" name="image_crop_box">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: #24262b;
+outline:0px;
+border-width:0px,</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="image_camera_no_input">
+        <property name="styleSheet">
+         <string notr="true">background-color: white;
+border-radius: 1px;
+border-style: solid;
+border-width: 0.5px;
+border-color: #d6e0f0;
+color: #24262b;</string>
+        </property>
+        <property name="text">
+         <string>0</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <zorder>detector_frame</zorder>
     <zorder>spectrometer_name_frame</zorder>
     <zorder>spectrum_frame</zorder>
-    <zorder>detector_frame</zorder>
     <zorder>image_frame</zorder>
-    <zorder>image_scale_cropped_label</zorder>
-    <zorder>detector_width_input</zorder>
-    <zorder>image_crop_label</zorder>
-    <zorder>detector_resolution_label</zorder>
-    <zorder>image_camera_no_input</zorder>
-    <zorder>x_label</zorder>
-    <zorder>spectrum_rotation_global_input</zorder>
     <zorder>spectrometer_name_input</zorder>
-    <zorder>spectrum_stop_label</zorder>
     <zorder>load_acquisition_settings_button</zorder>
     <zorder>image_settings_label</zorder>
-    <zorder>spectrum_line_label</zorder>
-    <zorder>spectrum_rotation_global_label</zorder>
-    <zorder>detector_integration_time_label</zorder>
-    <zorder>detector_gain_input</zorder>
     <zorder>spectrum_settings_label</zorder>
-    <zorder>spectrum_start_input</zorder>
     <zorder>spectrometer_name_label</zorder>
-    <zorder>detector_height_input</zorder>
-    <zorder>detector_gain_label</zorder>
     <zorder>detector_settings_label</zorder>
-    <zorder>spectrum_stop_input</zorder>
-    <zorder>image_scale_overview_input</zorder>
-    <zorder>image_scale_overview_label</zorder>
     <zorder>save_acquisition_settings_button</zorder>
-    <zorder>image_crop_box</zorder>
     <zorder>apply_acquisition_settings_button</zorder>
-    <zorder>spectrum_line_input</zorder>
-    <zorder>spectrum_rotation_spectrum_label</zorder>
-    <zorder>detector_averages_label</zorder>
-    <zorder>spectrum_rotation_spectrum_input</zorder>
     <zorder>live_button</zorder>
-    <zorder>image_scale_cropped_input</zorder>
-    <zorder>spectrum_start_label</zorder>
-    <zorder>spectrum_lines_label</zorder>
-    <zorder>spectrum_lines_input</zorder>
-    <zorder>image_camera_no_label</zorder>
-    <zorder>detector_integration_time_input</zorder>
-    <zorder>detector_averages_input</zorder>
+    <zorder>image_label</zorder>
+    <zorder>verticalLayoutWidget_3</zorder>
+    <zorder>gridLayoutWidget</zorder>
+    <zorder>verticalLayoutWidget_4</zorder>
+    <zorder>verticalLayoutWidget_8</zorder>
+    <zorder>verticalLayoutWidget_7</zorder>
    </widget>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
@@ -1146,260 +1082,339 @@ color: #24262b;</string>
     <attribute name="title">
      <string/>
     </attribute>
-    <widget class="QPushButton" name="reference_button">
+    <widget class="QFrame" name="frame_5">
      <property name="geometry">
       <rect>
-       <x>90</x>
-       <y>169</y>
-       <width>171</width>
-       <height>31</height>
+       <x>43</x>
+       <y>80</y>
+       <width>491</width>
+       <height>331</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color:#8d93ab;
+      <string notr="true">outline-color: #8d93ab;
+outline-width: 4ps;
+border-radius: 2px;
+border-style: solid;
+border-width: 1px;
+border-color: #8d93ab;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QPushButton" name="clear_experiment_button">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>290</y>
+        <width>181</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: #24262b;</string>
+      </property>
+      <property name="text">
+       <string>Clear</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="export_experiment_button">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>290</y>
+        <width>311</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:#9ba4b4;
 color:white;
 border-radius: 1px;
 border-style: solid;
 border-width: 1px;
 border-color: #626470;</string>
-     </property>
-     <property name="text">
-      <string>Reference spectrum</string>
-     </property>
+      </property>
+      <property name="text">
+       <string>Export data</string>
+      </property>
+     </widget>
     </widget>
-    <widget class="QCheckBox" name="sample_ok">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
+    <widget class="QFrame" name="frame">
      <property name="geometry">
       <rect>
-       <x>270</x>
-       <y>234</y>
-       <width>31</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="checkable">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="reference_ok">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>270</x>
-       <y>174</y>
-       <width>31</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="checkable">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="sample_button">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>227</y>
-       <width>171</width>
+       <x>163</x>
+       <y>60</y>
+       <width>241</width>
        <height>31</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color:#8d93ab;
-color:white;
-border-radius: 1px;
-border-style: solid;
-border-width: 1px;
-border-color: #626470;</string>
+      <string notr="true">border-width: 0px;
+border-style:solid;
+</string>
      </property>
-     <property name="text">
-      <string>Sample spectrum</string>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
      </property>
-    </widget>
-    <widget class="QCheckBox" name="dark_ok">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>270</x>
-       <y>112</y>
-       <width>31</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="checkable">
-      <bool>true</bool>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
      </property>
     </widget>
-    <widget class="QPushButton" name="dark_button">
+    <widget class="QPushButton" name="experiment_menu_fluorescence_button">
      <property name="geometry">
       <rect>
-       <x>90</x>
-       <y>108</y>
-       <width>171</width>
-       <height>31</height>
+       <x>290</x>
+       <y>64</y>
+       <width>113</width>
+       <height>32</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color:#8d93ab;
-color:white;
-border-radius: 1px;
-border-style: solid;
-border-width: 1px;
-border-color: #626470;</string>
-     </property>
-     <property name="text">
-      <string>Dark spectrum</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="detector_settings_label_3">
-     <property name="geometry">
-      <rect>
-       <x>47</x>
-       <y>108</y>
-       <width>31</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>18</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>1.</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="detector_settings_label_4">
-     <property name="geometry">
-      <rect>
-       <x>47</x>
-       <y>170</y>
-       <width>31</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>18</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>2.</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="detector_settings_label_5">
-     <property name="geometry">
-      <rect>
-       <x>47</x>
-       <y>227</y>
-       <width>31</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>18</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>3.</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="transmission_label">
-     <property name="geometry">
-      <rect>
-       <x>222</x>
-       <y>70</y>
-       <width>131</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Transmission</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="fluorescence_label">
-     <property name="geometry">
-      <rect>
-       <x>220</x>
-       <y>380</y>
-       <width>131</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
+      <string notr="true">color: #24262b;
+border-bottom-width: 0px;
+border-color: #24262b;
+border-style:solid;</string>
      </property>
      <property name="text">
       <string>Fluorescence</string>
      </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
     </widget>
-    <widget class="QFrame" name="frame_5">
+    <widget class="QPushButton" name="experiment_menu_transmission_button">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>80</y>
-       <width>541</width>
+       <x>168</x>
+       <y>64</y>
+       <width>113</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #24262b;
+border-bottom-width: 2px;
+border-color: #24262b;
+border-style:solid;
+</string>
+     </property>
+     <property name="text">
+      <string>Transmission</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="horizontalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>110</y>
+       <width>391</width>
        <height>221</height>
       </rect>
      </property>
-     <property name="styleSheet">
-      <string notr="true">outline-color: #8d93ab;
-outline-width: 4ps;
-border-radius: 1px;
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QLabel" name="experiment_no_1_label">
+          <property name="font">
+           <font>
+            <pointsize>18</pointsize>
+            <weight>75</weight>
+            <italic>false</italic>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color:#14274e</string>
+          </property>
+          <property name="text">
+           <string>1.</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="experiment_no_2_label">
+          <property name="font">
+           <font>
+            <pointsize>18</pointsize>
+            <weight>75</weight>
+            <italic>false</italic>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color:#14274e</string>
+          </property>
+          <property name="text">
+           <string>2.</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="experiment_no_3_label">
+          <property name="font">
+           <font>
+            <pointsize>18</pointsize>
+            <weight>75</weight>
+            <italic>false</italic>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color:#14274e</string>
+          </property>
+          <property name="text">
+           <string>3.</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item alignment="Qt::AlignVCenter">
+         <widget class="QPushButton" name="acquire_dark_spectrum_button">
+          <property name="styleSheet">
+           <string notr="true">background-color:#14274e;
+color:white;
+border-radius: 2px;
 border-style: solid;
 border-width: 1px;
-border-color: #8d93ab;</string>
+border-color: #626470;
+padding: 15px;</string>
+          </property>
+          <property name="text">
+           <string>Dark spectrum</string>
+          </property>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignVCenter">
+         <widget class="QPushButton" name="acquire_fluorescence_spectrum_button">
+          <property name="styleSheet">
+           <string notr="true">background-color:#14274e;
+color:white;
+border-radius: 2px;
+border-style: solid;
+border-width: 1px;
+border-color: #626470;
+padding: 15px;</string>
+          </property>
+          <property name="text">
+           <string>Fluorescence spectrum</string>
+          </property>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignVCenter">
+         <widget class="QPushButton" name="acquire_reference_spectrum_button">
+          <property name="styleSheet">
+           <string notr="true">background-color:#14274e;
+color:white;
+border-radius: 2px;
+border-style: solid;
+border-width: 1px;
+border-color: #626470;
+padding: 15px;</string>
+          </property>
+          <property name="text">
+           <string>Reference spectrum</string>
+          </property>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignVCenter">
+         <widget class="QPushButton" name="acquire_transmission_spectrum_button">
+          <property name="styleSheet">
+           <string notr="true">background-color:#14274e;
+color:white;
+border-radius: 2px;
+border-style: solid;
+border-width: 1px;
+border-color: #626470;
+padding: 15px;</string>
+          </property>
+          <property name="text">
+           <string>Transmission spectrum</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+         <widget class="QCheckBox" name="experiment_1_ok_check">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+         <widget class="QCheckBox" name="experiment_2_ok_check">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+         <widget class="QCheckBox" name="experiment_3_ok_check">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QFrame" name="calc_plot_frame">
+     <property name="geometry">
+      <rect>
+       <x>640</x>
+       <y>70</y>
+       <width>631</width>
+       <height>341</height>
+      </rect>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -1407,23 +1422,188 @@ border-color: #8d93ab;</string>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
+     <widget class="QWidget" name="gridLayoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>611</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="4" column="0">
+        <widget class="QLabel" name="calc_plot_2_i_label">
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #9ba4b4;</string>
+         </property>
+         <property name="text">
+          <string>I</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>false</bool>
+         </property>
+         <property name="margin">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLabel" name="calc_plot_2_label">
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #24262b;</string>
+         </property>
+         <property name="text">
+          <string>Reference</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="calc_plot_label">
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #24262b;</string>
+         </property>
+         <property name="text">
+          <string>Dark</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLabel" name="calc_plot_2_lambda_label">
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #9ba4b4;</string>
+         </property>
+         <property name="text">
+          <string>λ (nm)</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>false</bool>
+         </property>
+         <property name="margin">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="PlotWidget" name="calc_plot_2" native="true">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="PlotWidget" name="calc_plot" native="true">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLabel" name="calc_plot_lambda_label">
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #9ba4b4;</string>
+         </property>
+         <property name="text">
+          <string>λ (nm)</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>false</bool>
+         </property>
+         <property name="margin">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="calc_plot_i_label">
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #9ba4b4;</string>
+         </property>
+         <property name="text">
+          <string>I</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>false</bool>
+         </property>
+         <property name="margin">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
-    <widget class="QFrame" name="frame_6">
+    <widget class="QFrame" name="calc_plot_3_frame">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>390</y>
-       <width>541</width>
-       <height>221</height>
+       <x>640</x>
+       <y>420</y>
+       <width>631</width>
+       <height>341</height>
       </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">outline-color: #8d93ab;
-outline-width: 4ps;
-border-radius: 1px;
-border-style: solid;
-border-width: 1px;
-border-color: #8d93ab;</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -1431,26 +1611,104 @@ border-color: #8d93ab;</string>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
+     <widget class="QWidget" name="verticalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>611</width>
+        <height>311</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="8" column="1">
+        <widget class="QLabel" name="calc_plot_3_lambda_label">
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #9ba4b4;</string>
+         </property>
+         <property name="text">
+          <string>λ (nm)</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>false</bool>
+         </property>
+         <property name="margin">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="calc_plot_3_i_label">
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #9ba4b4;</string>
+         </property>
+         <property name="text">
+          <string>I</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>false</bool>
+         </property>
+         <property name="margin">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QLabel" name="calc_plot_3_label">
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #24262b;</string>
+         </property>
+         <property name="text">
+          <string>Transmission</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="PlotWidget" name="calc_plot_3" native="true">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
-    <zorder>frame_6</zorder>
-    <zorder>frame_5</zorder>
-    <zorder>reference_button</zorder>
-    <zorder>sample_ok</zorder>
-    <zorder>reference_ok</zorder>
-    <zorder>sample_button</zorder>
-    <zorder>dark_ok</zorder>
-    <zorder>dark_button</zorder>
-    <zorder>detector_settings_label_3</zorder>
-    <zorder>detector_settings_label_4</zorder>
-    <zorder>detector_settings_label_5</zorder>
-    <zorder>transmission_label</zorder>
-    <zorder>fluorescence_label</zorder>
    </widget>
   </widget>
   <widget class="QPushButton" name="experiment_button">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>739</x>
      <y>66</y>
      <width>140</width>
      <height>35</height>
@@ -1483,7 +1741,7 @@ font-family: helvetica;
   <widget class="QPushButton" name="calibration_button">
    <property name="geometry">
     <rect>
-     <x>583</x>
+     <x>582</x>
      <y>66</y>
      <width>140</width>
      <height>35</height>
@@ -1515,7 +1773,7 @@ font-family: helvetica;
   <widget class="QPushButton" name="acquisition_button">
    <property name="geometry">
     <rect>
-     <x>450</x>
+     <x>449</x>
      <y>66</y>
      <width>100</width>
      <height>35</height>
@@ -1548,7 +1806,7 @@ font-family: helvetica;
   <widget class="QFrame" name="spectrometer_name_frame_3">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>-1</x>
      <y>19</y>
      <width>1331</width>
      <height>91</height>
@@ -1570,7 +1828,7 @@ background-color:#14274e</string>
   <widget class="QLabel" name="spec_mate_label">
    <property name="geometry">
     <rect>
-     <x>553</x>
+     <x>552</x>
      <y>21</y>
      <width>200</width>
      <height>31</height>
@@ -1601,7 +1859,7 @@ background-color: #14274e</string>
   <widget class="QLabel" name="junkyard_photonics__label_2">
    <property name="geometry">
     <rect>
-     <x>715</x>
+     <x>714</x>
      <y>26</y>
      <width>31</width>
      <height>20</height>
@@ -1621,26 +1879,165 @@ color:#9ba4b4;</string>
     <string>v1.0</string>
    </property>
   </widget>
-  <zorder>tab_container</zorder>
+  <widget class="QFrame" name="raw_plot_frame">
+   <property name="geometry">
+    <rect>
+     <x>22</x>
+     <y>509</y>
+     <width>551</width>
+     <height>341</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">outline-width: 0ps;
+border-radius: 0px;
+border-style: solid;
+border-width: 0px;</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QWidget" name="verticalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>19</y>
+      <width>541</width>
+      <height>311</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="raw_spectrum_gridLayout">
+     <item row="2" column="1">
+      <widget class="QLabel" name="raw_plot_lambda_label">
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: #9ba4b4;</string>
+       </property>
+       <property name="text">
+        <string>λ (nm)</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="wordWrap">
+        <bool>false</bool>
+       </property>
+       <property name="margin">
+        <number>1</number>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="raw_plot_label">
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: #24262b;</string>
+       </property>
+       <property name="text">
+        <string>Raw spectrum</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="wordWrap">
+        <bool>false</bool>
+       </property>
+       <property name="margin">
+        <number>1</number>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="PlotWidget" name="raw_plot" native="true"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="raw_plot_i_label">
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: #9ba4b4;</string>
+       </property>
+       <property name="text">
+        <string>I</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="wordWrap">
+        <bool>false</bool>
+       </property>
+       <property name="margin">
+        <number>1</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <zorder>main_menu_tab</zorder>
   <zorder>spectrometer_name_frame_3</zorder>
-  <zorder>calc_plot</zorder>
-  <zorder>image_label</zorder>
-  <zorder>spec_plot</zorder>
   <zorder>junkyard_photonics_label</zorder>
   <zorder>experiment_button</zorder>
   <zorder>calibration_button</zorder>
   <zorder>acquisition_button</zorder>
   <zorder>spec_mate_label</zorder>
   <zorder>junkyard_photonics__label_2</zorder>
+  <zorder>raw_plot_frame</zorder>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>MplPlot</class>
+   <class>PlotWidget</class>
    <extends>QWidget</extends>
-   <header location="global">mplplot.h</header>
+   <header>pyqtgraph</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>detector_gain_input</tabstop>
+  <tabstop>detector_averages_input</tabstop>
+  <tabstop>detector_integration_time_input</tabstop>
+  <tabstop>detector_width_input</tabstop>
+  <tabstop>detector_height_input</tabstop>
+  <tabstop>image_scale_overview_input</tabstop>
+  <tabstop>image_scale_cropped_input</tabstop>
+  <tabstop>image_crop_box</tabstop>
+  <tabstop>image_camera_no_input</tabstop>
+  <tabstop>spectrum_rotation_global_input</tabstop>
+  <tabstop>spectrum_rotation_spectrum_input</tabstop>
+  <tabstop>spectrum_start_x_input</tabstop>
+  <tabstop>spectrum_stop_x_input</tabstop>
+  <tabstop>spectrum_line_input</tabstop>
+  <tabstop>spectrum_lines_input</tabstop>
+  <tabstop>spectrometer_name_input</tabstop>
+  <tabstop>apply_acquisition_settings_button</tabstop>
+  <tabstop>live_button</tabstop>
+  <tabstop>load_acquisition_settings_button</tabstop>
+  <tabstop>save_acquisition_settings_button</tabstop>
+  <tabstop>acquisition_button</tabstop>
+  <tabstop>calibration_button</tabstop>
+  <tabstop>experiment_button</tabstop>
+  <tabstop>main_menu_tab</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
