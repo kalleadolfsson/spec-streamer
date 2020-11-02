@@ -18,9 +18,6 @@ import configparser
 import numpy as np
 import math
 
-# import matplot library
-from matplotlib.backends.backend_qt5agg import (FigureCanvas, NavigationToolbar2QT as NavigationToolbar)
-import matplotlib.pyplot as plt
 
 # import Opencv module
 import cv2
@@ -32,7 +29,7 @@ class Spectrometer(QThread):
     raw_spectrum_stream = pyqtSignal(np.ndarray)
 
     dark_spectrum_stream = pyqtSignal(np.ndarray)
-    fluorescence_spectrum_stream =  pyqtSignal(np.ndarray)
+    emission_spectrum_stream =  pyqtSignal(np.ndarray)
     reference_spectrum_stream =  pyqtSignal(np.ndarray)
     transmission_spectrum_stream = pyqtSignal(np.ndarray)
 
@@ -101,20 +98,20 @@ class Spectrometer(QThread):
             if (self.cntr == self.averages - 1):
                 self.intensities = self.intensities/self.averages
 
-                # check if any special acqusition has been selected (i.e. dark, fluorescence, reference or transmission)
+                # check if any special acqusition has been selected (i.e. dark, emission, reference or transmission)
                 if (self.acquireDark):
                     self.intensitiesDark = self.intensities
                     self.acquireDark = False
                     self.dark_spectrum_stream.emit(self.intensitiesDark)
 
-                elif (self.acquireFluorescence):
-                    self.intensitiesFluorescence = self.intensities-self.intensitiesDark
-                    self.acquireFluorescence = False
-                    self.fluorescence_spectrum_stream.emit(self.intensitiesFluorescence)
+                elif (self.acquireEmission):
+                    self.intensitiesEmission = self.intensities-self.intensitiesDark
+                    self.acquireEmission = False
+                    self.emission_spectrum_stream.emit(self.intensitiesEmission)
 
 
                 elif (self.acquireReference):
-                    self.intensitiesReference = self.intensities-self.intensitiesDark
+                    self.intensitiesReference = self.intensities
                     self.acquireReference = False
                     self.reference_spectrum_stream.emit(self.intensitiesReference)
 
@@ -122,7 +119,7 @@ class Spectrometer(QThread):
                 elif (self.acquireTransmission):
                     temp_intensities = self.intensities-self.intensitiesDark
                     # Handle division by 0 by replacing output elements with 0
-                    self.intensitiesTransmission = np.divide(temp_intensities, self.intensitiesReference, out=np.zeros_like(temp_intensities), where=self.intensitiesReference!=0)
+                    self.intensitiesTransmission = np.divide(temp_intensities, self.intensitiesReference-self.intensitiesDark, out=np.zeros_like(temp_intensities), where=self.intensitiesReference!=0)
                     self.acquireTransmission = False
                     self.transmission_spectrum_stream.emit(self.intensitiesTransmission)
 
@@ -169,19 +166,19 @@ class Spectrometer(QThread):
         self.bins = self.stop_x-self.start_x
 
         # Needs to be defined in a more dynamic way
-        self.waves = np.arange(300,700,400/self.bins)
+        self.waves = np.arange(self.start_x,self.stop_x,1)
 
         self.cntr = 0
         self.intensities = np.zeros(self.bins)
 
         # Transmission spectrum settings
         self.intensitiesDark = np.zeros(self.bins)
-        self.intensitiesFluorescence = np.zeros(self.bins)
+        self.intensitiesEmission = np.zeros(self.bins)
         self.intensitiesReference = np.zeros(self.bins)
         self.intensitiesTransmission = np.zeros(self.bins)
 
         self.acquireDark = False
-        self.acquireFluorescence = False
+        self.acquireEmission = False
         self.acquireReference = False
         self.acquireTransmission = False
 
@@ -284,8 +281,8 @@ class Spectrometer(QThread):
         self.cntr = 0
 
     @pyqtSlot()
-    def acquireFluorescenceSpectrum(self):
-        self.acquireFluorescence = True
+    def acquireEmissionSpectrum(self):
+        self.acquireEmission = True
         self.cntr = 0
 
     @pyqtSlot()
