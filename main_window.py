@@ -12,6 +12,7 @@ from pandas import DataFrame
 
 # import system module
 import sys
+import json
 
 # import some PyQt5 modules
 from PyQt5.QtWidgets import QApplication, QFileDialog, QWidget
@@ -53,8 +54,10 @@ class MainWindow(QWidget):
         # Read acquisition settings from spectrometer conf file if available
         self.read_from_file = False
         # initial GUI params
+
         self.spectrometer = Spectrometer()
         self.calibration = Calibration()
+
         self.plot_acquisition_mode = 'experiment'
         self.read_acquisition_input_form()
         self.setup_containers()
@@ -72,11 +75,14 @@ class MainWindow(QWidget):
             # update live_button text
             self.pause_acquisition()
 
-    def restart_acquisition(self):
+    def restart_acquisition(self, calibration_compromised = False):
+        if(calibration_compromised):
+            self.pixel_wavelength_calibrated = False
+            self.spectral_sensitivity_calibrated = False
         self.pause_acquisition()
         self.read_acquisition_input_form()
+        self.set_wavelengths()
         self.update_spectrometer_settings()
-        time.sleep(0.001)
         self.setup_plots()
         self.unpause_acquisition()
 
@@ -105,7 +111,9 @@ class MainWindow(QWidget):
         # Setup data storage containers
         self.bins = self.stop_x-self.start_x
         self.pixel_wavelength_calibrated = False
+        self.spectral_sensitivity_calibrated = False
         self.set_wavelengths()
+        self.intensitiesRaw = np.zeros(len(self.waves))
         self.intensitiesDark = np.zeros(len(self.waves))
         self.intensitiesReference = np.zeros(len(self.waves))
         self.intensitiesEmission = np.zeros(len(self.waves))
@@ -123,6 +131,7 @@ class MainWindow(QWidget):
         self.spectrometer.transmission_spectrum_stream.connect(self.transmission_spectrum_recieved)
 
     def raw_spectrum_recieved(self, data = ''):
+        self.intensitiesRaw = data
         self.update_plot(plot_line = self.raw_plot_line, data = data)
 
     def dark_spectrum_recieved(self, data = ''):
@@ -165,51 +174,96 @@ class MainWindow(QWidget):
         self.spectrometer.acquireTransmissionSpectrum()
         self.setCheckBox(2)
 
+
+    def calibration_back_button(self):
+        self.clear_calibration_pane()
+        if(self.calibration_choice == 'pixel_wavelength'):
+            self.pixel_wavelength_back()
+        if(self.calibration_choice == 'spectral_sensitivity'):
+            self.spectral_sensitivity_back()
+
+    def calibration_next_button(self):
+        self.clear_calibration_pane()
+        if(self.calibration_choice == 'pixel_wavelength'):
+            self.pixel_wavelength_next()
+        if(self.calibration_choice == 'spectral_sensitivity'):
+            self.spectral_sensitivity_next()
+
+
+    def clear_calibration_pane(self):
+        self.ui.calibration_plot_acquisition_flow_frame.hide()
+        self.ui.calibration_identify_peaks_frame.hide()
+        self.ui.calibration_pixel_wavelength_polynomial_frame.hide()
+        self.ui.calibration_get_spectral_sensitivity_frame.hide()
+        self.ui.calibration_set_black_body_frame.hide()
+        self.ui.calibration_identify_peaks_frame.hide()
+        self.ui.calibration_next_button.hide()
+        self.ui.calibration_back_button.hide()
+
+    def set_calibration_flow_labels(self,stage = ''):
+        pixel_wavelength_label_text = ['Acquire spectra','Identify peaks', 'Get projection']
+        spectral_sensitivity_label_text = ['Acquire spectra','Set black-body', 'Get spectral sensitivity']
+
+        labels =    [self.ui.calibration_step_1_label,
+                    self.ui.calibration_step_2_label,
+                    self.ui.calibration_step_3_label]
+        cntr = 0
+        for label in labels:
+            if(cntr == stage):
+                label.setStyleSheet("color:#24262b;outline-width: 0ps;border-radius: 0px;border-style: solid;border-width: 0px;")
+            else:
+                label.setStyleSheet("color:#9ba4b4;outline-width: 0ps;border-radius: 0px;border-style: solid;border-width: 0px;")
+            if(self.calibration_choice == 'pixel_wavelength'):
+                label.setText(pixel_wavelength_label_text[cntr])
+            elif(self.calibration_choice == 'spectral_sensitivity'):
+                label.setText(spectral_sensitivity_label_text[cntr])
+            cntr = cntr + 1
+
+
+
     def pixel_wavelength_next(self):
         if(self.pixel_wavelength_stage == 0):
-            self.ui.pixel_wavelength_back_button.show()
-            self.ui.calibration_plot_acquisition_flow_frame.hide()
             self.pixel_wavelength_stage = self.pixel_wavelength_stage + 1
             self.ui.calibration_identify_peaks_frame.show()
-            self.ui.pixel_wavelength_acquire_spectra_label.setStyleSheet("color:#9ba4b4;outline-width: 0ps;border-radius: 0px;border-style: solid;border-width: 0px;")
-            self.ui.pixel_wavelength_identify_peaks_label.setStyleSheet("color:#24262b;outline-width: 0ps;border-radius: 0px;border-style: solid;border-width: 0px;")
-            self.ui.pixel_wavelength_get_projection_label.setStyleSheet("color:#9ba4b4;outline-width: 0ps;border-radius: 0px;border-style: solid;border-width: 0px;")
+            self.ui.calibration_back_button.show()
+            self.ui.calibration_next_button.show()
+            self.set_calibration_flow_labels(stage = 1)
 
         elif(self.pixel_wavelength_stage == 1):
             self.pixel_wavelength_stage = self.pixel_wavelength_stage + 1
-            self.ui.calibration_identify_peaks_frame.hide()
-            self.ui.pixel_wavelength_acquire_spectra_label.setStyleSheet("color:#9ba4b4;outline-width: 0ps;border-radius: 0px;border-style: solid;border-width: 0px;")
-            self.ui.pixel_wavelength_identify_peaks_label.setStyleSheet("color:#9ba4b4;outline-width: 0ps;border-radius: 0px;border-style: solid;border-width: 0px;")
-            self.ui.pixel_wavelength_get_projection_label.setStyleSheet("color:#24262b;outline-width: 0ps;border-radius: 0px;border-style: solid;border-width: 0px;")
+            self.ui.calibration_pixel_wavelength_polynomial_frame.show()
+            self.ui.calibration_back_button.show()
+
+            self.set_calibration_flow_labels(stage = 2)
             pixels, wavelengths = self.get_pixel_wavelength_points()
             self.calibration.set_pixel_wavelength_points(pixels,wavelengths)
-            self.waves = self.calibration.get_wavelengths(self.waves)
+            self.waves, coeffs = self.calibration.get_wavelengths(self.waves)
+            self.set_pixel_wavelength_coeffs_labels(A = float('%.3g' % coeffs[0]), B = float('%.3g' % coeffs[1]), C = float('%.3g' % coeffs[2]), D = float('%.3g' % coeffs[3]))
             self.pixel_wavelength_calibrated = True
-            self.set_wavelengths()
+            self.restart_acquisition()
+
+    def set_pixel_wavelength_coeffs_labels(self, A = '', B = '', C = '',  D = ''):
+            self.ui.pixel_wavelength_polynomial_coeffs_a_label.setText("A = "+str(A))
+            self.ui.pixel_wavelength_polynomial_coeffs_b_label.setText("B = "+str(B))
+            self.ui.pixel_wavelength_polynomial_coeffs_c_label.setText("C = "+str(C))
+            self.ui.pixel_wavelength_polynomial_coeffs_d_label.setText("D = "+str(D))
 
     def pixel_wavelength_back(self):
         if(self.pixel_wavelength_stage == 1):
-            self.ui.pixel_wavelength_back_button.hide()
             self.ui.calibration_plot_acquisition_flow_frame.show()
             self.pixel_wavelength_stage = self.pixel_wavelength_stage - 1
-            self.ui.calibration_identify_peaks_frame.hide()
-            self.ui.pixel_wavelength_acquire_spectra_label.setStyleSheet("color:#24262b;outline-width: 0ps;border-radius: 0px;border-style: solid;border-width: 0px;")
-            self.ui.pixel_wavelength_identify_peaks_label.setStyleSheet("color:#9ba4b4;outline-width: 0ps;border-radius: 0px;border-style: solid;border-width: 0px;")
-            self.ui.pixel_wavelength_get_projection_label.setStyleSheet("color:#9ba4b4;outline-width: 0ps;border-radius: 0px;border-style: solid;border-width: 0px;")
+            self.ui.calibration_next_button.show()
+            self.set_calibration_flow_labels(stage = 0)
 
         elif(self.pixel_wavelength_stage == 2):
-            self.ui.calibration_plot_acquisition_flow_frame.hide()
             self.pixel_wavelength_stage = self.pixel_wavelength_stage - 1
             self.ui.calibration_identify_peaks_frame.show()
-            self.ui.pixel_wavelength_acquire_spectra_label.setStyleSheet("color:#9ba4b4;outline-width: 0ps;border-radius: 0px;border-style: solid;border-width: 0px;")
-            self.ui.pixel_wavelength_identify_peaks_label.setStyleSheet("color:#24262b;outline-width: 0ps;border-radius: 0px;border-style: solid;border-width: 0px;")
-            self.ui.pixel_wavelength_get_projection_label.setStyleSheet("color:#9ba4b4;outline-width: 0ps;border-radius: 0px;border-style: solid;border-width: 0px;")
-
+            self.ui.calibration_next_button.show()
+            self.ui.calibration_back_button.show()
+            self.set_calibration_flow_labels(stage = 1)
 
     def remove_pixel_wavelength_item(self, item):
         self.ui.pixel_wavelength_list.takeItem(self.ui.pixel_wavelength_list.row(item))
-
-
 
     def add_pixel_wavelength_item(self):
         pixel_temp = int(re.sub("\D","",self.ui.pixel_input.text()))
@@ -230,6 +284,51 @@ class MainWindow(QWidget):
           wavelengths[cntr] = float(temp_item[1])
           cntr = cntr + 1
         return pixels, wavelengths
+
+    def calibration_start_pane(self):
+        self.clear_calibration_pane()
+        self.ui.calibration_plot_acquisition_flow_frame.show()
+        self.ui.calibration_next_button.show()
+        self.set_calibration_flow_labels(stage = 0)
+
+    def spectral_sensitivity_next(self):
+        if(self.spectral_sensitivity_stage == 0):
+            self.spectral_sensitivity_stage = self.spectral_sensitivity_stage + 1
+            self.ui.calibration_back_button.show()
+            self.ui.calibration_next_button.show()
+            self.ui.calibration_set_black_body_frame.show()
+            self.set_calibration_flow_labels(stage = 1)
+
+        elif(self.spectral_sensitivity_stage == 1):
+            self.spectral_sensitivity_stage = self.spectral_sensitivity_stage + 1
+            self.ui.calibration_back_button.show()
+            black_body_temperature = self.get_black_body_temperature()
+            #uncorrected_intensities = self.spectrometer.get_uncorrected_intensities()
+            self.calibration.set_uncorrected_intensity_data(intensities = self.intensitiesRaw)
+            self.calibration.set_black_body_temperature(temperature = black_body_temperature)
+            spectral_sensitivty = self.calibration.get_spectral_sensitivity()
+            self.spectrometer.set_spectral_sensitivity(spectral_sensitivity = spectral_sensitivty)
+            self.set_calibration_flow_labels(stage = 2)
+            self.spectral_sensitivity_calibrated = True
+            self.restart_acquisition()
+
+    def spectral_sensitivity_back(self):
+        if(self.spectral_sensitivity_stage == 1):
+            self.spectral_sensitivity_stage = self.spectral_sensitivity_stage - 1
+            self.ui.calibration_plot_acquisition_flow_frame.show()
+            self.ui.calibration_next_button.show()
+            self.set_calibration_flow_labels(stage = 0)
+
+        elif(self.spectral_sensitivity_stage == 2):
+            self.spectral_sensitivity_stage = self.spectral_sensitivity_stage - 1
+            self.ui.calibration_set_black_body_frame.show()
+            self.ui.calibration_next_button.show()
+            self.ui.calibration_back_button.show()
+            self.set_calibration_flow_labels(stage = 1)
+
+    def get_black_body_temperature(self):
+        black_body_temperature = float(re.sub("\D","",self.ui.black_body_temperature_input.text()))
+        return black_body_temperature
 
     def save_plot_png(self, plot_frame = [],  frame_name = []):
         self.sub_experiment_png = Experiment()
@@ -269,14 +368,16 @@ class MainWindow(QWidget):
         self.ui.detector_integration_time_input.returnPressed.connect(self.restart_acquisition)
         self.ui.detector_averages_input.returnPressed.connect(self.restart_acquisition)
         self.ui.detector_gain_input.returnPressed.connect(self.restart_acquisition)
-        self.ui.detector_width_input.returnPressed.connect(self.restart_acquisition)
-        self.ui.detector_height_input.returnPressed.connect(self.restart_acquisition)
-        self.ui.spectrum_rotation_global_input.returnPressed.connect(self.restart_acquisition)
-        self.ui.spectrum_rotation_spectrum_input.returnPressed.connect(self.restart_acquisition)
-        self.ui.spectrum_start_x_input.returnPressed.connect(self.restart_acquisition)
-        self.ui.spectrum_stop_x_input.returnPressed.connect(self.restart_acquisition)
-        self.ui.spectrum_line_input.returnPressed.connect(self.restart_acquisition)
-        self.ui.spectrum_lines_input.returnPressed.connect(self.restart_acquisition)
+
+        self.ui.detector_width_input.returnPressed.connect(lambda: self.restart_acquisition(calibration_compromised = True))
+        self.ui.detector_height_input.returnPressed.connect(lambda: self.restart_acquisition(calibration_compromised = True))
+        self.ui.spectrum_rotation_global_input.returnPressed.connect(lambda: self.restart_acquisition(calibration_compromised = True))
+        self.ui.spectrum_rotation_spectrum_input.returnPressed.connect(lambda: self.restart_acquisition(calibration_compromised = True))
+        self.ui.spectrum_start_x_input.returnPressed.connect(lambda: self.restart_acquisition(calibration_compromised = True))
+        self.ui.spectrum_stop_x_input.returnPressed.connect(lambda: self.restart_acquisition(calibration_compromised = True))
+        self.ui.spectrum_line_input.returnPressed.connect(lambda: self.restart_acquisition(calibration_compromised = True))
+        self.ui.spectrum_lines_input.returnPressed.connect(lambda: self.restart_acquisition(calibration_compromised = True))
+
         self.ui.image_scale_overview_input.returnPressed.connect(self.restart_acquisition)
         self.ui.image_scale_cropped_input.returnPressed.connect(self.restart_acquisition)
         self.ui.image_camera_no_input.returnPressed.connect(self.restart_acquisition)
@@ -291,6 +392,11 @@ class MainWindow(QWidget):
         # if button for "Spectral sensitivity" calibration has been pressed
         self.ui.calibration_menu_spectral_sensitivity_button.clicked.connect(lambda: self.calibration_menu_switch(choice = 'spectral_sensitivity'))
 
+        self.ui.save_calibration_button.clicked.connect(self.export_calibration)
+
+        self.ui.load_calibration_button.clicked.connect(self.load_acquisition_settings)
+
+
         # Specific spectrum acquisition
         # if button for "acquire dark spectrum" has been pressed
         self.ui.calibration_acquire_dark_spectrum_button.clicked.connect(self.acquire_dark_spectrum)
@@ -301,15 +407,22 @@ class MainWindow(QWidget):
         # if button for "acquire emission spectrum" has been pressed
         self.ui.calibration_acquire_emission_spectrum_button.clicked.connect(self.acquire_emission_spectrum)
 
-        self.ui.pixel_wavelength_next_button.clicked.connect(self.pixel_wavelength_next)
-        self.ui.pixel_wavelength_back_button.clicked.connect(self.pixel_wavelength_back)
+        self.ui.calibration_next_button.clicked.connect(self.calibration_next_button)
+        self.ui.calibration_back_button.clicked.connect(self.calibration_back_button)
 
         self.ui.pixel_wavelength_list.itemClicked.connect(self.remove_pixel_wavelength_item)
         self.ui.add_pixel_wavelength_point_button.clicked.connect(self.add_pixel_wavelength_item)
-
+        self.ui.wavelength_input.returnPressed.connect(self.add_pixel_wavelength_item)
         # if button for "clear" has been pressed
         self.ui.clear_calibration_button.clicked.connect(self.clear_spectra)
 
+
+        # GET CURSOR DATA FROM FRAMES/PLOTS
+        #proxy = pg.SignalProxy(self.ui.raw_plot.scene().sigMouseMoved, rateLimit=60, slot=self.cursor_in_plot)
+        #pg.SignalProxy(self.ui.raw_plot.scene().sigMouseMoved, rateLimit=60, slot=lambda: print('hello'))
+        self.ui.raw_plot.scene().sigMouseMoved.connect(self.cursor_in_raw_plot)
+
+        self.ui.calc_plot_3.scene().sigMouseMoved.connect(self.cursor_in_calc_plot_3)
 
         # EXPERIMENT CONTROLS
         # MENU
@@ -339,7 +452,6 @@ class MainWindow(QWidget):
         # Save data from individual plots
         # if button for ".png" has been pressed for raw_plot
         self.ui.save_raw_plot_png_button.clicked.connect(lambda: self.save_plot_png(plot_frame = self.ui.raw_plot_frame,  frame_name = 'Raw' ))
-
         # if button for ".txt" has been pressed for raw_plot
         self.ui.save_raw_plot_txt_button.clicked.connect(lambda: self.save_plot_txt(plot_name = ['Raw'],  plot_data = [self.raw_plot_line] ))
 
@@ -508,9 +620,8 @@ class MainWindow(QWidget):
         self.calibration_choice = choice
 
         if(choice == 'pixel_wavelength'):
-            self.ui.calibration_identify_peaks_frame.hide()
-            self.ui.pixel_wavelength_back_button.hide()
             self.pixel_wavelength_stage = 0
+            self.calibration_start_pane()
             self.clear_spectra()
             self.resetCheckBox()
             self.ui.calibration_acquire_dark_spectrum_button.show()
@@ -561,6 +672,13 @@ class MainWindow(QWidget):
             self.ui.calibration_menu_spectral_sensitivity_button.setStyleSheet("color: #24262b;border-bottom-width: 0px;border-color: #24262b;border-style:solid;")
 
         elif(choice == 'spectral_sensitivity'):
+            self.spectral_sensitivity_stage = 0
+            self.calibration_start_pane()
+
+            self.ui.calibration_identify_peaks_frame.hide()
+            self.ui.calibration_pixel_wavelength_polynomial_frame.hide()
+            self.ui.calibration_back_button.hide()
+
             self.clear_spectra()
             self.resetCheckBox()
             self.ui.calibration_acquire_dark_spectrum_button.show()
@@ -650,10 +768,49 @@ class MainWindow(QWidget):
             self.scale = self.scale_overview
         self.cam_no = config['SpectrometerConfig'].getint('cam_no')
 
+
+        #if(config['SpectrometerConfig'].getboolean('pixel_wavelength_calibrated')):
+        if(1):
+            pixel_wavelength_calibration_pixels = self.string_to_numpy_array(config['PixelWavelengthCalibration']['pixel_wavelength_points_pixels'])
+            pixel_wavelength_calibration_wavelengths = self.string_to_numpy_array(config['PixelWavelengthCalibration']['pixel_wavelength_points_wavelengths'])
+            self.pixels = self.string_to_numpy_array(config['PixelWavelengthCalibration']['pixels'])
+            self.waves = self.string_to_numpy_array(config['PixelWavelengthCalibration']['wavelengths'])
+            coeffs = self.string_to_numpy_array(config['PixelWavelengthCalibration']['popt'])
+            self.calibration.set_pixels(pixels = self.pixels)
+            self.calibration.set_wavelengths(wavelengths = self.waves)
+            self.calibration.set_pixel_wavelength_points(pixels = pixel_wavelength_calibration_pixels, wavelengths = pixel_wavelength_calibration_wavelengths)
+            self.calibration.set_pixel_wavelength_coeffs(coeffs = coeffs)
+            self.calibration.set_calibration_status(calibration_type = 'pixel_wavelength', calibrated = True)
+            self.pixel_wavelength_calibrated = True
+            self.set_pixel_wavelength_coeffs_labels(A = float('%.3g' % coeffs[0]), B = float('%.3g' % coeffs[1]), C = float('%.3g' % coeffs[2]), D = float('%.3g' % coeffs[3]))
+
+            if(1):
+                black_body_temperature = config['SpectralSensitivityCalibration'].getfloat('black_body_temperature')
+                intensities_uncorrected = self.string_to_numpy_array(config['SpectralSensitivityCalibration']['uncorrected_intensity_data'])
+                self.spectral_sensitivity = self.string_to_numpy_array(config['SpectralSensitivityCalibration']['spectral_sensitivity'])
+                self.calibration.set_uncorrected_intensity_data(intensities = intensities_uncorrected)
+                self.calibration.set_black_body_temperature(temperature = black_body_temperature)
+                self.calibration.set_spectral_sensitivity(spectral_sensitivity = self.spectral_sensitivity)
+                self.spectrometer.set_spectral_sensitivity(spectral_sensitivity = self.spectral_sensitivity)
+                self.calibration.set_calibration_status(calibration_type = 'spectral_sensitivity', calibrated = True)
+                self.spectral_sensitivity_calibrated = True
+
+
         # Update variables in acquisition settings form
 
         self.update_text_in_acquisition_input_form()
         self.restart_acquisition()
+
+    def string_to_numpy_array(self, list = ''):
+        list = list.split()
+        list_ = [re.sub("[^\d\.]", "",s) for s in list]
+        cntr = 0
+        list_1 = np.array([])
+        for s in list_:
+            if(s!=""):
+                list_1 = np.append(list_1, float(s))
+            cntr = cntr + 1
+        return list_1
 
     def save_acquisition_settings(self):
         # Open dialog for saving acquisition settings
@@ -788,13 +945,22 @@ class MainWindow(QWidget):
             self.ui.calc_plot_2_combo_lambda_label.setText('Pixel #')
             self.ui.calc_plot_3_lambda_label.setText('Pixel #')
 
+
+    def cursor_in_raw_plot(self,evt):
+        mousePoint = self.vb_raw.mapSceneToView(evt)
+        self.ui.cursor_raw_label.setText("x: {}, y: {}".format(round(mousePoint.x(),1), round(mousePoint.y(),1)))
+
+    def cursor_in_calc_plot_3(self,evt):
+        mousePoint = self.vb_calc_3.mapSceneToView(evt)
+        self.ui.cursor_calc_3_label.setText("x: {}, y: {}".format(round(mousePoint.x(),1), round(mousePoint.y(),1)))
+
     def setup_plots(self):
-        self.raw_plot_line = self.setup_plot(self.ui.raw_plot)
-        self.calc_plot_1_line = self.setup_plot(self.ui.calc_plot_1)
-        self.calc_plot_1_combo_line = self.setup_plot(self.ui.calc_plot_1_combo)
-        self.calc_plot_2_line = self.setup_plot(self.ui.calc_plot_2)
-        self.calc_plot_2_combo_line = self.setup_plot(self.ui.calc_plot_2_combo)
-        self.calc_plot_3_line = self.setup_plot(self.ui.calc_plot_3)
+        self.raw_plot_line, self.vb_raw = self.setup_plot(self.ui.raw_plot)
+        self.calc_plot_1_line, self.vb_calc_1 = self.setup_plot(self.ui.calc_plot_1)
+        self.calc_plot_1_combo_line, self.vb_calc_1_combo  = self.setup_plot(self.ui.calc_plot_1_combo)
+        self.calc_plot_2_line, self.vb_calc_2  = self.setup_plot(self.ui.calc_plot_2)
+        self.calc_plot_2_combo_line, self.vb_calc_2_combo  = self.setup_plot(self.ui.calc_plot_2_combo)
+        self.calc_plot_3_line, self.vb_calc_3  = self.setup_plot(self.ui.calc_plot_3)
 
     # checks relevant checkbox to show user that a spectrum has been stored
     def setCheckBox(self, specCheck):
@@ -835,7 +1001,7 @@ class MainWindow(QWidget):
         vb = plot_item.getViewBox()
         vb.setBackgroundColor("#f1f6f9")
         vb.setBorder(color="#8d93ab", width=1, style=QtCore.Qt.SolidLine)
-        return plot_line
+        return plot_line, vb
 
 
     # update spectrum plot
@@ -847,10 +1013,19 @@ class MainWindow(QWidget):
         self.resetCheckBox()
         self.unpause_acquisition()
 
+
+    def export_calibration(self):
+        save_calibration_path  = str(QFileDialog.getExistingDirectory(self, "Select Directory"))
+        self.update_settings_config_parser()
+        self.calibration.set_acquisition_settings(config = self.config)
+        self.calibration.set_save_path(save_path = save_calibration_path)
+        self.calibration.save()
+
+
     def export_experiment(self, experiment = ''):
         save_images_path  = str(QFileDialog.getExistingDirectory(self, "Select Directory"))
         self.update_settings_config_parser()
-        experiment.set_acquisition_settings(self.config)
+        experiment.set_acquisition_settings(config = self.config)
         experiment.set_save_path(save_path = save_images_path)
         experiment.save()
 

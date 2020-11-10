@@ -67,7 +67,7 @@ border-width: 0px;</string>
      </property>
      <property name="geometry">
       <rect>
-       <x>29</x>
+       <x>27</x>
        <y>67</y>
        <width>1291</width>
        <height>781</height>
@@ -270,7 +270,8 @@ outline-width: 4ps;
 border-radius: 2px;
 border-style: solid;
 border-width: 1px;
-border-color: #8d93ab;</string>
+border-color: #8d93ab;
+background-color: #f1f6f9;</string>
        </property>
        <property name="text">
         <string/>
@@ -1141,9 +1142,9 @@ border-color: #8d93ab;</string>
        <widget class="QPushButton" name="clear_calibration_button">
         <property name="geometry">
          <rect>
-          <x>350</x>
+          <x>310</x>
           <y>290</y>
-          <width>141</width>
+          <width>181</width>
           <height>41</height>
          </rect>
         </property>
@@ -1154,12 +1155,12 @@ border-color: #8d93ab;</string>
          <string>Clear</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="apply_calibration_button">
+       <widget class="QPushButton" name="save_calibration_button">
         <property name="geometry">
          <rect>
-          <x>220</x>
+          <x>0</x>
           <y>290</y>
-          <width>131</width>
+          <width>156</width>
           <height>41</height>
          </rect>
         </property>
@@ -1172,50 +1173,31 @@ border-width: 1px;
 border-color: #626470;</string>
         </property>
         <property name="text">
-         <string>Apply</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="save_calibration_button">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>290</y>
-          <width>111</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-style: solid;
-border-width: 1px;
-border-color: #626470;
-background-color:#14274e;
-color: white;</string>
-        </property>
-        <property name="text">
          <string>Save</string>
         </property>
        </widget>
        <widget class="QPushButton" name="load_calibration_button">
         <property name="geometry">
          <rect>
-          <x>110</x>
+          <x>155</x>
           <y>290</y>
-          <width>111</width>
+          <width>156</width>
           <height>41</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">border-style: solid;
+         <string notr="true">background-color:#9ba4b4;
+color:white;
+border-radius: 1px;
+border-style: solid;
 border-width: 1px;
-border-color: #626470;
-background-color:#14274e;
-color: white;</string>
+border-color: #626470;</string>
         </property>
         <property name="text">
          <string>Load</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pixel_wavelength_next_button">
+       <widget class="QPushButton" name="calibration_next_button">
         <property name="geometry">
          <rect>
           <x>440</x>
@@ -1235,12 +1217,12 @@ color: white;</string>
          <string>&gt;</string>
         </property>
        </widget>
-       <widget class="QLabel" name="pixel_wavelength_acquire_spectra_label">
+       <widget class="QLabel" name="calibration_step_1_label">
         <property name="geometry">
          <rect>
-          <x>50</x>
+          <x>30</x>
           <y>13</y>
-          <width>121</width>
+          <width>141</width>
           <height>31</height>
          </rect>
         </property>
@@ -1267,12 +1249,12 @@ border-width: 0px;</string>
          <number>1</number>
         </property>
        </widget>
-       <widget class="QLabel" name="pixel_wavelength_identify_peaks_label">
+       <widget class="QLabel" name="calibration_step_2_label">
         <property name="geometry">
          <rect>
-          <x>190</x>
+          <x>180</x>
           <y>13</y>
-          <width>121</width>
+          <width>141</width>
           <height>31</height>
          </rect>
         </property>
@@ -1300,12 +1282,12 @@ color:#9ba4b4;</string>
          <number>1</number>
         </property>
        </widget>
-       <widget class="QLabel" name="pixel_wavelength_get_projection_label">
+       <widget class="QLabel" name="calibration_step_3_label">
         <property name="geometry">
          <rect>
-          <x>320</x>
+          <x>330</x>
           <y>13</y>
-          <width>121</width>
+          <width>141</width>
           <height>31</height>
          </rect>
         </property>
@@ -1700,7 +1682,7 @@ border-color: #626470;</string>
          </property>
         </widget>
        </widget>
-       <widget class="QPushButton" name="pixel_wavelength_back_button">
+       <widget class="QPushButton" name="calibration_back_button">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -1720,17 +1702,181 @@ color: white;</string>
          <string>&lt;</string>
         </property>
        </widget>
-       <zorder>calibration_identify_peaks_frame</zorder>
+       <widget class="QFrame" name="calibration_pixel_wavelength_polynomial_frame">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>40</y>
+          <width>391</width>
+          <height>241</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">outline-width: 0ps;
+border-radius: 0px;
+border-style: solid;
+border-width: 0px;</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QWidget" name="verticalLayoutWidget_5">
+         <property name="geometry">
+          <rect>
+           <x>90</x>
+           <y>50</y>
+           <width>231</width>
+           <height>121</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QLabel" name="pixel_wavelength_polynomial_label">
+            <property name="text">
+             <string>λ(p) = A+B*p+C*p^2+D*p^3</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="pixel_wavelength_polynomial_coeffs_a_label">
+            <property name="text">
+             <string>Coefficient A</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="pixel_wavelength_polynomial_coeffs_b_label">
+            <property name="text">
+             <string>Coefficient B</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="pixel_wavelength_polynomial_coeffs_c_label">
+            <property name="text">
+             <string>Coefficient C</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="pixel_wavelength_polynomial_coeffs_d_label">
+            <property name="text">
+             <string>Coefficient D</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QFrame" name="calibration_set_black_body_frame">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>40</y>
+          <width>381</width>
+          <height>231</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">outline-width: 0ps;
+border-radius: 0px;
+border-style: solid;
+border-width: 0px;</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QLineEdit" name="black_body_temperature_input">
+         <property name="geometry">
+          <rect>
+           <x>247</x>
+           <y>41</y>
+           <width>51</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: white;
+border-radius: 1px;
+border-style: solid;
+border-width: 0.5px;
+border-color: #d6e0f0;
+color: #24262b;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QLabel" name="black_body_temperature_input_label">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>40</y>
+           <width>181</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Black-body temperature (K):</string>
+         </property>
+        </widget>
+        <zorder>black_body_temperature_input_label</zorder>
+        <zorder>black_body_temperature_input</zorder>
+       </widget>
+       <widget class="QFrame" name="calibration_get_spectral_sensitivity_frame">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>40</y>
+          <width>431</width>
+          <height>231</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">outline-width: 0ps;
+border-radius: 0px;
+border-style: solid;
+border-width: 0px;</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QLabel" name="black_body_stats_label">
+         <property name="geometry">
+          <rect>
+           <x>160</x>
+           <y>70</y>
+           <width>101</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Fit statistics</string>
+         </property>
+        </widget>
+       </widget>
+       <zorder>calibration_get_spectral_sensitivity_frame</zorder>
        <zorder>clear_calibration_button</zorder>
-       <zorder>apply_calibration_button</zorder>
        <zorder>save_calibration_button</zorder>
        <zorder>load_calibration_button</zorder>
-       <zorder>pixel_wavelength_acquire_spectra_label</zorder>
-       <zorder>pixel_wavelength_identify_peaks_label</zorder>
-       <zorder>pixel_wavelength_get_projection_label</zorder>
+       <zorder>calibration_step_1_label</zorder>
+       <zorder>calibration_step_2_label</zorder>
+       <zorder>calibration_step_3_label</zorder>
        <zorder>calibration_plot_acquisition_flow_frame</zorder>
-       <zorder>pixel_wavelength_back_button</zorder>
-       <zorder>pixel_wavelength_next_button</zorder>
+       <zorder>calibration_pixel_wavelength_polynomial_frame</zorder>
+       <zorder>calibration_back_button</zorder>
+       <zorder>calibration_next_button</zorder>
+       <zorder>calibration_set_black_body_frame</zorder>
+       <zorder>calibration_identify_peaks_frame</zorder>
       </widget>
       <widget class="QPushButton" name="calibration_menu_pixel_wavelength_button">
        <property name="geometry">
@@ -2269,7 +2415,7 @@ font-family: helvetica;
       <rect>
        <x>16</x>
        <y>510</y>
-       <width>551</width>
+       <width>561</width>
        <height>341</height>
       </rect>
      </property>
@@ -2377,6 +2523,24 @@ border-width: 0px;</string>
         <widget class="PlotWidget" name="raw_plot" native="true"/>
        </item>
       </layout>
+     </widget>
+     <widget class="QLabel" name="cursor_raw_label">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>30</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Cursor position</string>
+      </property>
      </widget>
     </widget>
     <widget class="QLabel" name="spec_streamer_v_label">
@@ -2927,11 +3091,29 @@ border-color: #626470;</string>
         <item row="7" column="1">
          <widget class="PlotWidget" name="calc_plot_3" native="true">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
          </widget>
         </item>
        </layout>
+      </widget>
+      <widget class="QLabel" name="cursor_calc_3_label">
+       <property name="geometry">
+        <rect>
+         <x>90</x>
+         <y>30</y>
+         <width>91</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Cursor position</string>
+       </property>
       </widget>
      </widget>
      <widget class="QFrame" name="calc_plot_1_2_combo_frame">

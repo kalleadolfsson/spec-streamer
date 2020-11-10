@@ -37,16 +37,12 @@ class Spectrometer(QThread):
 
     stream_open = False
     stream = False
-    #def __init__(self, parent = None):
-    #    QThread.__init__(self, parent)
+    spectral_sensitivity_calibrated = False
+
 
     def __init__(self, *args, **kwargs):
         QThread.__init__(self, *args, **kwargs)
-        # Create Timer
-        #self.imageTimer = QTimer()
-        #self.imageTimer.moveToThread(self)
-        # set imageTimer timeout callback function
-        #self.imageTimer.timeout.connect(self.viewCam)
+
 
     def run(self):
         self.setup()
@@ -57,7 +53,7 @@ class Spectrometer(QThread):
 
         while(True):
             self.viewCam()
-            time.sleep(0.025)
+            time.sleep(0.05)
 
 
     def stop(self):
@@ -100,18 +96,25 @@ class Spectrometer(QThread):
 
                 # check if any special acqusition has been selected (i.e. dark, emission, reference or transmission)
                 if (self.acquireDark):
+                    #self.intensitiesDark = self.intensities
                     self.intensitiesDark = self.intensities
                     self.acquireDark = False
                     self.dark_spectrum_stream.emit(self.intensitiesDark)
 
                 elif (self.acquireEmission):
-                    self.intensitiesEmission = self.intensities-self.intensitiesDark
+                    #self.intensitiesEmission = self.intensities-self.intensitiesDark
+                    intensities_temp = self.intensities-self.intensitiesDark
+                    self.intensitiesDark = np.divide(intensities_temp, self.spectral_sensitivity, out=np.zeros_like(intensities_temp), where=self.spectral_sensitivity!=0)
+
                     self.acquireEmission = False
                     self.emission_spectrum_stream.emit(self.intensitiesEmission)
 
 
                 elif (self.acquireReference):
-                    self.intensitiesReference = self.intensities
+                    #self.intensitiesReference = self.intensities
+                    temp_intensities = self.intensities-self.intensitiesDark
+                    self.intensitiesReference = np.divide(temp_intensities, self.spectral_sensitivity, out=np.zeros_like(self.intensities), where=self.spectral_sensitivity!=0)
+
                     self.acquireReference = False
                     self.reference_spectrum_stream.emit(self.intensitiesReference)
 
@@ -119,7 +122,9 @@ class Spectrometer(QThread):
                 elif (self.acquireTransmission):
                     temp_intensities = self.intensities-self.intensitiesDark
                     # Handle division by 0 by replacing output elements with 0
-                    self.intensitiesTransmission = np.divide(temp_intensities, self.intensitiesReference-self.intensitiesDark, out=np.zeros_like(temp_intensities), where=self.intensitiesReference!=0)
+                    temp_intensities_corrected = np.divide(temp_intensities, self.spectral_sensitivity, out=np.zeros_like(temp_intensities), where=self.spectral_sensitivity!=0)
+                    self.intensitiesTransmission= np.divide(temp_intensities_corrected, self.intensitiesReference, out=np.zeros_like(temp_intensities_corrected), where=self.intensitiesReference!=0)
+
                     self.acquireTransmission = False
                     self.transmission_spectrum_stream.emit(self.intensitiesTransmission)
 
@@ -127,7 +132,7 @@ class Spectrometer(QThread):
                 #    self.updateCalcPlot()
 
                 self.cntr = 0
-                self.raw_spectrum_stream.emit(self.intensities)
+                self.raw_spectrum_stream.emit((self.intensities-self.intensitiesDark)/self.spectral_sensitivity)
 
 
             self.cntr = self.cntr + 1
@@ -177,6 +182,9 @@ class Spectrometer(QThread):
         self.intensitiesReference = np.zeros(self.bins)
         self.intensitiesTransmission = np.zeros(self.bins)
 
+        if(self.spectral_sensitivity_calibrated == False):
+            self.spectral_sensitivity = np.ones(self.bins)
+
         self.acquireDark = False
         self.acquireEmission = False
         self.acquireReference = False
@@ -193,12 +201,9 @@ class Spectrometer(QThread):
         self.cap.set(3,self.width)
         self.cap.set(4,self.height)
 
-
-
     @pyqtSlot()
     def terminate(self):
         self.stop()
-
 
     @pyqtSlot()
     def pause(self):
@@ -273,7 +278,10 @@ class Spectrometer(QThread):
     def set_cam_no(self, cam_no = 0):
         self.cam_no = cam_no
 
-
+    @pyqtSlot(np.ndarray)
+    def set_spectral_sensitivity(self, spectral_sensitivity = []):
+        self.spectral_sensitivity = spectral_sensitivity
+        self.spectral_sensitivity_calibrated = True
     # Set acqusition mode
     @pyqtSlot()
     def acquireDarkSpectrum(self):
