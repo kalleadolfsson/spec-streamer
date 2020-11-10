@@ -36,8 +36,6 @@ import pyqtgraph.exporters
 # import Opencv module
 import cv2
 
-
-
 class Experiment:
   def __init__(self):
       self.experiment_type = ''

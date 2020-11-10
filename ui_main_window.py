@@ -34,7 +34,7 @@ class Ui_Form(object):
         self.container_widget.setObjectName("container_widget")
         self.main_menu_tab = QtWidgets.QTabWidget(self.container_widget)
         self.main_menu_tab.setEnabled(True)
-        self.main_menu_tab.setGeometry(QtCore.QRect(29, 67, 1291, 781))
+        self.main_menu_tab.setGeometry(QtCore.QRect(27, 67, 1291, 781))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -114,7 +114,8 @@ class Ui_Form(object):
 "border-radius: 2px;\n"
 "border-style: solid;\n"
 "border-width: 1px;\n"
-"border-color: #8d93ab;")
+"border-color: #8d93ab;\n"
+"background-color: #f1f6f9;")
         self.image_label.setText("")
         self.image_label.setAlignment(QtCore.Qt.AlignCenter)
         self.image_label.setObjectName("image_label")
@@ -546,83 +547,76 @@ class Ui_Form(object):
         self.calibration_flow_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.calibration_flow_frame.setObjectName("calibration_flow_frame")
         self.clear_calibration_button = QtWidgets.QPushButton(self.calibration_flow_frame)
-        self.clear_calibration_button.setGeometry(QtCore.QRect(350, 290, 141, 41))
+        self.clear_calibration_button.setGeometry(QtCore.QRect(310, 290, 181, 41))
         self.clear_calibration_button.setStyleSheet("color: #24262b;")
         self.clear_calibration_button.setObjectName("clear_calibration_button")
-        self.apply_calibration_button = QtWidgets.QPushButton(self.calibration_flow_frame)
-        self.apply_calibration_button.setGeometry(QtCore.QRect(220, 290, 131, 41))
-        self.apply_calibration_button.setStyleSheet("background-color:#9ba4b4;\n"
+        self.save_calibration_button = QtWidgets.QPushButton(self.calibration_flow_frame)
+        self.save_calibration_button.setGeometry(QtCore.QRect(0, 290, 156, 41))
+        self.save_calibration_button.setStyleSheet("background-color:#9ba4b4;\n"
 "color:white;\n"
 "border-radius: 1px;\n"
 "border-style: solid;\n"
 "border-width: 1px;\n"
 "border-color: #626470;")
-        self.apply_calibration_button.setObjectName("apply_calibration_button")
-        self.save_calibration_button = QtWidgets.QPushButton(self.calibration_flow_frame)
-        self.save_calibration_button.setGeometry(QtCore.QRect(0, 290, 111, 41))
-        self.save_calibration_button.setStyleSheet("border-style: solid;\n"
-"border-width: 1px;\n"
-"border-color: #626470;\n"
-"background-color:#14274e;\n"
-"color: white;")
         self.save_calibration_button.setObjectName("save_calibration_button")
         self.load_calibration_button = QtWidgets.QPushButton(self.calibration_flow_frame)
-        self.load_calibration_button.setGeometry(QtCore.QRect(110, 290, 111, 41))
-        self.load_calibration_button.setStyleSheet("border-style: solid;\n"
+        self.load_calibration_button.setGeometry(QtCore.QRect(155, 290, 156, 41))
+        self.load_calibration_button.setStyleSheet("background-color:#9ba4b4;\n"
+"color:white;\n"
+"border-radius: 1px;\n"
+"border-style: solid;\n"
 "border-width: 1px;\n"
-"border-color: #626470;\n"
-"background-color:#14274e;\n"
-"color: white;")
+"border-color: #626470;")
         self.load_calibration_button.setObjectName("load_calibration_button")
-        self.pixel_wavelength_next_button = QtWidgets.QPushButton(self.calibration_flow_frame)
-        self.pixel_wavelength_next_button.setGeometry(QtCore.QRect(440, 140, 51, 41))
-        self.pixel_wavelength_next_button.setStyleSheet("border-style: solid;\n"
+        self.calibration_next_button = QtWidgets.QPushButton(self.calibration_flow_frame)
+        self.calibration_next_button.setGeometry(QtCore.QRect(440, 140, 51, 41))
+        self.calibration_next_button.setStyleSheet("border-style: solid;\n"
 "border-width: 1px;\n"
 "border-color: #626470;\n"
 "background-color:#14274e;\n"
 "color: white;")
-        self.pixel_wavelength_next_button.setObjectName("pixel_wavelength_next_button")
-        self.pixel_wavelength_acquire_spectra_label = QtWidgets.QLabel(self.calibration_flow_frame)
-        self.pixel_wavelength_acquire_spectra_label.setGeometry(QtCore.QRect(50, 13, 121, 31))
+        self.calibration_next_button.setObjectName("calibration_next_button")
+        self.calibration_step_1_label = QtWidgets.QLabel(self.calibration_flow_frame)
+        self.calibration_step_1_label.setGeometry(QtCore.QRect(30, 13, 141, 31))
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(False)
         font.setWeight(50)
-        self.pixel_wavelength_acquire_spectra_label.setFont(font)
-        self.pixel_wavelength_acquire_spectra_label.setStyleSheet("outline-width: 0ps;\n"
+        self.calibration_step_1_label.setFont(font)
+        self.calibration_step_1_label.setStyleSheet("outline-width: 0ps;\n"
 "border-radius: 0px;\n"
 "border-style: solid;\n"
 "border-width: 0px;")
-        self.pixel_wavelength_acquire_spectra_label.setAlignment(QtCore.Qt.AlignCenter)
-        self.pixel_wavelength_acquire_spectra_label.setObjectName("pixel_wavelength_acquire_spectra_label")
-        self.pixel_wavelength_identify_peaks_label = QtWidgets.QLabel(self.calibration_flow_frame)
-        self.pixel_wavelength_identify_peaks_label.setGeometry(QtCore.QRect(190, 13, 121, 31))
+        self.calibration_step_1_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.calibration_step_1_label.setObjectName("calibration_step_1_label")
+        self.calibration_step_2_label = QtWidgets.QLabel(self.calibration_flow_frame)
+        self.calibration_step_2_label.setGeometry(QtCore.QRect(180, 13, 141, 31))
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(False)
         font.setWeight(50)
-        self.pixel_wavelength_identify_peaks_label.setFont(font)
-        self.pixel_wavelength_identify_peaks_label.setStyleSheet("outline-width: 0ps;\n"
+        self.calibration_step_2_label.setFont(font)
+        self.calibration_step_2_label.setStyleSheet("outline-width: 0ps;\n"
 "border-radius: 0px;\n"
 "border-style: solid;\n"
 "border-width: 0px;\n"
 "color:#9ba4b4;")
-        self.pixel_wavelength_identify_peaks_label.setAlignment(QtCore.Qt.AlignCenter)
-        self.pixel_wavelength_identify_peaks_label.setObjectName("pixel_wavelength_identify_peaks_label")
-        self.pixel_wavelength_get_projection_label = QtWidgets.QLabel(self.calibration_flow_frame)
-        self.pixel_wavelength_get_projection_label.setGeometry(QtCore.QRect(320, 13, 121, 31))
+        self.calibration_step_2_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.calibration_step_2_label.setObjectName("calibration_step_2_label")
+        self.calibration_step_3_label = QtWidgets.QLabel(self.calibration_flow_frame)
+        self.calibration_step_3_label.setGeometry(QtCore.QRect(330, 13, 141, 31))
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(False)
         font.setWeight(50)
-        self.pixel_wavelength_get_projection_label.setFont(font)
-        self.pixel_wavelength_get_projection_label.setStyleSheet("outline-width: 0ps;\n"
+        self.calibration_step_3_label.setFont(font)
+        self.calibration_step_3_label.setStyleSheet("outline-width: 0ps;\n"
 "border-radius: 0px;\n"
 "border-style: solid;\n"
 "border-width: 0px;\n"
 "color:#9ba4b4;")
-        self.pixel_wavelength_get_projection_label.setAlignment(QtCore.Qt.AlignCenter)
-        self.pixel_wavelength_get_projection_label.setObjectName("pixel_wavelength_get_projection_label")
+        self.calibration_step_3_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.calibration_step_3_label.setObjectName("calibration_step_3_label")
         self.calibration_plot_acquisition_flow_frame = QtWidgets.QFrame(self.calibration_flow_frame)
         self.calibration_plot_acquisition_flow_frame.setGeometry(QtCore.QRect(50, 40, 391, 241))
         self.calibration_plot_acquisition_flow_frame.setStyleSheet("outline-width: 0ps;\n"
@@ -801,25 +795,93 @@ class Ui_Form(object):
         self.wavelength_input_label_2.setFont(font)
         self.wavelength_input_label_2.setStyleSheet("color:#9ba4b4;")
         self.wavelength_input_label_2.setObjectName("wavelength_input_label_2")
-        self.pixel_wavelength_back_button = QtWidgets.QPushButton(self.calibration_flow_frame)
-        self.pixel_wavelength_back_button.setGeometry(QtCore.QRect(0, 140, 51, 41))
-        self.pixel_wavelength_back_button.setStyleSheet("border-style: solid;\n"
+        self.calibration_back_button = QtWidgets.QPushButton(self.calibration_flow_frame)
+        self.calibration_back_button.setGeometry(QtCore.QRect(0, 140, 51, 41))
+        self.calibration_back_button.setStyleSheet("border-style: solid;\n"
 "border-width: 1px;\n"
 "border-color: #626470;\n"
 "background-color:#14274e;\n"
 "color: white;")
-        self.pixel_wavelength_back_button.setObjectName("pixel_wavelength_back_button")
-        self.calibration_identify_peaks_frame.raise_()
+        self.calibration_back_button.setObjectName("calibration_back_button")
+        self.calibration_pixel_wavelength_polynomial_frame = QtWidgets.QFrame(self.calibration_flow_frame)
+        self.calibration_pixel_wavelength_polynomial_frame.setGeometry(QtCore.QRect(50, 40, 391, 241))
+        self.calibration_pixel_wavelength_polynomial_frame.setStyleSheet("outline-width: 0ps;\n"
+"border-radius: 0px;\n"
+"border-style: solid;\n"
+"border-width: 0px;")
+        self.calibration_pixel_wavelength_polynomial_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.calibration_pixel_wavelength_polynomial_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.calibration_pixel_wavelength_polynomial_frame.setObjectName("calibration_pixel_wavelength_polynomial_frame")
+        self.verticalLayoutWidget_5 = QtWidgets.QWidget(self.calibration_pixel_wavelength_polynomial_frame)
+        self.verticalLayoutWidget_5.setGeometry(QtCore.QRect(90, 50, 231, 121))
+        self.verticalLayoutWidget_5.setObjectName("verticalLayoutWidget_5")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_5)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.pixel_wavelength_polynomial_label = QtWidgets.QLabel(self.verticalLayoutWidget_5)
+        self.pixel_wavelength_polynomial_label.setObjectName("pixel_wavelength_polynomial_label")
+        self.verticalLayout.addWidget(self.pixel_wavelength_polynomial_label)
+        self.pixel_wavelength_polynomial_coeffs_a_label = QtWidgets.QLabel(self.verticalLayoutWidget_5)
+        self.pixel_wavelength_polynomial_coeffs_a_label.setObjectName("pixel_wavelength_polynomial_coeffs_a_label")
+        self.verticalLayout.addWidget(self.pixel_wavelength_polynomial_coeffs_a_label)
+        self.pixel_wavelength_polynomial_coeffs_b_label = QtWidgets.QLabel(self.verticalLayoutWidget_5)
+        self.pixel_wavelength_polynomial_coeffs_b_label.setObjectName("pixel_wavelength_polynomial_coeffs_b_label")
+        self.verticalLayout.addWidget(self.pixel_wavelength_polynomial_coeffs_b_label)
+        self.pixel_wavelength_polynomial_coeffs_c_label = QtWidgets.QLabel(self.verticalLayoutWidget_5)
+        self.pixel_wavelength_polynomial_coeffs_c_label.setObjectName("pixel_wavelength_polynomial_coeffs_c_label")
+        self.verticalLayout.addWidget(self.pixel_wavelength_polynomial_coeffs_c_label)
+        self.pixel_wavelength_polynomial_coeffs_d_label = QtWidgets.QLabel(self.verticalLayoutWidget_5)
+        self.pixel_wavelength_polynomial_coeffs_d_label.setObjectName("pixel_wavelength_polynomial_coeffs_d_label")
+        self.verticalLayout.addWidget(self.pixel_wavelength_polynomial_coeffs_d_label)
+        self.calibration_set_black_body_frame = QtWidgets.QFrame(self.calibration_flow_frame)
+        self.calibration_set_black_body_frame.setGeometry(QtCore.QRect(60, 40, 381, 231))
+        self.calibration_set_black_body_frame.setStyleSheet("outline-width: 0ps;\n"
+"border-radius: 0px;\n"
+"border-style: solid;\n"
+"border-width: 0px;")
+        self.calibration_set_black_body_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.calibration_set_black_body_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.calibration_set_black_body_frame.setObjectName("calibration_set_black_body_frame")
+        self.black_body_temperature_input = QtWidgets.QLineEdit(self.calibration_set_black_body_frame)
+        self.black_body_temperature_input.setGeometry(QtCore.QRect(247, 41, 51, 21))
+        self.black_body_temperature_input.setStyleSheet("background-color: white;\n"
+"border-radius: 1px;\n"
+"border-style: solid;\n"
+"border-width: 0.5px;\n"
+"border-color: #d6e0f0;\n"
+"color: #24262b;")
+        self.black_body_temperature_input.setText("")
+        self.black_body_temperature_input.setObjectName("black_body_temperature_input")
+        self.black_body_temperature_input_label = QtWidgets.QLabel(self.calibration_set_black_body_frame)
+        self.black_body_temperature_input_label.setGeometry(QtCore.QRect(70, 40, 181, 20))
+        self.black_body_temperature_input_label.setObjectName("black_body_temperature_input_label")
+        self.black_body_temperature_input_label.raise_()
+        self.black_body_temperature_input.raise_()
+        self.calibration_get_spectral_sensitivity_frame = QtWidgets.QFrame(self.calibration_flow_frame)
+        self.calibration_get_spectral_sensitivity_frame.setGeometry(QtCore.QRect(10, 40, 431, 231))
+        self.calibration_get_spectral_sensitivity_frame.setStyleSheet("outline-width: 0ps;\n"
+"border-radius: 0px;\n"
+"border-style: solid;\n"
+"border-width: 0px;")
+        self.calibration_get_spectral_sensitivity_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.calibration_get_spectral_sensitivity_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.calibration_get_spectral_sensitivity_frame.setObjectName("calibration_get_spectral_sensitivity_frame")
+        self.black_body_stats_label = QtWidgets.QLabel(self.calibration_get_spectral_sensitivity_frame)
+        self.black_body_stats_label.setGeometry(QtCore.QRect(160, 70, 101, 20))
+        self.black_body_stats_label.setObjectName("black_body_stats_label")
+        self.calibration_get_spectral_sensitivity_frame.raise_()
         self.clear_calibration_button.raise_()
-        self.apply_calibration_button.raise_()
         self.save_calibration_button.raise_()
         self.load_calibration_button.raise_()
-        self.pixel_wavelength_acquire_spectra_label.raise_()
-        self.pixel_wavelength_identify_peaks_label.raise_()
-        self.pixel_wavelength_get_projection_label.raise_()
+        self.calibration_step_1_label.raise_()
+        self.calibration_step_2_label.raise_()
+        self.calibration_step_3_label.raise_()
         self.calibration_plot_acquisition_flow_frame.raise_()
-        self.pixel_wavelength_back_button.raise_()
-        self.pixel_wavelength_next_button.raise_()
+        self.calibration_pixel_wavelength_polynomial_frame.raise_()
+        self.calibration_identify_peaks_frame.raise_()
+        self.calibration_back_button.raise_()
+        self.calibration_next_button.raise_()
+        self.calibration_set_black_body_frame.raise_()
         self.calibration_menu_pixel_wavelength_button = QtWidgets.QPushButton(self.main_menu_calibration_tab)
         self.calibration_menu_pixel_wavelength_button.setGeometry(QtCore.QRect(140, 64, 141, 32))
         font = QtGui.QFont()
@@ -1087,7 +1149,7 @@ class Ui_Form(object):
 "")
         self.acquisition_button.setObjectName("acquisition_button")
         self.raw_plot_frame = QtWidgets.QFrame(self.container_widget)
-        self.raw_plot_frame.setGeometry(QtCore.QRect(16, 510, 551, 341))
+        self.raw_plot_frame.setGeometry(QtCore.QRect(16, 510, 561, 341))
         self.raw_plot_frame.setStyleSheet("outline-width: 0ps;\n"
 "border-radius: 0px;\n"
 "border-style: solid;\n"
@@ -1137,6 +1199,12 @@ class Ui_Form(object):
         self.raw_plot = PlotWidget(self.verticalLayoutWidget_2)
         self.raw_plot.setObjectName("raw_plot")
         self.raw_spectrum_grid_layout.addWidget(self.raw_plot, 1, 1, 1, 1)
+        self.cursor_raw_label = QtWidgets.QLabel(self.raw_plot_frame)
+        self.cursor_raw_label.setGeometry(QtCore.QRect(60, 30, 91, 16))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.cursor_raw_label.setFont(font)
+        self.cursor_raw_label.setObjectName("cursor_raw_label")
         self.spec_streamer_v_label = QtWidgets.QLabel(self.container_widget)
         self.spec_streamer_v_label.setGeometry(QtCore.QRect(734, 27, 31, 20))
         font = QtGui.QFont()
@@ -1380,9 +1448,15 @@ class Ui_Form(object):
         self.calc_plot_3_i_label.setObjectName("calc_plot_3_i_label")
         self.calc_plot_3_grid_layout.addWidget(self.calc_plot_3_i_label, 7, 0, 1, 1)
         self.calc_plot_3 = PlotWidget(self.verticalLayoutWidget)
-        self.calc_plot_3.setEnabled(False)
+        self.calc_plot_3.setEnabled(True)
         self.calc_plot_3.setObjectName("calc_plot_3")
         self.calc_plot_3_grid_layout.addWidget(self.calc_plot_3, 7, 1, 1, 1)
+        self.cursor_calc_3_label = QtWidgets.QLabel(self.calc_plot_3_frame)
+        self.cursor_calc_3_label.setGeometry(QtCore.QRect(90, 30, 91, 16))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.cursor_calc_3_label.setFont(font)
+        self.cursor_calc_3_label.setObjectName("cursor_calc_3_label")
         self.calc_plot_1_2_combo_frame = QtWidgets.QFrame(self.side_plots_frame)
         self.calc_plot_1_2_combo_frame.setGeometry(QtCore.QRect(3, 5, 631, 351))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
@@ -1602,13 +1676,12 @@ class Ui_Form(object):
         self.image_scale_cropped_input.setText(_translate("Form", "150"))
         self.image_camera_no_input.setText(_translate("Form", "0"))
         self.clear_calibration_button.setText(_translate("Form", "Clear"))
-        self.apply_calibration_button.setText(_translate("Form", "Apply"))
         self.save_calibration_button.setText(_translate("Form", "Save"))
         self.load_calibration_button.setText(_translate("Form", "Load"))
-        self.pixel_wavelength_next_button.setText(_translate("Form", ">"))
-        self.pixel_wavelength_acquire_spectra_label.setText(_translate("Form", "Acquire spectra"))
-        self.pixel_wavelength_identify_peaks_label.setText(_translate("Form", "Identify peaks "))
-        self.pixel_wavelength_get_projection_label.setText(_translate("Form", "Get projection"))
+        self.calibration_next_button.setText(_translate("Form", ">"))
+        self.calibration_step_1_label.setText(_translate("Form", "Acquire spectra"))
+        self.calibration_step_2_label.setText(_translate("Form", "Identify peaks "))
+        self.calibration_step_3_label.setText(_translate("Form", "Get projection"))
         self.calibration_no_1_label.setText(_translate("Form", "1."))
         self.calibration_no_2_label.setText(_translate("Form", "2."))
         self.calibration_no_3_label.setText(_translate("Form", "3."))
@@ -1621,7 +1694,14 @@ class Ui_Form(object):
         self.add_pixel_wavelength_point_button.setText(_translate("Form", "Add"))
         self.pixel_input_label_2.setText(_translate("Form", "Pixel"))
         self.wavelength_input_label_2.setText(_translate("Form", "Wavelength"))
-        self.pixel_wavelength_back_button.setText(_translate("Form", "<"))
+        self.calibration_back_button.setText(_translate("Form", "<"))
+        self.pixel_wavelength_polynomial_label.setText(_translate("Form", "λ(p) = A+B*p+C*p^2+D*p^3"))
+        self.pixel_wavelength_polynomial_coeffs_a_label.setText(_translate("Form", "Coefficient A"))
+        self.pixel_wavelength_polynomial_coeffs_b_label.setText(_translate("Form", "Coefficient B"))
+        self.pixel_wavelength_polynomial_coeffs_c_label.setText(_translate("Form", "Coefficient C"))
+        self.pixel_wavelength_polynomial_coeffs_d_label.setText(_translate("Form", "Coefficient D"))
+        self.black_body_temperature_input_label.setText(_translate("Form", "Black-body temperature (K):"))
+        self.black_body_stats_label.setText(_translate("Form", "Fit statistics"))
         self.calibration_menu_pixel_wavelength_button.setText(_translate("Form", "Pixel-Wavelength"))
         self.calibration_menu_spectral_sensitivity_button.setText(_translate("Form", "Spectral sensitivity"))
         self.main_menu_tab.setTabText(self.main_menu_tab.indexOf(self.main_menu_calibration_tab), _translate("Form", "Page"))
@@ -1642,6 +1722,7 @@ class Ui_Form(object):
         self.raw_plot_i_label.setText(_translate("Form", "I"))
         self.raw_plot_label.setText(_translate("Form", "Raw spectrum"))
         self.raw_plot_lambda_label.setText(_translate("Form", "λ (nm)"))
+        self.cursor_raw_label.setText(_translate("Form", "Cursor position"))
         self.spec_streamer_v_label.setText(_translate("Form", "v1.0"))
         self.spec_tools_label.setText(_translate("Form", "by spec-tools"))
         self.experiment_button.setText(_translate("Form", "Experiment"))
@@ -1658,6 +1739,7 @@ class Ui_Form(object):
         self.calc_plot_3_label.setText(_translate("Form", "Transmission"))
         self.calc_plot_3_lambda_label.setText(_translate("Form", "λ (nm)"))
         self.calc_plot_3_i_label.setText(_translate("Form", "I"))
+        self.cursor_calc_3_label.setText(_translate("Form", "Cursor position"))
         self.calc_plot_2_combo_label.setText(_translate("Form", "Reference"))
         self.calc_plot_2_combo_i_label.setText(_translate("Form", "I"))
         self.calc_plot_1_combo_label.setText(_translate("Form", "Dark"))
