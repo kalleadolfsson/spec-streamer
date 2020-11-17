@@ -21,7 +21,7 @@ PyQt5==5.15.1\
 
 ### USAGE
 #### Startup
-Run command:
+From source, run
 ```python
 python3 main_window.py
 ```
