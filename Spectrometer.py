@@ -144,7 +144,7 @@ class Spectrometer(QThread):
 
 
             # highlight the data-line
-            for i in range(0,3):
+            for i in range(0,2):
                 image[self.central_line-round(self.no_of_lines/2)-2+i][self.width-self.stop_x:self.width-self.start_x][:] = 255
                 image[self.central_line+round(self.no_of_lines/2)-2+i][self.width-self.stop_x:self.width-self.start_x][:] = 255
 

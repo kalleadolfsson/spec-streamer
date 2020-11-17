@@ -483,7 +483,7 @@ border-color: #626470;</string>
         <property name="geometry">
          <rect>
           <x>370</x>
-          <y>-1</y>
+          <y>-2</y>
           <width>61</width>
           <height>16</height>
          </rect>
@@ -1038,20 +1038,80 @@ border-color: #8d93ab;</string>
        <zorder>spectrometer_name_input</zorder>
        <zorder>verticalLayoutWidget_3</zorder>
        <zorder>apply_acquisition_settings_button</zorder>
-       <zorder>image_settings_label</zorder>
        <zorder>detector_settings_label</zorder>
        <zorder>spectrum_settings_label</zorder>
        <zorder>gridLayoutWidget</zorder>
        <zorder>live_button</zorder>
        <zorder>verticalLayoutWidget_4</zorder>
+       <zorder>image_settings_label</zorder>
+      </widget>
+      <widget class="QLabel" name="cursor_overview_label">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>62</y>
+         <width>91</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>Cursor position</string>
+       </property>
+      </widget>
+      <widget class="GraphicsLayoutWidget" name="image_overview_view">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>77</y>
+         <width>540</width>
+         <height>340</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">outline-color: #8d93ab;
+outline-width: 0ps;
+border-radius: 2px;
+border-style: solid;
+border-width: 1px;
+border-color: #8d93ab;
+background-color: #f1f6f9;
+padding: 0px;</string>
+       </property>
+      </widget>
+      <widget class="GraphicsLayoutWidget" name="image_cropped_view">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>450</y>
+         <width>540</width>
+         <height>260</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">outline-color: #8d93ab;
+outline-width: 0ps;
+border-radius: 2px;
+border-style: solid;
+border-width: 1px;
+border-color: #8d93ab;
+background-color: #f1f6f9;</string>
+       </property>
       </widget>
       <widget class="QWidget" name="gridLayoutWidget_2">
        <property name="geometry">
         <rect>
-         <x>354</x>
-         <y>80</y>
+         <x>355</x>
+         <y>90</y>
          <width>171</width>
-         <height>82</height>
+         <height>61</height>
         </rect>
        </property>
        <property name="mouseTracking">
@@ -1137,66 +1197,6 @@ border-width:0px,</string>
          </widget>
         </item>
        </layout>
-      </widget>
-      <widget class="QLabel" name="cursor_overview_label">
-       <property name="geometry">
-        <rect>
-         <x>680</x>
-         <y>62</y>
-         <width>91</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="mouseTracking">
-        <bool>true</bool>
-       </property>
-       <property name="text">
-        <string>Cursor position</string>
-       </property>
-      </widget>
-      <widget class="GraphicsLayoutWidget" name="image_overview_view">
-       <property name="geometry">
-        <rect>
-         <x>680</x>
-         <y>77</y>
-         <width>540</width>
-         <height>340</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">outline-color: #8d93ab;
-outline-width: 0ps;
-border-radius: 2px;
-border-style: solid;
-border-width: 1px;
-border-color: #8d93ab;
-background-color: #f1f6f9;
-padding: 0px;</string>
-       </property>
-      </widget>
-      <widget class="GraphicsLayoutWidget" name="image_cropped_view">
-       <property name="geometry">
-        <rect>
-         <x>680</x>
-         <y>450</y>
-         <width>540</width>
-         <height>260</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">outline-color: #8d93ab;
-outline-width: 0ps;
-border-radius: 2px;
-border-style: solid;
-border-width: 1px;
-border-color: #8d93ab;
-background-color: #f1f6f9;</string>
-       </property>
       </widget>
      </widget>
      <widget class="QWidget" name="main_menu_calibration_tab">

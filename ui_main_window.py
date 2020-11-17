@@ -215,7 +215,7 @@ class Ui_Form(object):
 "border-color: #626470;")
         self.apply_acquisition_settings_button.setObjectName("apply_acquisition_settings_button")
         self.image_settings_label = QtWidgets.QLabel(self.acquisition_frame)
-        self.image_settings_label.setGeometry(QtCore.QRect(370, -1, 61, 16))
+        self.image_settings_label.setGeometry(QtCore.QRect(370, -2, 61, 16))
         font = QtGui.QFont()
         font.setBold(True)
         font.setItalic(False)
@@ -473,14 +473,42 @@ class Ui_Form(object):
         self.spectrometer_name_input.raise_()
         self.verticalLayoutWidget_3.raise_()
         self.apply_acquisition_settings_button.raise_()
-        self.image_settings_label.raise_()
         self.detector_settings_label.raise_()
         self.spectrum_settings_label.raise_()
         self.gridLayoutWidget.raise_()
         self.live_button.raise_()
         self.verticalLayoutWidget_4.raise_()
+        self.image_settings_label.raise_()
+        self.cursor_overview_label = QtWidgets.QLabel(self.main_menu_acquisition_tab)
+        self.cursor_overview_label.setGeometry(QtCore.QRect(680, 62, 91, 16))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.cursor_overview_label.setFont(font)
+        self.cursor_overview_label.setMouseTracking(True)
+        self.cursor_overview_label.setObjectName("cursor_overview_label")
+        self.image_overview_view = GraphicsLayoutWidget(self.main_menu_acquisition_tab)
+        self.image_overview_view.setGeometry(QtCore.QRect(680, 77, 540, 340))
+        self.image_overview_view.setStyleSheet("outline-color: #8d93ab;\n"
+"outline-width: 0ps;\n"
+"border-radius: 2px;\n"
+"border-style: solid;\n"
+"border-width: 1px;\n"
+"border-color: #8d93ab;\n"
+"background-color: #f1f6f9;\n"
+"padding: 0px;")
+        self.image_overview_view.setObjectName("image_overview_view")
+        self.image_cropped_view = GraphicsLayoutWidget(self.main_menu_acquisition_tab)
+        self.image_cropped_view.setGeometry(QtCore.QRect(680, 450, 540, 260))
+        self.image_cropped_view.setStyleSheet("outline-color: #8d93ab;\n"
+"outline-width: 0ps;\n"
+"border-radius: 2px;\n"
+"border-style: solid;\n"
+"border-width: 1px;\n"
+"border-color: #8d93ab;\n"
+"background-color: #f1f6f9;")
+        self.image_cropped_view.setObjectName("image_cropped_view")
         self.gridLayoutWidget_2 = QtWidgets.QWidget(self.main_menu_acquisition_tab)
-        self.gridLayoutWidget_2.setGeometry(QtCore.QRect(354, 80, 171, 82))
+        self.gridLayoutWidget_2.setGeometry(QtCore.QRect(355, 90, 171, 61))
         self.gridLayoutWidget_2.setMouseTracking(True)
         self.gridLayoutWidget_2.setObjectName("gridLayoutWidget_2")
         self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget_2)
@@ -523,34 +551,6 @@ class Ui_Form(object):
         self.image_downsampling_overview_label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.image_downsampling_overview_label.setObjectName("image_downsampling_overview_label")
         self.gridLayout.addWidget(self.image_downsampling_overview_label, 1, 0, 1, 1)
-        self.cursor_overview_label = QtWidgets.QLabel(self.main_menu_acquisition_tab)
-        self.cursor_overview_label.setGeometry(QtCore.QRect(680, 62, 91, 16))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.cursor_overview_label.setFont(font)
-        self.cursor_overview_label.setMouseTracking(True)
-        self.cursor_overview_label.setObjectName("cursor_overview_label")
-        self.image_overview_view = GraphicsLayoutWidget(self.main_menu_acquisition_tab)
-        self.image_overview_view.setGeometry(QtCore.QRect(680, 77, 540, 340))
-        self.image_overview_view.setStyleSheet("outline-color: #8d93ab;\n"
-"outline-width: 0ps;\n"
-"border-radius: 2px;\n"
-"border-style: solid;\n"
-"border-width: 1px;\n"
-"border-color: #8d93ab;\n"
-"background-color: #f1f6f9;\n"
-"padding: 0px;")
-        self.image_overview_view.setObjectName("image_overview_view")
-        self.image_cropped_view = GraphicsLayoutWidget(self.main_menu_acquisition_tab)
-        self.image_cropped_view.setGeometry(QtCore.QRect(680, 450, 540, 260))
-        self.image_cropped_view.setStyleSheet("outline-color: #8d93ab;\n"
-"outline-width: 0ps;\n"
-"border-radius: 2px;\n"
-"border-style: solid;\n"
-"border-width: 1px;\n"
-"border-color: #8d93ab;\n"
-"background-color: #f1f6f9;")
-        self.image_cropped_view.setObjectName("image_cropped_view")
         self.main_menu_tab.addTab(self.main_menu_acquisition_tab, "")
         self.main_menu_calibration_tab = QtWidgets.QWidget()
         self.main_menu_calibration_tab.setObjectName("main_menu_calibration_tab")
@@ -1735,11 +1735,11 @@ class Ui_Form(object):
         self.spectrum_stop_x_label.setText(_translate("Form", "Stop (x-val):"))
         self.spectrum_line_label.setText(_translate("Form", "Line (y-val):"))
         self.spectrum_lines_label.setText(_translate("Form", "No of lines:"))
+        self.cursor_overview_label.setText(_translate("Form", "Cursor position"))
         self.image_camera_no_input.setText(_translate("Form", "0"))
         self.image_camera_no_label.setText(_translate("Form", "Camera #:"))
         self.image_downsampling_overview_input.setText(_translate("Form", "0.5"))
         self.image_downsampling_overview_label.setText(_translate("Form", "Downsampling"))
-        self.cursor_overview_label.setText(_translate("Form", "Cursor position"))
         self.clear_calibration_button.setText(_translate("Form", "Clear"))
         self.save_calibration_button.setText(_translate("Form", "Save"))
         self.load_calibration_button.setText(_translate("Form", "Load"))
