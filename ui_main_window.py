@@ -23,6 +23,7 @@ class Ui_Form(object):
         self.scrollArea.setSizePolicy(sizePolicy)
         self.scrollArea.setMinimumSize(QtCore.QSize(1330, 840))
         self.scrollArea.setMaximumSize(QtCore.QSize(1330, 840))
+        self.scrollArea.setMouseTracking(True)
         self.scrollArea.setStyleSheet("outline-width: 0ps;\n"
 "border-radius: 0px;\n"
 "border-style: solid;\n"
@@ -72,6 +73,7 @@ class Ui_Form(object):
         font = QtGui.QFont()
         font.setPointSize(14)
         self.main_menu_tab.setFont(font)
+        self.main_menu_tab.setMouseTracking(True)
         self.main_menu_tab.setAutoFillBackground(False)
         self.main_menu_tab.setStyleSheet("background-color: white;\n"
 "margin: 0px;\n"
@@ -87,6 +89,7 @@ class Ui_Form(object):
         font = QtGui.QFont()
         font.setPointSize(13)
         self.load_acquisition_settings_button.setFont(font)
+        self.load_acquisition_settings_button.setMouseTracking(True)
         self.load_acquisition_settings_button.setStyleSheet("background-color:#9ba4b4;\n"
 "color:white;\n"
 "border-radius: 1px;\n"
@@ -99,6 +102,7 @@ class Ui_Form(object):
         font = QtGui.QFont()
         font.setPointSize(13)
         self.save_acquisition_settings_button.setFont(font)
+        self.save_acquisition_settings_button.setMouseTracking(True)
         self.save_acquisition_settings_button.setStyleSheet("background-color:#9ba4b4;\n"
 "color:white;\n"
 "border-radius: 1px;\n"
@@ -106,21 +110,9 @@ class Ui_Form(object):
 "border-width: 1px;\n"
 "border-color: #626470;")
         self.save_acquisition_settings_button.setObjectName("save_acquisition_settings_button")
-        self.image_label = QtWidgets.QLabel(self.main_menu_acquisition_tab)
-        self.image_label.setGeometry(QtCore.QRect(700, 77, 541, 331))
-        self.image_label.setMaximumSize(QtCore.QSize(800, 16777215))
-        self.image_label.setStyleSheet("outline-color: #8d93ab;\n"
-"outline-width: 4ps;\n"
-"border-radius: 2px;\n"
-"border-style: solid;\n"
-"border-width: 1px;\n"
-"border-color: #8d93ab;\n"
-"background-color: #f1f6f9;")
-        self.image_label.setText("")
-        self.image_label.setAlignment(QtCore.Qt.AlignCenter)
-        self.image_label.setObjectName("image_label")
         self.acquisition_frame = QtWidgets.QFrame(self.main_menu_acquisition_tab)
         self.acquisition_frame.setGeometry(QtCore.QRect(2, 70, 541, 351))
+        self.acquisition_frame.setMouseTracking(True)
         self.acquisition_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.acquisition_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.acquisition_frame.setObjectName("acquisition_frame")
@@ -131,10 +123,12 @@ class Ui_Form(object):
         font.setItalic(False)
         font.setWeight(75)
         self.spectrometer_name_label.setFont(font)
+        self.spectrometer_name_label.setMouseTracking(True)
         self.spectrometer_name_label.setStyleSheet("color: #24262b;")
         self.spectrometer_name_label.setObjectName("spectrometer_name_label")
         self.spectrometer_name_input = QtWidgets.QLineEdit(self.acquisition_frame)
         self.spectrometer_name_input.setGeometry(QtCore.QRect(326, 181, 181, 21))
+        self.spectrometer_name_input.setMouseTracking(True)
         self.spectrometer_name_input.setStyleSheet("background-color: white;\n"
 "border-radius: 1px;\n"
 "border-style: solid;\n"
@@ -144,12 +138,14 @@ class Ui_Form(object):
         self.spectrometer_name_input.setObjectName("spectrometer_name_input")
         self.verticalLayoutWidget_3 = QtWidgets.QWidget(self.acquisition_frame)
         self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(216, 183, 61, 151))
+        self.verticalLayoutWidget_3.setMouseTracking(True)
         self.verticalLayoutWidget_3.setObjectName("verticalLayoutWidget_3")
         self.spectrum_vertical_layout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_3)
         self.spectrum_vertical_layout.setContentsMargins(0, 0, 0, 0)
         self.spectrum_vertical_layout.setSpacing(0)
         self.spectrum_vertical_layout.setObjectName("spectrum_vertical_layout")
         self.spectrum_rotation_global_input = QtWidgets.QLineEdit(self.verticalLayoutWidget_3)
+        self.spectrum_rotation_global_input.setMouseTracking(True)
         self.spectrum_rotation_global_input.setStyleSheet("background-color: white;\n"
 "border-radius: 1px;\n"
 "border-style: solid;\n"
@@ -159,6 +155,7 @@ class Ui_Form(object):
         self.spectrum_rotation_global_input.setObjectName("spectrum_rotation_global_input")
         self.spectrum_vertical_layout.addWidget(self.spectrum_rotation_global_input)
         self.spectrum_rotation_spectrum_input = QtWidgets.QLineEdit(self.verticalLayoutWidget_3)
+        self.spectrum_rotation_spectrum_input.setMouseTracking(True)
         self.spectrum_rotation_spectrum_input.setStyleSheet("background-color: white;\n"
 "border-radius: 1px;\n"
 "border-style: solid;\n"
@@ -168,6 +165,7 @@ class Ui_Form(object):
         self.spectrum_rotation_spectrum_input.setObjectName("spectrum_rotation_spectrum_input")
         self.spectrum_vertical_layout.addWidget(self.spectrum_rotation_spectrum_input)
         self.spectrum_start_x_input = QtWidgets.QLineEdit(self.verticalLayoutWidget_3)
+        self.spectrum_start_x_input.setMouseTracking(True)
         self.spectrum_start_x_input.setStyleSheet("background-color: white;\n"
 "border-radius: 1px;\n"
 "border-style: solid;\n"
@@ -177,6 +175,7 @@ class Ui_Form(object):
         self.spectrum_start_x_input.setObjectName("spectrum_start_x_input")
         self.spectrum_vertical_layout.addWidget(self.spectrum_start_x_input)
         self.spectrum_stop_x_input = QtWidgets.QLineEdit(self.verticalLayoutWidget_3)
+        self.spectrum_stop_x_input.setMouseTracking(True)
         self.spectrum_stop_x_input.setStyleSheet("background-color: white;\n"
 "border-radius: 1px;\n"
 "border-style: solid;\n"
@@ -186,6 +185,7 @@ class Ui_Form(object):
         self.spectrum_stop_x_input.setObjectName("spectrum_stop_x_input")
         self.spectrum_vertical_layout.addWidget(self.spectrum_stop_x_input)
         self.spectrum_line_input = QtWidgets.QLineEdit(self.verticalLayoutWidget_3)
+        self.spectrum_line_input.setMouseTracking(True)
         self.spectrum_line_input.setStyleSheet("background-color: white;\n"
 "border-radius: 1px;\n"
 "border-style: solid;\n"
@@ -195,6 +195,7 @@ class Ui_Form(object):
         self.spectrum_line_input.setObjectName("spectrum_line_input")
         self.spectrum_vertical_layout.addWidget(self.spectrum_line_input)
         self.spectrum_lines_input = QtWidgets.QLineEdit(self.verticalLayoutWidget_3)
+        self.spectrum_lines_input.setMouseTracking(True)
         self.spectrum_lines_input.setStyleSheet("background-color: white;\n"
 "border-radius: 1px;\n"
 "border-style: solid;\n"
@@ -205,6 +206,7 @@ class Ui_Form(object):
         self.spectrum_vertical_layout.addWidget(self.spectrum_lines_input)
         self.apply_acquisition_settings_button = QtWidgets.QPushButton(self.acquisition_frame)
         self.apply_acquisition_settings_button.setGeometry(QtCore.QRect(302, 247, 121, 41))
+        self.apply_acquisition_settings_button.setMouseTracking(True)
         self.apply_acquisition_settings_button.setStyleSheet("background-color:#9ba4b4;\n"
 "color:white;\n"
 "border-radius: 2px;\n"
@@ -219,6 +221,7 @@ class Ui_Form(object):
         font.setItalic(False)
         font.setWeight(75)
         self.image_settings_label.setFont(font)
+        self.image_settings_label.setMouseTracking(True)
         self.image_settings_label.setStyleSheet("color: #24262b;")
         self.image_settings_label.setAlignment(QtCore.Qt.AlignCenter)
         self.image_settings_label.setObjectName("image_settings_label")
@@ -229,11 +232,13 @@ class Ui_Form(object):
         font.setItalic(False)
         font.setWeight(75)
         self.detector_settings_label.setFont(font)
+        self.detector_settings_label.setMouseTracking(True)
         self.detector_settings_label.setStyleSheet("color: #24262b;")
         self.detector_settings_label.setAlignment(QtCore.Qt.AlignCenter)
         self.detector_settings_label.setObjectName("detector_settings_label")
         self.spectrometer_name_frame = QtWidgets.QFrame(self.acquisition_frame)
         self.spectrometer_name_frame.setGeometry(QtCore.QRect(300, 170, 231, 51))
+        self.spectrometer_name_frame.setMouseTracking(True)
         self.spectrometer_name_frame.setStyleSheet("outline-color: #8d93ab;\n"
 "outline-width: 4ps;\n"
 "border-radius: 2px;\n"
@@ -245,6 +250,7 @@ class Ui_Form(object):
         self.spectrometer_name_frame.setObjectName("spectrometer_name_frame")
         self.detector_frame = QtWidgets.QFrame(self.acquisition_frame)
         self.detector_frame.setGeometry(QtCore.QRect(43, 7, 241, 141))
+        self.detector_frame.setMouseTracking(True)
         self.detector_frame.setStyleSheet("outline-color: #8d93ab;\n"
 "outline-width: 4ps;\n"
 "border-radius: 2px;\n"
@@ -261,52 +267,20 @@ class Ui_Form(object):
         font.setItalic(False)
         font.setWeight(75)
         self.spectrum_settings_label.setFont(font)
+        self.spectrum_settings_label.setMouseTracking(True)
         self.spectrum_settings_label.setStyleSheet("color: #24262b;")
         self.spectrum_settings_label.setAlignment(QtCore.Qt.AlignCenter)
         self.spectrum_settings_label.setObjectName("spectrum_settings_label")
-        self.verticalLayoutWidget_8 = QtWidgets.QWidget(self.acquisition_frame)
-        self.verticalLayoutWidget_8.setGeometry(QtCore.QRect(320, 20, 160, 101))
-        self.verticalLayoutWidget_8.setObjectName("verticalLayoutWidget_8")
-        self.image_vertical_layout_2 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_8)
-        self.image_vertical_layout_2.setContentsMargins(0, 0, 0, 0)
-        self.image_vertical_layout_2.setSpacing(0)
-        self.image_vertical_layout_2.setObjectName("image_vertical_layout_2")
-        self.image_scale_cropped_label = QtWidgets.QLabel(self.verticalLayoutWidget_8)
-        self.image_scale_cropped_label.setStyleSheet("color: #24262b;\n"
-"outline:0px;\n"
-"border-width:0px,")
-        self.image_scale_cropped_label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.image_scale_cropped_label.setObjectName("image_scale_cropped_label")
-        self.image_vertical_layout_2.addWidget(self.image_scale_cropped_label)
-        self.image_crop_label = QtWidgets.QLabel(self.verticalLayoutWidget_8)
-        self.image_crop_label.setStyleSheet("color: #24262b;\n"
-"outline:0px;\n"
-"border-width:0px,")
-        self.image_crop_label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.image_crop_label.setObjectName("image_crop_label")
-        self.image_vertical_layout_2.addWidget(self.image_crop_label)
-        self.image_scale_overview_label = QtWidgets.QLabel(self.verticalLayoutWidget_8)
-        self.image_scale_overview_label.setStyleSheet("color: #24262b;\n"
-"outline:0px;\n"
-"border-width:0px,")
-        self.image_scale_overview_label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.image_scale_overview_label.setObjectName("image_scale_overview_label")
-        self.image_vertical_layout_2.addWidget(self.image_scale_overview_label)
-        self.image_camera_no_label = QtWidgets.QLabel(self.verticalLayoutWidget_8)
-        self.image_camera_no_label.setStyleSheet("color: #24262b;\n"
-"outline:0px;\n"
-"border-width:0px,")
-        self.image_camera_no_label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.image_camera_no_label.setObjectName("image_camera_no_label")
-        self.image_vertical_layout_2.addWidget(self.image_camera_no_label)
         self.gridLayoutWidget = QtWidgets.QWidget(self.acquisition_frame)
         self.gridLayoutWidget.setGeometry(QtCore.QRect(56, 20, 221, 112))
+        self.gridLayoutWidget.setMouseTracking(True)
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
         self.detector_grid_layout = QtWidgets.QGridLayout(self.gridLayoutWidget)
         self.detector_grid_layout.setContentsMargins(0, 0, 0, 0)
         self.detector_grid_layout.setSpacing(0)
         self.detector_grid_layout.setObjectName("detector_grid_layout")
         self.detector_width_input = QtWidgets.QLineEdit(self.gridLayoutWidget)
+        self.detector_width_input.setMouseTracking(True)
         self.detector_width_input.setStyleSheet("background-color: white;\n"
 "border-radius: 1px;\n"
 "border-style: solid;\n"
@@ -316,6 +290,7 @@ class Ui_Form(object):
         self.detector_width_input.setObjectName("detector_width_input")
         self.detector_grid_layout.addWidget(self.detector_width_input, 3, 1, 1, 1)
         self.detector_integration_time_label = QtWidgets.QLabel(self.gridLayoutWidget)
+        self.detector_integration_time_label.setMouseTracking(True)
         self.detector_integration_time_label.setStyleSheet("color: #24262b;\n"
 "outline:0px;\n"
 "border-width:0px,")
@@ -323,6 +298,7 @@ class Ui_Form(object):
         self.detector_integration_time_label.setObjectName("detector_integration_time_label")
         self.detector_grid_layout.addWidget(self.detector_integration_time_label, 0, 0, 1, 1)
         self.detector_gain_label = QtWidgets.QLabel(self.gridLayoutWidget)
+        self.detector_gain_label.setMouseTracking(True)
         self.detector_gain_label.setStyleSheet("color: #24262b;\n"
 "outline:0px;\n"
 "border-width:0px,")
@@ -330,6 +306,7 @@ class Ui_Form(object):
         self.detector_gain_label.setObjectName("detector_gain_label")
         self.detector_grid_layout.addWidget(self.detector_gain_label, 2, 0, 1, 1)
         self.detector_averages_label = QtWidgets.QLabel(self.gridLayoutWidget)
+        self.detector_averages_label.setMouseTracking(True)
         self.detector_averages_label.setStyleSheet("color: #24262b;\n"
 "outline:0px;\n"
 "border-width:0px,")
@@ -337,6 +314,7 @@ class Ui_Form(object):
         self.detector_averages_label.setObjectName("detector_averages_label")
         self.detector_grid_layout.addWidget(self.detector_averages_label, 1, 0, 1, 1)
         self.detector_gain_input = QtWidgets.QLineEdit(self.gridLayoutWidget)
+        self.detector_gain_input.setMouseTracking(True)
         self.detector_gain_input.setStyleSheet("background-color: white;\n"
 "border-radius: 1px;\n"
 "border-style: solid;\n"
@@ -346,6 +324,7 @@ class Ui_Form(object):
         self.detector_gain_input.setObjectName("detector_gain_input")
         self.detector_grid_layout.addWidget(self.detector_gain_input, 0, 1, 1, 1)
         self.detector_averages_input = QtWidgets.QLineEdit(self.gridLayoutWidget)
+        self.detector_averages_input.setMouseTracking(True)
         self.detector_averages_input.setStyleSheet("background-color: white;\n"
 "border-radius: 1px;\n"
 "border-style: solid;\n"
@@ -355,6 +334,7 @@ class Ui_Form(object):
         self.detector_averages_input.setObjectName("detector_averages_input")
         self.detector_grid_layout.addWidget(self.detector_averages_input, 1, 1, 1, 1)
         self.detector_height_input = QtWidgets.QLineEdit(self.gridLayoutWidget)
+        self.detector_height_input.setMouseTracking(True)
         self.detector_height_input.setStyleSheet("background-color: white;\n"
 "border-radius: 1px;\n"
 "border-style: solid;\n"
@@ -364,6 +344,7 @@ class Ui_Form(object):
         self.detector_height_input.setObjectName("detector_height_input")
         self.detector_grid_layout.addWidget(self.detector_height_input, 3, 3, 1, 1)
         self.detector_resolution_label = QtWidgets.QLabel(self.gridLayoutWidget)
+        self.detector_resolution_label.setMouseTracking(True)
         self.detector_resolution_label.setStyleSheet("color: #24262b;\n"
 "outline:0px;\n"
 "border-width:0px,")
@@ -371,6 +352,7 @@ class Ui_Form(object):
         self.detector_resolution_label.setObjectName("detector_resolution_label")
         self.detector_grid_layout.addWidget(self.detector_resolution_label, 3, 0, 1, 1)
         self.detector_integration_time_input = QtWidgets.QLineEdit(self.gridLayoutWidget)
+        self.detector_integration_time_input.setMouseTracking(True)
         self.detector_integration_time_input.setStyleSheet("background-color: white;\n"
 "border-radius: 1px;\n"
 "border-style: solid;\n"
@@ -380,6 +362,7 @@ class Ui_Form(object):
         self.detector_integration_time_input.setObjectName("detector_integration_time_input")
         self.detector_grid_layout.addWidget(self.detector_integration_time_input, 2, 1, 1, 1)
         self.detector_resolution_x_label = QtWidgets.QLabel(self.gridLayoutWidget)
+        self.detector_resolution_x_label.setMouseTracking(True)
         self.detector_resolution_x_label.setStyleSheet("color: #24262b;\n"
 "outline:0px;\n"
 "border-width:0px,")
@@ -391,6 +374,7 @@ class Ui_Form(object):
         font = QtGui.QFont()
         font.setPointSize(16)
         self.live_button.setFont(font)
+        self.live_button.setMouseTracking(True)
         self.live_button.setStyleSheet("background-color:#14274e;\n"
 "color:white;\n"
 "border-radius: 2px;\n"
@@ -400,12 +384,14 @@ class Ui_Form(object):
         self.live_button.setObjectName("live_button")
         self.verticalLayoutWidget_4 = QtWidgets.QWidget(self.acquisition_frame)
         self.verticalLayoutWidget_4.setGeometry(QtCore.QRect(92, 183, 121, 151))
+        self.verticalLayoutWidget_4.setMouseTracking(True)
         self.verticalLayoutWidget_4.setObjectName("verticalLayoutWidget_4")
         self.spectrum_vertical_layout_2 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_4)
         self.spectrum_vertical_layout_2.setContentsMargins(0, 0, 0, 0)
         self.spectrum_vertical_layout_2.setSpacing(0)
         self.spectrum_vertical_layout_2.setObjectName("spectrum_vertical_layout_2")
         self.spectrum_rotation_global_label = QtWidgets.QLabel(self.verticalLayoutWidget_4)
+        self.spectrum_rotation_global_label.setMouseTracking(True)
         self.spectrum_rotation_global_label.setStyleSheet("color: #24262b;\n"
 "outline:0px;\n"
 "border-width:0px,")
@@ -413,6 +399,7 @@ class Ui_Form(object):
         self.spectrum_rotation_global_label.setObjectName("spectrum_rotation_global_label")
         self.spectrum_vertical_layout_2.addWidget(self.spectrum_rotation_global_label)
         self.spectrum_rotation_spectrum_label = QtWidgets.QLabel(self.verticalLayoutWidget_4)
+        self.spectrum_rotation_spectrum_label.setMouseTracking(True)
         self.spectrum_rotation_spectrum_label.setStyleSheet("color: #24262b;\n"
 "outline:0px;\n"
 "border-width:0px,")
@@ -420,6 +407,7 @@ class Ui_Form(object):
         self.spectrum_rotation_spectrum_label.setObjectName("spectrum_rotation_spectrum_label")
         self.spectrum_vertical_layout_2.addWidget(self.spectrum_rotation_spectrum_label)
         self.spectrum_start_x_label = QtWidgets.QLabel(self.verticalLayoutWidget_4)
+        self.spectrum_start_x_label.setMouseTracking(True)
         self.spectrum_start_x_label.setStyleSheet("color: #24262b;\n"
 "outline:0px;\n"
 "border-width:0px,")
@@ -427,6 +415,7 @@ class Ui_Form(object):
         self.spectrum_start_x_label.setObjectName("spectrum_start_x_label")
         self.spectrum_vertical_layout_2.addWidget(self.spectrum_start_x_label)
         self.spectrum_stop_x_label = QtWidgets.QLabel(self.verticalLayoutWidget_4)
+        self.spectrum_stop_x_label.setMouseTracking(True)
         self.spectrum_stop_x_label.setStyleSheet("color: #24262b;\n"
 "outline:0px;\n"
 "border-width:0px,")
@@ -434,6 +423,7 @@ class Ui_Form(object):
         self.spectrum_stop_x_label.setObjectName("spectrum_stop_x_label")
         self.spectrum_vertical_layout_2.addWidget(self.spectrum_stop_x_label)
         self.spectrum_line_label = QtWidgets.QLabel(self.verticalLayoutWidget_4)
+        self.spectrum_line_label.setMouseTracking(True)
         self.spectrum_line_label.setStyleSheet("color: #24262b;\n"
 "outline:0px;\n"
 "border-width:0px;\n"
@@ -443,6 +433,7 @@ class Ui_Form(object):
         self.spectrum_line_label.setObjectName("spectrum_line_label")
         self.spectrum_vertical_layout_2.addWidget(self.spectrum_line_label)
         self.spectrum_lines_label = QtWidgets.QLabel(self.verticalLayoutWidget_4)
+        self.spectrum_lines_label.setMouseTracking(True)
         self.spectrum_lines_label.setStyleSheet("color: #24262b;\n"
 "outline:0px;\n"
 "border-width:0px;\n"
@@ -450,52 +441,9 @@ class Ui_Form(object):
         self.spectrum_lines_label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.spectrum_lines_label.setObjectName("spectrum_lines_label")
         self.spectrum_vertical_layout_2.addWidget(self.spectrum_lines_label)
-        self.verticalLayoutWidget_7 = QtWidgets.QWidget(self.acquisition_frame)
-        self.verticalLayoutWidget_7.setGeometry(QtCore.QRect(483, 20, 41, 101))
-        self.verticalLayoutWidget_7.setObjectName("verticalLayoutWidget_7")
-        self.image_vertical_layout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_7)
-        self.image_vertical_layout.setContentsMargins(0, 0, 0, 0)
-        self.image_vertical_layout.setSpacing(0)
-        self.image_vertical_layout.setObjectName("image_vertical_layout")
-        self.image_scale_overview_input = QtWidgets.QLineEdit(self.verticalLayoutWidget_7)
-        self.image_scale_overview_input.setStyleSheet("background-color: white;\n"
-"border-radius: 1px;\n"
-"border-style: solid;\n"
-"border-width: 0.5px;\n"
-"border-color: #d6e0f0;\n"
-"color: #24262b;")
-        self.image_scale_overview_input.setObjectName("image_scale_overview_input")
-        self.image_vertical_layout.addWidget(self.image_scale_overview_input)
-        self.image_scale_cropped_input = QtWidgets.QLineEdit(self.verticalLayoutWidget_7)
-        self.image_scale_cropped_input.setStyleSheet("background-color: white;\n"
-"border-radius: 1px;\n"
-"border-style: solid;\n"
-"border-width: 0.5px;\n"
-"border-color: #d6e0f0;\n"
-"color: #24262b;")
-        self.image_scale_cropped_input.setObjectName("image_scale_cropped_input")
-        self.image_vertical_layout.addWidget(self.image_scale_cropped_input)
-        self.image_crop_box = QtWidgets.QCheckBox(self.verticalLayoutWidget_7)
-        self.image_crop_box.setEnabled(True)
-        self.image_crop_box.setStyleSheet("color: #24262b;\n"
-"outline:0px;\n"
-"border-width:0px,")
-        self.image_crop_box.setText("")
-        self.image_crop_box.setCheckable(True)
-        self.image_crop_box.setChecked(False)
-        self.image_crop_box.setObjectName("image_crop_box")
-        self.image_vertical_layout.addWidget(self.image_crop_box, 0, QtCore.Qt.AlignHCenter)
-        self.image_camera_no_input = QtWidgets.QLineEdit(self.verticalLayoutWidget_7)
-        self.image_camera_no_input.setStyleSheet("background-color: white;\n"
-"border-radius: 1px;\n"
-"border-style: solid;\n"
-"border-width: 0.5px;\n"
-"border-color: #d6e0f0;\n"
-"color: #24262b;")
-        self.image_camera_no_input.setObjectName("image_camera_no_input")
-        self.image_vertical_layout.addWidget(self.image_camera_no_input)
         self.image_frame = QtWidgets.QFrame(self.acquisition_frame)
         self.image_frame.setGeometry(QtCore.QRect(300, 7, 231, 141))
+        self.image_frame.setMouseTracking(True)
         self.image_frame.setStyleSheet("outline-color: #8d93ab;\n"
 "outline-width: 4ps;\n"
 "border-radius: 2px;\n"
@@ -507,6 +455,7 @@ class Ui_Form(object):
         self.image_frame.setObjectName("image_frame")
         self.spectrum_frame = QtWidgets.QFrame(self.acquisition_frame)
         self.spectrum_frame.setGeometry(QtCore.QRect(43, 170, 241, 171))
+        self.spectrum_frame.setMouseTracking(True)
         self.spectrum_frame.setStyleSheet("outline-color: #8d93ab;\n"
 "outline-width: 4ps;\n"
 "border-radius: 2px;\n"
@@ -527,11 +476,81 @@ class Ui_Form(object):
         self.image_settings_label.raise_()
         self.detector_settings_label.raise_()
         self.spectrum_settings_label.raise_()
-        self.verticalLayoutWidget_8.raise_()
         self.gridLayoutWidget.raise_()
         self.live_button.raise_()
         self.verticalLayoutWidget_4.raise_()
-        self.verticalLayoutWidget_7.raise_()
+        self.gridLayoutWidget_2 = QtWidgets.QWidget(self.main_menu_acquisition_tab)
+        self.gridLayoutWidget_2.setGeometry(QtCore.QRect(354, 80, 171, 82))
+        self.gridLayoutWidget_2.setMouseTracking(True)
+        self.gridLayoutWidget_2.setObjectName("gridLayoutWidget_2")
+        self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget_2)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setVerticalSpacing(0)
+        self.gridLayout.setObjectName("gridLayout")
+        self.image_camera_no_input = QtWidgets.QLineEdit(self.gridLayoutWidget_2)
+        self.image_camera_no_input.setMouseTracking(True)
+        self.image_camera_no_input.setStyleSheet("background-color: white;\n"
+"border-radius: 1px;\n"
+"border-style: solid;\n"
+"border-width: 0.5px;\n"
+"border-color: #d6e0f0;\n"
+"color: #24262b;")
+        self.image_camera_no_input.setObjectName("image_camera_no_input")
+        self.gridLayout.addWidget(self.image_camera_no_input, 2, 1, 1, 1)
+        self.image_camera_no_label = QtWidgets.QLabel(self.gridLayoutWidget_2)
+        self.image_camera_no_label.setMouseTracking(True)
+        self.image_camera_no_label.setStyleSheet("color: #24262b;\n"
+"outline:0px;\n"
+"border-width:0px,")
+        self.image_camera_no_label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.image_camera_no_label.setObjectName("image_camera_no_label")
+        self.gridLayout.addWidget(self.image_camera_no_label, 2, 0, 1, 1)
+        self.image_downsampling_overview_input = QtWidgets.QLineEdit(self.gridLayoutWidget_2)
+        self.image_downsampling_overview_input.setMouseTracking(True)
+        self.image_downsampling_overview_input.setStyleSheet("background-color: white;\n"
+"border-radius: 1px;\n"
+"border-style: solid;\n"
+"border-width: 0.5px;\n"
+"border-color: #d6e0f0;\n"
+"color: #24262b;")
+        self.image_downsampling_overview_input.setObjectName("image_downsampling_overview_input")
+        self.gridLayout.addWidget(self.image_downsampling_overview_input, 1, 1, 1, 1)
+        self.image_downsampling_overview_label = QtWidgets.QLabel(self.gridLayoutWidget_2)
+        self.image_downsampling_overview_label.setMouseTracking(True)
+        self.image_downsampling_overview_label.setStyleSheet("color: #24262b;\n"
+"outline:0px;\n"
+"border-width:0px,")
+        self.image_downsampling_overview_label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.image_downsampling_overview_label.setObjectName("image_downsampling_overview_label")
+        self.gridLayout.addWidget(self.image_downsampling_overview_label, 1, 0, 1, 1)
+        self.cursor_overview_label = QtWidgets.QLabel(self.main_menu_acquisition_tab)
+        self.cursor_overview_label.setGeometry(QtCore.QRect(680, 62, 91, 16))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.cursor_overview_label.setFont(font)
+        self.cursor_overview_label.setMouseTracking(True)
+        self.cursor_overview_label.setObjectName("cursor_overview_label")
+        self.image_overview_view = GraphicsLayoutWidget(self.main_menu_acquisition_tab)
+        self.image_overview_view.setGeometry(QtCore.QRect(680, 77, 540, 340))
+        self.image_overview_view.setStyleSheet("outline-color: #8d93ab;\n"
+"outline-width: 0ps;\n"
+"border-radius: 2px;\n"
+"border-style: solid;\n"
+"border-width: 1px;\n"
+"border-color: #8d93ab;\n"
+"background-color: #f1f6f9;\n"
+"padding: 0px;")
+        self.image_overview_view.setObjectName("image_overview_view")
+        self.image_cropped_view = GraphicsLayoutWidget(self.main_menu_acquisition_tab)
+        self.image_cropped_view.setGeometry(QtCore.QRect(680, 450, 540, 260))
+        self.image_cropped_view.setStyleSheet("outline-color: #8d93ab;\n"
+"outline-width: 0ps;\n"
+"border-radius: 2px;\n"
+"border-style: solid;\n"
+"border-width: 1px;\n"
+"border-color: #8d93ab;\n"
+"background-color: #f1f6f9;")
+        self.image_cropped_view.setObjectName("image_cropped_view")
         self.main_menu_tab.addTab(self.main_menu_acquisition_tab, "")
         self.main_menu_calibration_tab = QtWidgets.QWidget()
         self.main_menu_calibration_tab.setObjectName("main_menu_calibration_tab")
@@ -878,10 +897,10 @@ class Ui_Form(object):
         self.calibration_step_3_label.raise_()
         self.calibration_plot_acquisition_flow_frame.raise_()
         self.calibration_pixel_wavelength_polynomial_frame.raise_()
-        self.calibration_identify_peaks_frame.raise_()
         self.calibration_back_button.raise_()
         self.calibration_next_button.raise_()
         self.calibration_set_black_body_frame.raise_()
+        self.calibration_identify_peaks_frame.raise_()
         self.calibration_menu_pixel_wavelength_button = QtWidgets.QPushButton(self.main_menu_calibration_tab)
         self.calibration_menu_pixel_wavelength_button.setGeometry(QtCore.QRect(140, 64, 141, 32))
         font = QtGui.QFont()
@@ -1091,6 +1110,7 @@ class Ui_Form(object):
         self.main_menu_tab.addTab(self.main_menu_experiment_tab, "")
         self.main_header_frame = QtWidgets.QFrame(self.container_widget)
         self.main_header_frame.setGeometry(QtCore.QRect(-7, 20, 1331, 91))
+        self.main_header_frame.setMouseTracking(True)
         self.main_header_frame.setStyleSheet("border-style: solid;\n"
 "border-width: 1px;\n"
 "border-color: #9ba4b4;\n"
@@ -1106,6 +1126,7 @@ class Ui_Form(object):
         font.setBold(True)
         font.setWeight(75)
         self.calibration_button.setFont(font)
+        self.calibration_button.setMouseTracking(True)
         self.calibration_button.setStyleSheet("background-color:#14274e;\n"
 "color:#f1f6f9;\n"
 "border-radius: 0px;\n"
@@ -1123,6 +1144,7 @@ class Ui_Form(object):
         font.setBold(True)
         font.setWeight(75)
         self.spec_streamer_label.setFont(font)
+        self.spec_streamer_label.setMouseTracking(True)
         self.spec_streamer_label.setAutoFillBackground(False)
         self.spec_streamer_label.setStyleSheet("color:#f1f6f9;\n"
 "border-width:0px;\n"
@@ -1138,6 +1160,7 @@ class Ui_Form(object):
         font.setUnderline(False)
         font.setWeight(75)
         self.acquisition_button.setFont(font)
+        self.acquisition_button.setMouseTracking(True)
         self.acquisition_button.setStyleSheet("background-color:#14274e;\n"
 "color:#f1f6f9;\n"
 "border-radius: 0px;\n"
@@ -1150,6 +1173,7 @@ class Ui_Form(object):
         self.acquisition_button.setObjectName("acquisition_button")
         self.raw_plot_frame = QtWidgets.QFrame(self.container_widget)
         self.raw_plot_frame.setGeometry(QtCore.QRect(16, 510, 561, 341))
+        self.raw_plot_frame.setMouseTracking(True)
         self.raw_plot_frame.setStyleSheet("outline-width: 0ps;\n"
 "border-radius: 0px;\n"
 "border-style: solid;\n"
@@ -1159,6 +1183,7 @@ class Ui_Form(object):
         self.raw_plot_frame.setObjectName("raw_plot_frame")
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.raw_plot_frame)
         self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(5, 19, 541, 311))
+        self.verticalLayoutWidget_2.setMouseTracking(True)
         self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
         self.raw_spectrum_grid_layout = QtWidgets.QGridLayout(self.verticalLayoutWidget_2)
         self.raw_spectrum_grid_layout.setContentsMargins(0, 0, 0, 0)
@@ -1169,6 +1194,7 @@ class Ui_Form(object):
         font.setBold(False)
         font.setWeight(50)
         self.raw_plot_i_label.setFont(font)
+        self.raw_plot_i_label.setMouseTracking(True)
         self.raw_plot_i_label.setStyleSheet("color: #9ba4b4;")
         self.raw_plot_i_label.setAlignment(QtCore.Qt.AlignCenter)
         self.raw_plot_i_label.setWordWrap(False)
@@ -1180,6 +1206,7 @@ class Ui_Form(object):
         font.setBold(False)
         font.setWeight(50)
         self.raw_plot_label.setFont(font)
+        self.raw_plot_label.setMouseTracking(True)
         self.raw_plot_label.setStyleSheet("color: #24262b;")
         self.raw_plot_label.setAlignment(QtCore.Qt.AlignCenter)
         self.raw_plot_label.setWordWrap(False)
@@ -1191,12 +1218,14 @@ class Ui_Form(object):
         font.setBold(False)
         font.setWeight(50)
         self.raw_plot_lambda_label.setFont(font)
+        self.raw_plot_lambda_label.setMouseTracking(True)
         self.raw_plot_lambda_label.setStyleSheet("color: #9ba4b4;")
         self.raw_plot_lambda_label.setAlignment(QtCore.Qt.AlignCenter)
         self.raw_plot_lambda_label.setWordWrap(False)
         self.raw_plot_lambda_label.setObjectName("raw_plot_lambda_label")
         self.raw_spectrum_grid_layout.addWidget(self.raw_plot_lambda_label, 2, 1, 1, 1)
         self.raw_plot = PlotWidget(self.verticalLayoutWidget_2)
+        self.raw_plot.setMouseTracking(True)
         self.raw_plot.setObjectName("raw_plot")
         self.raw_spectrum_grid_layout.addWidget(self.raw_plot, 1, 1, 1, 1)
         self.cursor_raw_label = QtWidgets.QLabel(self.raw_plot_frame)
@@ -1204,12 +1233,14 @@ class Ui_Form(object):
         font = QtGui.QFont()
         font.setPointSize(10)
         self.cursor_raw_label.setFont(font)
+        self.cursor_raw_label.setMouseTracking(True)
         self.cursor_raw_label.setObjectName("cursor_raw_label")
         self.spec_streamer_v_label = QtWidgets.QLabel(self.container_widget)
         self.spec_streamer_v_label.setGeometry(QtCore.QRect(734, 27, 31, 20))
         font = QtGui.QFont()
         font.setFamily("helvetica")
         self.spec_streamer_v_label.setFont(font)
+        self.spec_streamer_v_label.setMouseTracking(True)
         self.spec_streamer_v_label.setStyleSheet("background-color:#14274e;\n"
 "font-family: helvetica;\n"
 "color:#9ba4b4;")
@@ -1219,6 +1250,7 @@ class Ui_Form(object):
         font = QtGui.QFont()
         font.setFamily("helvetica")
         self.spec_tools_label.setFont(font)
+        self.spec_tools_label.setMouseTracking(True)
         self.spec_tools_label.setStyleSheet("background-color:white;\n"
 "font-family: helvetica;\n"
 "color:#14274e;")
@@ -1232,6 +1264,7 @@ class Ui_Form(object):
         font.setBold(True)
         font.setWeight(75)
         self.experiment_button.setFont(font)
+        self.experiment_button.setMouseTracking(True)
         self.experiment_button.setStyleSheet("background-color:#14274e;\n"
 "color:#f1f6f9;\n"
 "border-radius: 0px;\n"
@@ -1248,6 +1281,7 @@ class Ui_Form(object):
         font = QtGui.QFont()
         font.setPointSize(11)
         self.save_raw_plot_txt_button.setFont(font)
+        self.save_raw_plot_txt_button.setMouseTracking(True)
         self.save_raw_plot_txt_button.setStyleSheet("background-color:#9ba4b4;\n"
 "color:white;\n"
 "border-radius: 1px;\n"
@@ -1260,6 +1294,7 @@ class Ui_Form(object):
         font = QtGui.QFont()
         font.setPointSize(11)
         self.save_raw_plot_png_button.setFont(font)
+        self.save_raw_plot_png_button.setMouseTracking(True)
         self.save_raw_plot_png_button.setStyleSheet("background-color:#9ba4b4;\n"
 "color:white;\n"
 "border-radius: 1px;\n"
@@ -1269,6 +1304,7 @@ class Ui_Form(object):
         self.save_raw_plot_png_button.setObjectName("save_raw_plot_png_button")
         self.side_plots_frame = QtWidgets.QFrame(self.container_widget)
         self.side_plots_frame.setGeometry(QtCore.QRect(670, 130, 641, 711))
+        self.side_plots_frame.setMouseTracking(True)
         self.side_plots_frame.setStyleSheet("outline-width: 0ps;\n"
 "border-radius: 0px;\n"
 "border-style: solid;\n"
@@ -1278,12 +1314,14 @@ class Ui_Form(object):
         self.side_plots_frame.setObjectName("side_plots_frame")
         self.calc_plot_2_frame = QtWidgets.QFrame(self.side_plots_frame)
         self.calc_plot_2_frame.setGeometry(QtCore.QRect(3, 5, 631, 351))
+        self.calc_plot_2_frame.setMouseTracking(True)
         self.calc_plot_2_frame.setStyleSheet("")
         self.calc_plot_2_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.calc_plot_2_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.calc_plot_2_frame.setObjectName("calc_plot_2_frame")
         self.gridLayoutWidget_5 = QtWidgets.QWidget(self.calc_plot_2_frame)
         self.gridLayoutWidget_5.setGeometry(QtCore.QRect(10, 0, 611, 341))
+        self.gridLayoutWidget_5.setMouseTracking(True)
         self.gridLayoutWidget_5.setObjectName("gridLayoutWidget_5")
         self.calc_plot_2_grid_layout = QtWidgets.QGridLayout(self.gridLayoutWidget_5)
         self.calc_plot_2_grid_layout.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
@@ -1295,6 +1333,7 @@ class Ui_Form(object):
         font.setBold(False)
         font.setWeight(50)
         self.calc_plot_2_i_label.setFont(font)
+        self.calc_plot_2_i_label.setMouseTracking(True)
         self.calc_plot_2_i_label.setStyleSheet("color: #9ba4b4;")
         self.calc_plot_2_i_label.setAlignment(QtCore.Qt.AlignCenter)
         self.calc_plot_2_i_label.setWordWrap(False)
@@ -1306,6 +1345,7 @@ class Ui_Form(object):
         font.setBold(False)
         font.setWeight(50)
         self.calc_plot_2_label.setFont(font)
+        self.calc_plot_2_label.setMouseTracking(True)
         self.calc_plot_2_label.setStyleSheet("color: #24262b;")
         self.calc_plot_2_label.setAlignment(QtCore.Qt.AlignCenter)
         self.calc_plot_2_label.setObjectName("calc_plot_2_label")
@@ -1316,6 +1356,7 @@ class Ui_Form(object):
         font.setBold(False)
         font.setWeight(50)
         self.calc_plot_2_lambda_label.setFont(font)
+        self.calc_plot_2_lambda_label.setMouseTracking(True)
         self.calc_plot_2_lambda_label.setStyleSheet("color: #9ba4b4;")
         self.calc_plot_2_lambda_label.setAlignment(QtCore.Qt.AlignCenter)
         self.calc_plot_2_lambda_label.setWordWrap(False)
@@ -1323,6 +1364,7 @@ class Ui_Form(object):
         self.calc_plot_2_grid_layout.addWidget(self.calc_plot_2_lambda_label, 4, 1, 1, 1)
         self.calc_plot_2 = PlotWidget(self.gridLayoutWidget_5)
         self.calc_plot_2.setEnabled(False)
+        self.calc_plot_2.setMouseTracking(True)
         self.calc_plot_2.setObjectName("calc_plot_2")
         self.calc_plot_2_grid_layout.addWidget(self.calc_plot_2, 3, 1, 1, 1)
         self.save_calc_plot_1_txt_button = QtWidgets.QPushButton(self.side_plots_frame)
@@ -1330,6 +1372,7 @@ class Ui_Form(object):
         font = QtGui.QFont()
         font.setPointSize(11)
         self.save_calc_plot_1_txt_button.setFont(font)
+        self.save_calc_plot_1_txt_button.setMouseTracking(True)
         self.save_calc_plot_1_txt_button.setStyleSheet("background-color:#9ba4b4;\n"
 "color:white;\n"
 "border-radius: 1px;\n"
@@ -1342,6 +1385,7 @@ class Ui_Form(object):
         font = QtGui.QFont()
         font.setPointSize(11)
         self.save_calc_plot_2_png_button.setFont(font)
+        self.save_calc_plot_2_png_button.setMouseTracking(True)
         self.save_calc_plot_2_png_button.setStyleSheet("background-color:#9ba4b4;\n"
 "color:white;\n"
 "border-radius: 1px;\n"
@@ -1356,12 +1400,14 @@ class Ui_Form(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.calc_plot_1_frame.sizePolicy().hasHeightForWidth())
         self.calc_plot_1_frame.setSizePolicy(sizePolicy)
+        self.calc_plot_1_frame.setMouseTracking(True)
         self.calc_plot_1_frame.setStyleSheet("")
         self.calc_plot_1_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.calc_plot_1_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.calc_plot_1_frame.setObjectName("calc_plot_1_frame")
         self.gridLayoutWidget_6 = QtWidgets.QWidget(self.calc_plot_1_frame)
         self.gridLayoutWidget_6.setGeometry(QtCore.QRect(10, 0, 611, 341))
+        self.gridLayoutWidget_6.setMouseTracking(True)
         self.gridLayoutWidget_6.setObjectName("gridLayoutWidget_6")
         self.calc_plot_1_grid_layout = QtWidgets.QGridLayout(self.gridLayoutWidget_6)
         self.calc_plot_1_grid_layout.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
@@ -1373,6 +1419,7 @@ class Ui_Form(object):
         font.setBold(False)
         font.setWeight(50)
         self.calc_plot_1_i_label.setFont(font)
+        self.calc_plot_1_i_label.setMouseTracking(True)
         self.calc_plot_1_i_label.setStyleSheet("color: #9ba4b4;")
         self.calc_plot_1_i_label.setAlignment(QtCore.Qt.AlignCenter)
         self.calc_plot_1_i_label.setWordWrap(False)
@@ -1384,6 +1431,7 @@ class Ui_Form(object):
         font.setBold(False)
         font.setWeight(50)
         self.calc_plot_1_label.setFont(font)
+        self.calc_plot_1_label.setMouseTracking(True)
         self.calc_plot_1_label.setStyleSheet("color: #24262b;")
         self.calc_plot_1_label.setAlignment(QtCore.Qt.AlignCenter)
         self.calc_plot_1_label.setObjectName("calc_plot_1_label")
@@ -1395,6 +1443,7 @@ class Ui_Form(object):
         font.setBold(False)
         font.setWeight(50)
         self.calc_plot_1_lambda_label.setFont(font)
+        self.calc_plot_1_lambda_label.setMouseTracking(True)
         self.calc_plot_1_lambda_label.setStyleSheet("color: #9ba4b4;")
         self.calc_plot_1_lambda_label.setAlignment(QtCore.Qt.AlignCenter)
         self.calc_plot_1_lambda_label.setWordWrap(False)
@@ -1402,15 +1451,18 @@ class Ui_Form(object):
         self.calc_plot_1_grid_layout.addWidget(self.calc_plot_1_lambda_label, 2, 1, 1, 1)
         self.calc_plot_1 = PlotWidget(self.gridLayoutWidget_6)
         self.calc_plot_1.setEnabled(False)
+        self.calc_plot_1.setMouseTracking(True)
         self.calc_plot_1.setObjectName("calc_plot_1")
         self.calc_plot_1_grid_layout.addWidget(self.calc_plot_1, 1, 1, 1, 1)
         self.calc_plot_3_frame = QtWidgets.QFrame(self.side_plots_frame)
         self.calc_plot_3_frame.setGeometry(QtCore.QRect(3, 379, 631, 341))
+        self.calc_plot_3_frame.setMouseTracking(True)
         self.calc_plot_3_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.calc_plot_3_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.calc_plot_3_frame.setObjectName("calc_plot_3_frame")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.calc_plot_3_frame)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(30, 20, 591, 311))
+        self.verticalLayoutWidget.setMouseTracking(True)
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.calc_plot_3_grid_layout = QtWidgets.QGridLayout(self.verticalLayoutWidget)
         self.calc_plot_3_grid_layout.setContentsMargins(0, 0, 0, 0)
@@ -1421,6 +1473,7 @@ class Ui_Form(object):
         font.setBold(False)
         font.setWeight(50)
         self.calc_plot_3_label.setFont(font)
+        self.calc_plot_3_label.setMouseTracking(True)
         self.calc_plot_3_label.setStyleSheet("color: #24262b;")
         self.calc_plot_3_label.setAlignment(QtCore.Qt.AlignCenter)
         self.calc_plot_3_label.setObjectName("calc_plot_3_label")
@@ -1431,6 +1484,7 @@ class Ui_Form(object):
         font.setBold(False)
         font.setWeight(50)
         self.calc_plot_3_lambda_label.setFont(font)
+        self.calc_plot_3_lambda_label.setMouseTracking(True)
         self.calc_plot_3_lambda_label.setStyleSheet("color: #9ba4b4;")
         self.calc_plot_3_lambda_label.setAlignment(QtCore.Qt.AlignCenter)
         self.calc_plot_3_lambda_label.setWordWrap(False)
@@ -1442,6 +1496,7 @@ class Ui_Form(object):
         font.setBold(False)
         font.setWeight(50)
         self.calc_plot_3_i_label.setFont(font)
+        self.calc_plot_3_i_label.setMouseTracking(True)
         self.calc_plot_3_i_label.setStyleSheet("color: #9ba4b4;")
         self.calc_plot_3_i_label.setAlignment(QtCore.Qt.AlignCenter)
         self.calc_plot_3_i_label.setWordWrap(False)
@@ -1449,6 +1504,7 @@ class Ui_Form(object):
         self.calc_plot_3_grid_layout.addWidget(self.calc_plot_3_i_label, 7, 0, 1, 1)
         self.calc_plot_3 = PlotWidget(self.verticalLayoutWidget)
         self.calc_plot_3.setEnabled(True)
+        self.calc_plot_3.setMouseTracking(True)
         self.calc_plot_3.setObjectName("calc_plot_3")
         self.calc_plot_3_grid_layout.addWidget(self.calc_plot_3, 7, 1, 1, 1)
         self.cursor_calc_3_label = QtWidgets.QLabel(self.calc_plot_3_frame)
@@ -1456,6 +1512,7 @@ class Ui_Form(object):
         font = QtGui.QFont()
         font.setPointSize(10)
         self.cursor_calc_3_label.setFont(font)
+        self.cursor_calc_3_label.setMouseTracking(True)
         self.cursor_calc_3_label.setObjectName("cursor_calc_3_label")
         self.calc_plot_1_2_combo_frame = QtWidgets.QFrame(self.side_plots_frame)
         self.calc_plot_1_2_combo_frame.setGeometry(QtCore.QRect(3, 5, 631, 351))
@@ -1464,11 +1521,13 @@ class Ui_Form(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.calc_plot_1_2_combo_frame.sizePolicy().hasHeightForWidth())
         self.calc_plot_1_2_combo_frame.setSizePolicy(sizePolicy)
+        self.calc_plot_1_2_combo_frame.setMouseTracking(True)
         self.calc_plot_1_2_combo_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.calc_plot_1_2_combo_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.calc_plot_1_2_combo_frame.setObjectName("calc_plot_1_2_combo_frame")
         self.gridLayoutWidget_4 = QtWidgets.QWidget(self.calc_plot_1_2_combo_frame)
         self.gridLayoutWidget_4.setGeometry(QtCore.QRect(29, 10, 591, 341))
+        self.gridLayoutWidget_4.setMouseTracking(True)
         self.gridLayoutWidget_4.setObjectName("gridLayoutWidget_4")
         self.calc_plot_1_2_grid_layout = QtWidgets.QGridLayout(self.gridLayoutWidget_4)
         self.calc_plot_1_2_grid_layout.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
@@ -1480,6 +1539,7 @@ class Ui_Form(object):
         font.setBold(False)
         font.setWeight(50)
         self.calc_plot_2_combo_label.setFont(font)
+        self.calc_plot_2_combo_label.setMouseTracking(True)
         self.calc_plot_2_combo_label.setStyleSheet("color: #24262b;")
         self.calc_plot_2_combo_label.setAlignment(QtCore.Qt.AlignCenter)
         self.calc_plot_2_combo_label.setObjectName("calc_plot_2_combo_label")
@@ -1490,6 +1550,7 @@ class Ui_Form(object):
         font.setBold(False)
         font.setWeight(50)
         self.calc_plot_2_combo_i_label.setFont(font)
+        self.calc_plot_2_combo_i_label.setMouseTracking(True)
         self.calc_plot_2_combo_i_label.setStyleSheet("color: #9ba4b4;")
         self.calc_plot_2_combo_i_label.setAlignment(QtCore.Qt.AlignCenter)
         self.calc_plot_2_combo_i_label.setWordWrap(False)
@@ -1501,6 +1562,7 @@ class Ui_Form(object):
         font.setBold(False)
         font.setWeight(50)
         self.calc_plot_1_combo_label.setFont(font)
+        self.calc_plot_1_combo_label.setMouseTracking(True)
         self.calc_plot_1_combo_label.setStyleSheet("color: #24262b;")
         self.calc_plot_1_combo_label.setAlignment(QtCore.Qt.AlignCenter)
         self.calc_plot_1_combo_label.setObjectName("calc_plot_1_combo_label")
@@ -1511,6 +1573,7 @@ class Ui_Form(object):
         font.setBold(False)
         font.setWeight(50)
         self.calc_plot_1_combo_i_label.setFont(font)
+        self.calc_plot_1_combo_i_label.setMouseTracking(True)
         self.calc_plot_1_combo_i_label.setStyleSheet("color: #9ba4b4;")
         self.calc_plot_1_combo_i_label.setAlignment(QtCore.Qt.AlignCenter)
         self.calc_plot_1_combo_i_label.setWordWrap(False)
@@ -1523,6 +1586,7 @@ class Ui_Form(object):
         font.setBold(False)
         font.setWeight(50)
         self.calc_plot_1_combo_lambda_label.setFont(font)
+        self.calc_plot_1_combo_lambda_label.setMouseTracking(True)
         self.calc_plot_1_combo_lambda_label.setStyleSheet("color: #9ba4b4;")
         self.calc_plot_1_combo_lambda_label.setAlignment(QtCore.Qt.AlignCenter)
         self.calc_plot_1_combo_lambda_label.setWordWrap(False)
@@ -1534,6 +1598,7 @@ class Ui_Form(object):
         font.setBold(False)
         font.setWeight(50)
         self.calc_plot_2_combo_lambda_label.setFont(font)
+        self.calc_plot_2_combo_lambda_label.setMouseTracking(True)
         self.calc_plot_2_combo_lambda_label.setStyleSheet("color: #9ba4b4;")
         self.calc_plot_2_combo_lambda_label.setAlignment(QtCore.Qt.AlignCenter)
         self.calc_plot_2_combo_lambda_label.setWordWrap(False)
@@ -1541,10 +1606,12 @@ class Ui_Form(object):
         self.calc_plot_1_2_grid_layout.addWidget(self.calc_plot_2_combo_lambda_label, 7, 1, 1, 1)
         self.calc_plot_1_combo = PlotWidget(self.gridLayoutWidget_4)
         self.calc_plot_1_combo.setEnabled(False)
+        self.calc_plot_1_combo.setMouseTracking(True)
         self.calc_plot_1_combo.setObjectName("calc_plot_1_combo")
         self.calc_plot_1_2_grid_layout.addWidget(self.calc_plot_1_combo, 1, 1, 1, 1)
         self.calc_plot_2_combo = PlotWidget(self.gridLayoutWidget_4)
         self.calc_plot_2_combo.setEnabled(False)
+        self.calc_plot_2_combo.setMouseTracking(True)
         self.calc_plot_2_combo.setObjectName("calc_plot_2_combo")
         self.calc_plot_1_2_grid_layout.addWidget(self.calc_plot_2_combo, 6, 1, 1, 1)
         self.save_calc_plot_3_txt_button = QtWidgets.QPushButton(self.side_plots_frame)
@@ -1552,6 +1619,7 @@ class Ui_Form(object):
         font = QtGui.QFont()
         font.setPointSize(11)
         self.save_calc_plot_3_txt_button.setFont(font)
+        self.save_calc_plot_3_txt_button.setMouseTracking(True)
         self.save_calc_plot_3_txt_button.setStyleSheet("background-color:#9ba4b4;\n"
 "color:white;\n"
 "border-radius: 1px;\n"
@@ -1564,6 +1632,7 @@ class Ui_Form(object):
         font = QtGui.QFont()
         font.setPointSize(11)
         self.save_calc_plot_3_png_button.setFont(font)
+        self.save_calc_plot_3_png_button.setMouseTracking(True)
         self.save_calc_plot_3_png_button.setStyleSheet("background-color:#9ba4b4;\n"
 "color:white;\n"
 "border-radius: 1px;\n"
@@ -1576,6 +1645,7 @@ class Ui_Form(object):
         font = QtGui.QFont()
         font.setPointSize(11)
         self.save_calc_plot_1_png_button.setFont(font)
+        self.save_calc_plot_1_png_button.setMouseTracking(True)
         self.save_calc_plot_1_png_button.setStyleSheet("background-color:#9ba4b4;\n"
 "color:white;\n"
 "border-radius: 1px;\n"
@@ -1588,6 +1658,7 @@ class Ui_Form(object):
         font = QtGui.QFont()
         font.setPointSize(11)
         self.save_calc_plot_2_txt_button.setFont(font)
+        self.save_calc_plot_2_txt_button.setMouseTracking(True)
         self.save_calc_plot_2_txt_button.setStyleSheet("background-color:#9ba4b4;\n"
 "color:white;\n"
 "border-radius: 1px;\n"
@@ -1608,17 +1679,13 @@ class Ui_Form(object):
         self.scrollArea.setWidget(self.container_widget)
 
         self.retranslateUi(Form)
-        self.main_menu_tab.setCurrentIndex(1)
+        self.main_menu_tab.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Form)
         Form.setTabOrder(self.detector_gain_input, self.detector_averages_input)
         Form.setTabOrder(self.detector_averages_input, self.detector_integration_time_input)
         Form.setTabOrder(self.detector_integration_time_input, self.detector_width_input)
         Form.setTabOrder(self.detector_width_input, self.detector_height_input)
-        Form.setTabOrder(self.detector_height_input, self.image_scale_overview_input)
-        Form.setTabOrder(self.image_scale_overview_input, self.image_scale_cropped_input)
-        Form.setTabOrder(self.image_scale_cropped_input, self.image_crop_box)
-        Form.setTabOrder(self.image_crop_box, self.image_camera_no_input)
-        Form.setTabOrder(self.image_camera_no_input, self.spectrum_rotation_global_input)
+        Form.setTabOrder(self.detector_height_input, self.spectrum_rotation_global_input)
         Form.setTabOrder(self.spectrum_rotation_global_input, self.spectrum_rotation_spectrum_input)
         Form.setTabOrder(self.spectrum_rotation_spectrum_input, self.spectrum_start_x_input)
         Form.setTabOrder(self.spectrum_start_x_input, self.spectrum_stop_x_input)
@@ -1651,10 +1718,6 @@ class Ui_Form(object):
         self.image_settings_label.setText(_translate("Form", "Image"))
         self.detector_settings_label.setText(_translate("Form", "Detector"))
         self.spectrum_settings_label.setText(_translate("Form", "Spectrum config"))
-        self.image_scale_cropped_label.setText(_translate("Form", "Scale cropped (%):"))
-        self.image_crop_label.setText(_translate("Form", "Crop to spectrum:"))
-        self.image_scale_overview_label.setText(_translate("Form", "Scale overview (%):"))
-        self.image_camera_no_label.setText(_translate("Form", "Camera #:"))
         self.detector_width_input.setText(_translate("Form", "1280"))
         self.detector_integration_time_label.setText(_translate("Form", "Integration time (ms):"))
         self.detector_gain_label.setText(_translate("Form", "Gain (0-100):"))
@@ -1672,9 +1735,11 @@ class Ui_Form(object):
         self.spectrum_stop_x_label.setText(_translate("Form", "Stop (x-val):"))
         self.spectrum_line_label.setText(_translate("Form", "Line (y-val):"))
         self.spectrum_lines_label.setText(_translate("Form", "No of lines:"))
-        self.image_scale_overview_input.setText(_translate("Form", "40"))
-        self.image_scale_cropped_input.setText(_translate("Form", "150"))
         self.image_camera_no_input.setText(_translate("Form", "0"))
+        self.image_camera_no_label.setText(_translate("Form", "Camera #:"))
+        self.image_downsampling_overview_input.setText(_translate("Form", "0.5"))
+        self.image_downsampling_overview_label.setText(_translate("Form", "Downsampling"))
+        self.cursor_overview_label.setText(_translate("Form", "Cursor position"))
         self.clear_calibration_button.setText(_translate("Form", "Clear"))
         self.save_calibration_button.setText(_translate("Form", "Save"))
         self.load_calibration_button.setText(_translate("Form", "Load"))
@@ -1752,7 +1817,7 @@ class Ui_Form(object):
         self.save_calc_plot_2_txt_button.setText(_translate("Form", ".txt"))
 
 
-from pyqtgraph import PlotWidget
+from pyqtgraph import GraphicsLayoutWidget, PlotWidget
 
 
 if __name__ == "__main__":

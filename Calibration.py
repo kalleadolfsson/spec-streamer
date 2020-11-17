@@ -10,6 +10,7 @@ import numpy as np
 import math as m
 
 from scipy.optimize import curve_fit
+import matplotlib.pyplot as plt
 
 class Calibration:
   def __init__(self):
@@ -22,9 +23,10 @@ class Calibration:
       self.pixel_wavelength_points = np.array([])
       self.wavelengts = np.array([])
       self.black_body_temperature = 0
+      self.debug = True
 
       # CONSTANTS
-      self.Kb = 5.67e-8      # W⋅m**−2⋅K**−4
+      self.Kb = 1.28e-23
       self.c = 3e8
       self.h = 6.63e-34
 
@@ -69,6 +71,16 @@ class Calibration:
       self.spectral_sensitivity = self.uncorrected_intensity_data/intensities_black_body
       self.spectral_sensitivity = self.spectral_sensitivity/np.max(self.spectral_sensitivity)
       self.spectral_sensitivity_calibrated = True
+
+      if(self.debug):
+          print(self.wavelengths)
+          plt.figure(1)
+          plt.plot(self.wavelengths,intensities_black_body)
+          plt.figure(2)
+          plt.plot(self.wavelengths,self.uncorrected_intensity_data)
+          plt.figure(3)
+          plt.plot(self.wavelengths,self.spectral_sensitivity)
+          plt.show()
       return self.spectral_sensitivity
 
   def set_pixel_wavelength_coeffs(self, coeffs = ''):

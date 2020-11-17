@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 
 
 # CONSTANTS
-Kb = 5.67e-8      # W⋅m**−2⋅K**−4
+Kb = 1.28e-23      # W⋅m**−2⋅K**−4
 c = 3e8
 h = 6.63e-34
 
@@ -25,7 +25,7 @@ black_body_temperature = 2800
 spectral_sensitivity = np.array([])
 
 def planck_radiation_model(waves, T):
-  return (2*m.pi*h*(c**2))*(waves**-5)/(np.exp((h*c)/(waves*Kb*T))-1)
+  return ((2*m.pi*h*(c**2))/(waves**5))/(np.exp((h*c)/(waves*Kb*T))-1)
 
 
 def get_spectral_sensitivity():
@@ -34,7 +34,7 @@ def get_spectral_sensitivity():
   spectral_sensitivity = uncorrected_intensity_data/intensities_black_body
   spectral_sensitivity = spectral_sensitivity/np.max(spectral_sensitivity)
 
-  plt.plot(wavelengths,spectral_sensitivity)
+  plt.plot(wavelengths,intensities_black_body)
   plt.show()
   return spectral_sensitivity
 
