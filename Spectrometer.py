@@ -10,14 +10,14 @@ import sys
 from PyQt5.QtWidgets import QApplication, QFileDialog, QWidget
 from PyQt5.QtGui import QImage, QPixmap
 from PyQt5.QtCore import QTimer, QThread, QObject, QEventLoop, pyqtSignal, pyqtSlot
-
+import qimage2ndarray
 #import configparser to read from conf file
 import configparser
 
 #import numpy and math for easy data handling
 import numpy as np
 import math
-
+import imutils
 
 # import Opencv module
 import cv2
@@ -33,7 +33,9 @@ class Spectrometer(QThread):
     reference_spectrum_stream =  pyqtSignal(np.ndarray)
     transmission_spectrum_stream = pyqtSignal(np.ndarray)
 
-    image_stream = pyqtSignal(QPixmap)
+    image_overview_stream = pyqtSignal(np.ndarray)
+    image_cropped_stream = pyqtSignal(np.ndarray)
+    downsampling = 0.5            #  % of original
 
     stream_open = False
     stream = False
@@ -73,9 +75,12 @@ class Spectrometer(QThread):
 
             if(self.rotation_global!= 0):
                 # Global rotation (center image is center of rotation)
+                """
                 M = cv2.getRotationMatrix2D((round((self.width)/2),round((self.height)/2)) , self.rotation_global, 1.0)
                 (h, w) = image.shape[:2]
                 image = cv2.warpAffine(image, M, (w, h))
+                """
+                image = imutils.rotate(image, self.rotation_global)
 
             if(self.rotation_spectrum!= 0):
                 # Spectrum rotation (center of rotation is center of spectrum)
@@ -88,7 +93,7 @@ class Spectrometer(QThread):
 
             line_range = round(self.no_of_lines/2)
             for n in range(-line_range,line_range):
-                self.intensities = self.intensities + gray[self.central_line+int(n)][self.start_x:self.stop_x]
+                self.intensities = self.intensities + np.flip(gray[self.central_line+int(n)][self.width-self.stop_x:self.width-self.start_x])
 
             # if the number of averages has been met, proceed to calculate averaged spectrum and plot
             if (self.cntr == self.averages - 1):
@@ -137,34 +142,33 @@ class Spectrometer(QThread):
 
             self.cntr = self.cntr + 1
 
+
             # highlight the data-line
-            image[self.central_line-round(self.no_of_lines/2)][self.start_x:self.stop_x][:] = 255
-            image[self.central_line+round(self.no_of_lines/2)][self.start_x:self.stop_x][:] = 255
+            for i in range(0,3):
+                image[self.central_line-round(self.no_of_lines/2)-2+i][self.width-self.stop_x:self.width-self.start_x][:] = 255
+                image[self.central_line+round(self.no_of_lines/2)-2+i][self.width-self.stop_x:self.width-self.start_x][:] = 255
 
-
-            height, width, channel = image.shape
-
+            # overview image
+            image_overview = image
+            # Downsample to reduce data flow (does not affect spectral resolution)
+            image_overview_downsampled = self.downsample_image(image_overview)
 
             # Crop image
-            if(self.crop):
-                image = image[self.central_line-round(self.no_of_lines/2)-30:self.central_line+round(self.no_of_lines/2)+30, self.start_x-5:self.stop_x+5]
-                self.scale = self.scale_cropped
-            else:
-                self.scale = self.scale_overview
+            image_cropped = image[self.central_line-round(self.no_of_lines/2)-30:self.central_line+round(self.no_of_lines/2)+30, self.width-self.stop_x+5:self.width-self.start_x-5]
 
-            # resize image
-            width = int(image.shape[1] * self.scale / 100)
-            height = int(image.shape[0] * self.scale / 100)
-            dim = (width, height)
-            resized = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
-
-            step = channel * width
-
-            # create QImage from image
-            qImg = QImage(resized.data, width, height, step, QImage.Format_RGB888)
 
             # Send QImage as signal
-            self.image_stream.emit(QPixmap.fromImage(qImg))
+            self.image_overview_stream.emit(image_overview_downsampled)
+            # Send QImage as signal
+            self.image_cropped_stream.emit(image_cropped)
+
+    def downsample_image(self, image):
+        width = int(image.shape[1] * self.downsampling)
+        height = int(image.shape[0] * self.downsampling)
+        dim = (width, height)
+        resized_image = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
+
+        return resized_image
 
     def setup(self):
         # Additional acquisition settings
@@ -263,20 +267,16 @@ class Spectrometer(QThread):
         self.stop_x = stop_x
 
     @pyqtSlot(int)
-    def set_scale_overview(self, scale_overview = 50):
-        self.scale_overview = scale_overview
-
-    @pyqtSlot(int)
-    def set_scale_cropped(self, scale_cropped = 150):
-        self.scale_cropped = scale_cropped
-
-    @pyqtSlot(int)
     def set_crop(self, crop = True):
         self.crop = crop
 
     @pyqtSlot(int)
     def set_cam_no(self, cam_no = 0):
         self.cam_no = cam_no
+
+    @pyqtSlot(float)
+    def set_downsampling(self, downsampling = 0.5):
+        self.downsampling = downsampling
 
     @pyqtSlot(np.ndarray)
     def set_spectral_sensitivity(self, spectral_sensitivity = []):

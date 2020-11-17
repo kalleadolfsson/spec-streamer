@@ -43,6 +43,9 @@
      <height>840</height>
     </size>
    </property>
+   <property name="mouseTracking">
+    <bool>true</bool>
+   </property>
    <property name="styleSheet">
     <string notr="true">outline-width: 0ps;
 border-radius: 0px;
@@ -175,6 +178,9 @@ border-width: 0px;</string>
        <pointsize>14</pointsize>
       </font>
      </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
+     </property>
      <property name="autoFillBackground">
       <bool>false</bool>
      </property>
@@ -188,7 +194,7 @@ border: 0px;</string>
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <property name="tabBarAutoHide">
       <bool>true</bool>
@@ -210,6 +216,9 @@ border: 0px;</string>
         <font>
          <pointsize>13</pointsize>
         </font>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color:#9ba4b4;
@@ -237,6 +246,9 @@ border-color: #626470;</string>
          <pointsize>13</pointsize>
         </font>
        </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
        <property name="styleSheet">
         <string notr="true">background-color:#9ba4b4;
 color:white;
@@ -249,37 +261,6 @@ border-color: #626470;</string>
         <string>Save</string>
        </property>
       </widget>
-      <widget class="QLabel" name="image_label">
-       <property name="geometry">
-        <rect>
-         <x>700</x>
-         <y>77</y>
-         <width>541</width>
-         <height>331</height>
-        </rect>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>800</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">outline-color: #8d93ab;
-outline-width: 4ps;
-border-radius: 2px;
-border-style: solid;
-border-width: 1px;
-border-color: #8d93ab;
-background-color: #f1f6f9;</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
       <widget class="QFrame" name="acquisition_frame">
        <property name="geometry">
         <rect>
@@ -288,6 +269,9 @@ background-color: #f1f6f9;</string>
          <width>541</width>
          <height>351</height>
         </rect>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
        </property>
        <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
@@ -311,6 +295,9 @@ background-color: #f1f6f9;</string>
           <bold>true</bold>
          </font>
         </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
+        </property>
         <property name="styleSheet">
          <string notr="true">color: #24262b;</string>
         </property>
@@ -326,6 +313,9 @@ background-color: #f1f6f9;</string>
           <width>181</width>
           <height>21</height>
          </rect>
+        </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
         </property>
         <property name="styleSheet">
          <string notr="true">background-color: white;
@@ -348,12 +338,18 @@ color: #24262b;</string>
           <height>151</height>
          </rect>
         </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
+        </property>
         <layout class="QVBoxLayout" name="spectrum_vertical_layout">
          <property name="spacing">
           <number>0</number>
          </property>
          <item>
           <widget class="QLineEdit" name="spectrum_rotation_global_input">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">background-color: white;
 border-radius: 1px;
@@ -369,6 +365,9 @@ color: #24262b;</string>
          </item>
          <item>
           <widget class="QLineEdit" name="spectrum_rotation_spectrum_input">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">background-color: white;
 border-radius: 1px;
@@ -384,6 +383,9 @@ color: #24262b;</string>
          </item>
          <item>
           <widget class="QLineEdit" name="spectrum_start_x_input">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">background-color: white;
 border-radius: 1px;
@@ -399,6 +401,9 @@ color: #24262b;</string>
          </item>
          <item>
           <widget class="QLineEdit" name="spectrum_stop_x_input">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">background-color: white;
 border-radius: 1px;
@@ -414,6 +419,9 @@ color: #24262b;</string>
          </item>
          <item>
           <widget class="QLineEdit" name="spectrum_line_input">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">background-color: white;
 border-radius: 1px;
@@ -429,6 +437,9 @@ color: #24262b;</string>
          </item>
          <item>
           <widget class="QLineEdit" name="spectrum_lines_input">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">background-color: white;
 border-radius: 1px;
@@ -452,6 +463,9 @@ color: #24262b;</string>
           <width>121</width>
           <height>41</height>
          </rect>
+        </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
         </property>
         <property name="styleSheet">
          <string notr="true">background-color:#9ba4b4;
@@ -481,6 +495,9 @@ border-color: #626470;</string>
           <bold>true</bold>
          </font>
         </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
+        </property>
         <property name="styleSheet">
          <string notr="true">color: #24262b;</string>
         </property>
@@ -507,6 +524,9 @@ border-color: #626470;</string>
           <bold>true</bold>
          </font>
         </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
+        </property>
         <property name="styleSheet">
          <string notr="true">color: #24262b;</string>
         </property>
@@ -525,6 +545,9 @@ border-color: #626470;</string>
           <width>231</width>
           <height>51</height>
          </rect>
+        </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
         </property>
         <property name="styleSheet">
          <string notr="true">outline-color: #8d93ab;
@@ -549,6 +572,9 @@ border-color: #8d93ab;</string>
           <width>241</width>
           <height>141</height>
          </rect>
+        </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
         </property>
         <property name="styleSheet">
          <string notr="true">outline-color: #8d93ab;
@@ -581,6 +607,9 @@ border-color: #8d93ab;</string>
           <bold>true</bold>
          </font>
         </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
+        </property>
         <property name="styleSheet">
          <string notr="true">color: #24262b;</string>
         </property>
@@ -591,81 +620,6 @@ border-color: #8d93ab;</string>
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
-       <widget class="QWidget" name="verticalLayoutWidget_8">
-        <property name="geometry">
-         <rect>
-          <x>320</x>
-          <y>20</y>
-          <width>160</width>
-          <height>101</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="image_vertical_layout_2">
-         <property name="spacing">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="image_scale_cropped_label">
-           <property name="styleSheet">
-            <string notr="true">color: #24262b;
-outline:0px;
-border-width:0px,</string>
-           </property>
-           <property name="text">
-            <string>Scale cropped (%):</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="image_crop_label">
-           <property name="styleSheet">
-            <string notr="true">color: #24262b;
-outline:0px;
-border-width:0px,</string>
-           </property>
-           <property name="text">
-            <string>Crop to spectrum:</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="image_scale_overview_label">
-           <property name="styleSheet">
-            <string notr="true">color: #24262b;
-outline:0px;
-border-width:0px,</string>
-           </property>
-           <property name="text">
-            <string>Scale overview (%):</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="image_camera_no_label">
-           <property name="styleSheet">
-            <string notr="true">color: #24262b;
-outline:0px;
-border-width:0px,</string>
-           </property>
-           <property name="text">
-            <string>Camera #:</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
        <widget class="QWidget" name="gridLayoutWidget">
         <property name="geometry">
          <rect>
@@ -675,12 +629,18 @@ border-width:0px,</string>
           <height>112</height>
          </rect>
         </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
+        </property>
         <layout class="QGridLayout" name="detector_grid_layout">
          <property name="spacing">
           <number>0</number>
          </property>
          <item row="3" column="1">
           <widget class="QLineEdit" name="detector_width_input">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">background-color: white;
 border-radius: 1px;
@@ -696,6 +656,9 @@ color: #24262b;</string>
          </item>
          <item row="0" column="0">
           <widget class="QLabel" name="detector_integration_time_label">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">color: #24262b;
 outline:0px;
@@ -711,6 +674,9 @@ border-width:0px,</string>
          </item>
          <item row="2" column="0">
           <widget class="QLabel" name="detector_gain_label">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">color: #24262b;
 outline:0px;
@@ -726,6 +692,9 @@ border-width:0px,</string>
          </item>
          <item row="1" column="0">
           <widget class="QLabel" name="detector_averages_label">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">color: #24262b;
 outline:0px;
@@ -741,6 +710,9 @@ border-width:0px,</string>
          </item>
          <item row="0" column="1">
           <widget class="QLineEdit" name="detector_gain_input">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">background-color: white;
 border-radius: 1px;
@@ -756,6 +728,9 @@ color: #24262b;</string>
          </item>
          <item row="1" column="1">
           <widget class="QLineEdit" name="detector_averages_input">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">background-color: white;
 border-radius: 1px;
@@ -771,6 +746,9 @@ color: #24262b;</string>
          </item>
          <item row="3" column="3">
           <widget class="QLineEdit" name="detector_height_input">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">background-color: white;
 border-radius: 1px;
@@ -786,6 +764,9 @@ color: #24262b;</string>
          </item>
          <item row="3" column="0">
           <widget class="QLabel" name="detector_resolution_label">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">color: #24262b;
 outline:0px;
@@ -801,6 +782,9 @@ border-width:0px,</string>
          </item>
          <item row="2" column="1">
           <widget class="QLineEdit" name="detector_integration_time_input">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">background-color: white;
 border-radius: 1px;
@@ -816,6 +800,9 @@ color: #24262b;</string>
          </item>
          <item row="3" column="2">
           <widget class="QLabel" name="detector_resolution_x_label">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">color: #24262b;
 outline:0px;
@@ -845,6 +832,9 @@ border-width:0px,</string>
           <pointsize>16</pointsize>
          </font>
         </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
+        </property>
         <property name="styleSheet">
          <string notr="true">background-color:#14274e;
 color:white;
@@ -866,12 +856,18 @@ border-color: #626470;</string>
           <height>151</height>
          </rect>
         </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
+        </property>
         <layout class="QVBoxLayout" name="spectrum_vertical_layout_2">
          <property name="spacing">
           <number>0</number>
          </property>
          <item>
           <widget class="QLabel" name="spectrum_rotation_global_label">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">color: #24262b;
 outline:0px;
@@ -887,6 +883,9 @@ border-width:0px,</string>
          </item>
          <item>
           <widget class="QLabel" name="spectrum_rotation_spectrum_label">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">color: #24262b;
 outline:0px;
@@ -902,6 +901,9 @@ border-width:0px,</string>
          </item>
          <item>
           <widget class="QLabel" name="spectrum_start_x_label">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">color: #24262b;
 outline:0px;
@@ -917,6 +919,9 @@ border-width:0px,</string>
          </item>
          <item>
           <widget class="QLabel" name="spectrum_stop_x_label">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">color: #24262b;
 outline:0px;
@@ -932,6 +937,9 @@ border-width:0px,</string>
          </item>
          <item>
           <widget class="QLabel" name="spectrum_line_label">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">color: #24262b;
 outline:0px;
@@ -949,6 +957,9 @@ border-width:0px;
          </item>
          <item>
           <widget class="QLabel" name="spectrum_lines_label">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">color: #24262b;
 outline:0px;
@@ -965,87 +976,6 @@ border-width:0px;
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="verticalLayoutWidget_7">
-        <property name="geometry">
-         <rect>
-          <x>483</x>
-          <y>20</y>
-          <width>41</width>
-          <height>101</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="image_vertical_layout">
-         <property name="spacing">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QLineEdit" name="image_scale_overview_input">
-           <property name="styleSheet">
-            <string notr="true">background-color: white;
-border-radius: 1px;
-border-style: solid;
-border-width: 0.5px;
-border-color: #d6e0f0;
-color: #24262b;</string>
-           </property>
-           <property name="text">
-            <string>40</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="image_scale_cropped_input">
-           <property name="styleSheet">
-            <string notr="true">background-color: white;
-border-radius: 1px;
-border-style: solid;
-border-width: 0.5px;
-border-color: #d6e0f0;
-color: #24262b;</string>
-           </property>
-           <property name="text">
-            <string>150</string>
-           </property>
-          </widget>
-         </item>
-         <item alignment="Qt::AlignHCenter">
-          <widget class="QCheckBox" name="image_crop_box">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: #24262b;
-outline:0px;
-border-width:0px,</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="checked">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="image_camera_no_input">
-           <property name="styleSheet">
-            <string notr="true">background-color: white;
-border-radius: 1px;
-border-style: solid;
-border-width: 0.5px;
-border-color: #d6e0f0;
-color: #24262b;</string>
-           </property>
-           <property name="text">
-            <string>0</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
        <widget class="QFrame" name="image_frame">
         <property name="geometry">
          <rect>
@@ -1054,6 +984,9 @@ color: #24262b;</string>
           <width>231</width>
           <height>141</height>
          </rect>
+        </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
         </property>
         <property name="styleSheet">
          <string notr="true">outline-color: #8d93ab;
@@ -1078,6 +1011,9 @@ border-color: #8d93ab;</string>
           <width>241</width>
           <height>171</height>
          </rect>
+        </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
         </property>
         <property name="styleSheet">
          <string notr="true">outline-color: #8d93ab;
@@ -1105,11 +1041,162 @@ border-color: #8d93ab;</string>
        <zorder>image_settings_label</zorder>
        <zorder>detector_settings_label</zorder>
        <zorder>spectrum_settings_label</zorder>
-       <zorder>verticalLayoutWidget_8</zorder>
        <zorder>gridLayoutWidget</zorder>
        <zorder>live_button</zorder>
        <zorder>verticalLayoutWidget_4</zorder>
-       <zorder>verticalLayoutWidget_7</zorder>
+      </widget>
+      <widget class="QWidget" name="gridLayoutWidget_2">
+       <property name="geometry">
+        <rect>
+         <x>354</x>
+         <y>80</y>
+         <width>171</width>
+         <height>82</height>
+        </rect>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <layout class="QGridLayout" name="gridLayout">
+        <property name="horizontalSpacing">
+         <number>-1</number>
+        </property>
+        <property name="verticalSpacing">
+         <number>0</number>
+        </property>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="image_camera_no_input">
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: white;
+border-radius: 1px;
+border-style: solid;
+border-width: 0.5px;
+border-color: #d6e0f0;
+color: #24262b;</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="image_camera_no_label">
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: #24262b;
+outline:0px;
+border-width:0px,</string>
+          </property>
+          <property name="text">
+           <string>Camera #:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="image_downsampling_overview_input">
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: white;
+border-radius: 1px;
+border-style: solid;
+border-width: 0.5px;
+border-color: #d6e0f0;
+color: #24262b;</string>
+          </property>
+          <property name="text">
+           <string>0.5</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="image_downsampling_overview_label">
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: #24262b;
+outline:0px;
+border-width:0px,</string>
+          </property>
+          <property name="text">
+           <string>Downsampling</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QLabel" name="cursor_overview_label">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>62</y>
+         <width>91</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>Cursor position</string>
+       </property>
+      </widget>
+      <widget class="GraphicsLayoutWidget" name="image_overview_view">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>77</y>
+         <width>540</width>
+         <height>340</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">outline-color: #8d93ab;
+outline-width: 0ps;
+border-radius: 2px;
+border-style: solid;
+border-width: 1px;
+border-color: #8d93ab;
+background-color: #f1f6f9;
+padding: 0px;</string>
+       </property>
+      </widget>
+      <widget class="GraphicsLayoutWidget" name="image_cropped_view">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>450</y>
+         <width>540</width>
+         <height>260</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">outline-color: #8d93ab;
+outline-width: 0ps;
+border-radius: 2px;
+border-style: solid;
+border-width: 1px;
+border-color: #8d93ab;
+background-color: #f1f6f9;</string>
+       </property>
       </widget>
      </widget>
      <widget class="QWidget" name="main_menu_calibration_tab">
@@ -2301,6 +2388,9 @@ border-style:solid;
        <height>91</height>
       </rect>
      </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
+     </property>
      <property name="styleSheet">
       <string notr="true">border-style: solid;
 border-width: 1px;
@@ -2330,6 +2420,9 @@ background-color:#14274e</string>
        <weight>75</weight>
        <bold>true</bold>
       </font>
+     </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color:#14274e;
@@ -2361,6 +2454,9 @@ font-family: helvetica;
        <weight>75</weight>
        <bold>true</bold>
       </font>
+     </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
      </property>
      <property name="autoFillBackground">
       <bool>false</bool>
@@ -2395,6 +2491,9 @@ background-color: #14274e</string>
        <underline>false</underline>
       </font>
      </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
+     </property>
      <property name="styleSheet">
       <string notr="true">background-color:#14274e;
 color:#f1f6f9;
@@ -2419,6 +2518,9 @@ font-family: helvetica;
        <height>341</height>
       </rect>
      </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
+     </property>
      <property name="styleSheet">
       <string notr="true">outline-width: 0ps;
 border-radius: 0px;
@@ -2440,6 +2542,9 @@ border-width: 0px;</string>
         <height>311</height>
        </rect>
       </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
       <layout class="QGridLayout" name="raw_spectrum_grid_layout">
        <item row="1" column="0">
         <widget class="QLabel" name="raw_plot_i_label">
@@ -2449,6 +2554,9 @@ border-width: 0px;</string>
            <weight>50</weight>
            <bold>false</bold>
           </font>
+         </property>
+         <property name="mouseTracking">
+          <bool>true</bool>
          </property>
          <property name="styleSheet">
           <string notr="true">color: #9ba4b4;</string>
@@ -2476,6 +2584,9 @@ border-width: 0px;</string>
            <bold>false</bold>
           </font>
          </property>
+         <property name="mouseTracking">
+          <bool>true</bool>
+         </property>
          <property name="styleSheet">
           <string notr="true">color: #24262b;</string>
          </property>
@@ -2502,6 +2613,9 @@ border-width: 0px;</string>
            <bold>false</bold>
           </font>
          </property>
+         <property name="mouseTracking">
+          <bool>true</bool>
+         </property>
          <property name="styleSheet">
           <string notr="true">color: #9ba4b4;</string>
          </property>
@@ -2520,7 +2634,11 @@ border-width: 0px;</string>
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="PlotWidget" name="raw_plot" native="true"/>
+        <widget class="PlotWidget" name="raw_plot" native="true">
+         <property name="mouseTracking">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -2537,6 +2655,9 @@ border-width: 0px;</string>
        <font>
         <pointsize>10</pointsize>
        </font>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
       <property name="text">
        <string>Cursor position</string>
@@ -2556,6 +2677,9 @@ border-width: 0px;</string>
       <font>
        <family>helvetica</family>
       </font>
+     </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color:#14274e;
@@ -2579,6 +2703,9 @@ color:#9ba4b4;</string>
       <font>
        <family>helvetica</family>
       </font>
+     </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color:white;
@@ -2608,6 +2735,9 @@ color:#14274e;</string>
        <weight>75</weight>
        <bold>true</bold>
       </font>
+     </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color:#14274e;
@@ -2639,6 +2769,9 @@ font-family: helvetica;
        <pointsize>11</pointsize>
       </font>
      </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
+     </property>
      <property name="styleSheet">
       <string notr="true">background-color:#9ba4b4;
 color:white;
@@ -2665,6 +2798,9 @@ border-color: #626470;</string>
        <pointsize>11</pointsize>
       </font>
      </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
+     </property>
      <property name="styleSheet">
       <string notr="true">background-color:#9ba4b4;
 color:white;
@@ -2685,6 +2821,9 @@ border-color: #626470;</string>
        <width>641</width>
        <height>711</height>
       </rect>
+     </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
      </property>
      <property name="styleSheet">
       <string notr="true">outline-width: 0ps;
@@ -2707,6 +2846,9 @@ border-width: 0px;</string>
         <height>351</height>
        </rect>
       </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
       <property name="styleSheet">
        <string notr="true"/>
       </property>
@@ -2725,6 +2867,9 @@ border-width: 0px;</string>
          <height>341</height>
         </rect>
        </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
        <layout class="QGridLayout" name="calc_plot_2_grid_layout">
         <property name="sizeConstraint">
          <enum>QLayout::SetDefaultConstraint</enum>
@@ -2737,6 +2882,9 @@ border-width: 0px;</string>
             <weight>50</weight>
             <bold>false</bold>
            </font>
+          </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
           </property>
           <property name="styleSheet">
            <string notr="true">color: #9ba4b4;</string>
@@ -2764,6 +2912,9 @@ border-width: 0px;</string>
             <bold>false</bold>
            </font>
           </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
           <property name="styleSheet">
            <string notr="true">color: #24262b;</string>
           </property>
@@ -2787,6 +2938,9 @@ border-width: 0px;</string>
             <bold>false</bold>
            </font>
           </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
           <property name="styleSheet">
            <string notr="true">color: #9ba4b4;</string>
           </property>
@@ -2809,6 +2963,9 @@ border-width: 0px;</string>
           <property name="enabled">
            <bool>false</bool>
           </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
        </layout>
@@ -2827,6 +2984,9 @@ border-width: 0px;</string>
        <font>
         <pointsize>11</pointsize>
        </font>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color:#9ba4b4;
@@ -2853,6 +3013,9 @@ border-color: #626470;</string>
        <font>
         <pointsize>11</pointsize>
        </font>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color:#9ba4b4;
@@ -2881,6 +3044,9 @@ border-color: #626470;</string>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
       <property name="styleSheet">
        <string notr="true"/>
       </property>
@@ -2899,6 +3065,9 @@ border-color: #626470;</string>
          <height>341</height>
         </rect>
        </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
        <layout class="QGridLayout" name="calc_plot_1_grid_layout">
         <property name="sizeConstraint">
          <enum>QLayout::SetDefaultConstraint</enum>
@@ -2911,6 +3080,9 @@ border-color: #626470;</string>
             <weight>50</weight>
             <bold>false</bold>
            </font>
+          </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
           </property>
           <property name="styleSheet">
            <string notr="true">color: #9ba4b4;</string>
@@ -2938,6 +3110,9 @@ border-color: #626470;</string>
             <bold>false</bold>
            </font>
           </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
           <property name="styleSheet">
            <string notr="true">color: #24262b;</string>
           </property>
@@ -2964,6 +3139,9 @@ border-color: #626470;</string>
             <bold>false</bold>
            </font>
           </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
           <property name="styleSheet">
            <string notr="true">color: #9ba4b4;</string>
           </property>
@@ -2986,6 +3164,9 @@ border-color: #626470;</string>
           <property name="enabled">
            <bool>false</bool>
           </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
        </layout>
@@ -2999,6 +3180,9 @@ border-color: #626470;</string>
         <width>631</width>
         <height>341</height>
        </rect>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -3015,6 +3199,9 @@ border-color: #626470;</string>
          <height>311</height>
         </rect>
        </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
        <layout class="QGridLayout" name="calc_plot_3_grid_layout">
         <item row="6" column="1">
          <widget class="QLabel" name="calc_plot_3_label">
@@ -3024,6 +3211,9 @@ border-color: #626470;</string>
             <weight>50</weight>
             <bold>false</bold>
            </font>
+          </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
           </property>
           <property name="styleSheet">
            <string notr="true">color: #24262b;</string>
@@ -3044,6 +3234,9 @@ border-color: #626470;</string>
             <weight>50</weight>
             <bold>false</bold>
            </font>
+          </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
           </property>
           <property name="styleSheet">
            <string notr="true">color: #9ba4b4;</string>
@@ -3071,6 +3264,9 @@ border-color: #626470;</string>
             <bold>false</bold>
            </font>
           </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
           <property name="styleSheet">
            <string notr="true">color: #9ba4b4;</string>
           </property>
@@ -3093,6 +3289,9 @@ border-color: #626470;</string>
           <property name="enabled">
            <bool>true</bool>
           </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
        </layout>
@@ -3110,6 +3309,9 @@ border-color: #626470;</string>
         <font>
          <pointsize>10</pointsize>
         </font>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
        </property>
        <property name="text">
         <string>Cursor position</string>
@@ -3131,6 +3333,9 @@ border-color: #626470;</string>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
       </property>
@@ -3146,6 +3351,9 @@ border-color: #626470;</string>
          <height>341</height>
         </rect>
        </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
        <layout class="QGridLayout" name="calc_plot_1_2_grid_layout">
         <property name="sizeConstraint">
          <enum>QLayout::SetDefaultConstraint</enum>
@@ -3158,6 +3366,9 @@ border-color: #626470;</string>
             <weight>50</weight>
             <bold>false</bold>
            </font>
+          </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
           </property>
           <property name="styleSheet">
            <string notr="true">color: #24262b;</string>
@@ -3181,6 +3392,9 @@ border-color: #626470;</string>
             <weight>50</weight>
             <bold>false</bold>
            </font>
+          </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
           </property>
           <property name="styleSheet">
            <string notr="true">color: #9ba4b4;</string>
@@ -3208,6 +3422,9 @@ border-color: #626470;</string>
             <bold>false</bold>
            </font>
           </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
           <property name="styleSheet">
            <string notr="true">color: #24262b;</string>
           </property>
@@ -3230,6 +3447,9 @@ border-color: #626470;</string>
             <weight>50</weight>
             <bold>false</bold>
            </font>
+          </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
           </property>
           <property name="styleSheet">
            <string notr="true">color: #9ba4b4;</string>
@@ -3260,6 +3480,9 @@ border-color: #626470;</string>
             <bold>false</bold>
            </font>
           </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
           <property name="styleSheet">
            <string notr="true">color: #9ba4b4;</string>
           </property>
@@ -3286,6 +3509,9 @@ border-color: #626470;</string>
             <bold>false</bold>
            </font>
           </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
           <property name="styleSheet">
            <string notr="true">color: #9ba4b4;</string>
           </property>
@@ -3308,12 +3534,18 @@ border-color: #626470;</string>
           <property name="enabled">
            <bool>false</bool>
           </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item row="6" column="1">
          <widget class="PlotWidget" name="calc_plot_2_combo" native="true">
           <property name="enabled">
            <bool>false</bool>
+          </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -3333,6 +3565,9 @@ border-color: #626470;</string>
        <font>
         <pointsize>11</pointsize>
        </font>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color:#9ba4b4;
@@ -3360,6 +3595,9 @@ border-color: #626470;</string>
         <pointsize>11</pointsize>
        </font>
       </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color:#9ba4b4;
 color:white;
@@ -3386,6 +3624,9 @@ border-color: #626470;</string>
         <pointsize>11</pointsize>
        </font>
       </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color:#9ba4b4;
 color:white;
@@ -3411,6 +3652,9 @@ border-color: #626470;</string>
        <font>
         <pointsize>11</pointsize>
        </font>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color:#9ba4b4;
@@ -3445,6 +3689,11 @@ border-color: #626470;</string>
    <header>pyqtgraph</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>GraphicsLayoutWidget</class>
+   <extends>QGraphicsView</extends>
+   <header>pyqtgraph</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>detector_gain_input</tabstop>
@@ -3452,10 +3701,6 @@ border-color: #626470;</string>
   <tabstop>detector_integration_time_input</tabstop>
   <tabstop>detector_width_input</tabstop>
   <tabstop>detector_height_input</tabstop>
-  <tabstop>image_scale_overview_input</tabstop>
-  <tabstop>image_scale_cropped_input</tabstop>
-  <tabstop>image_crop_box</tabstop>
-  <tabstop>image_camera_no_input</tabstop>
   <tabstop>spectrum_rotation_global_input</tabstop>
   <tabstop>spectrum_rotation_spectrum_input</tabstop>
   <tabstop>spectrum_start_x_input</tabstop>

@@ -33,8 +33,9 @@ import scipy.io as sio
 from pyqtgraph import PlotWidget, plot
 import pyqtgraph as pg
 import pyqtgraph.exporters
-
-
+import pyqtgraph.ptime as ptime
+from pyqtgraph.Qt import QtCore, QtGui
+import qimage2ndarray
 # import Opencv module
 import cv2
 from ui_main_window import *
@@ -50,7 +51,6 @@ class MainWindow(QWidget):
         self.ui = Ui_Form()
         self.ui.setupUi(self)
         #data_stream_to_thread = pyqtSignal(int)
-
         # Read acquisition settings from spectrometer conf file if available
         self.read_from_file = False
         # initial GUI params
@@ -60,6 +60,7 @@ class MainWindow(QWidget):
 
         self.plot_acquisition_mode = 'experiment'
         self.read_acquisition_input_form()
+        self.setup_imaging()
         self.setup_containers()
         self.setup_plots()
         self.setup_gui_signals()
@@ -104,8 +105,36 @@ class MainWindow(QWidget):
         self.spectrometer.stop()
         self.spectrometer.quit()
 
-    def update_image(self, img = ''):
-        self.ui.image_label.setPixmap(img)
+
+    def setup_imaging(self):
+        # Overview image
+        self.ui.image_overview_view.setWindowTitle('pyqtgraph example: ImageItem')
+        self.overview_view = self.ui.image_overview_view.addViewBox()
+        self.overview_view.setAspectLocked(True)
+        self.overview_image = pg.ImageItem(border='w')
+        #self.overview_view.setBackgroundColor("#f1f6f9")
+        #self.overview_view.setBorder(color="#8d93ab", width=0, style=QtCore.Qt.SolidLine)
+        self.overview_view.invertY()
+        self.overview_view.addItem(self.overview_image)
+        self.overview_image.rotate(90)
+
+        # Overview image
+        self.ui.image_cropped_view.setWindowTitle('pyqtgraph example: ImageItem')
+        self.cropped_view = self.ui.image_cropped_view.addViewBox()
+        self.cropped_view.setAspectLocked(True)
+        self.cropped_image = pg.ImageItem(border='w')
+        self.cropped_view.invertY()
+        self.cropped_view.addItem(self.cropped_image)
+        self.cropped_image.rotate(90)
+
+
+    def update_overview_image(self, img = ''):
+        self.overview_view.enableAutoRange(True)
+        self.overview_image.setImage(img)
+
+    def update_cropped_image(self, img = ''):
+        self.overview_view.enableAutoRange(True)
+        self.cropped_image.setImage(img)
 
     def setup_containers(self):
         # Setup data storage containers
@@ -123,7 +152,8 @@ class MainWindow(QWidget):
 
     def setup_thread_signals(self):
         # show image in img_label
-        self.spectrometer.image_stream.connect(self.update_image)
+        self.spectrometer.image_overview_stream.connect(self.update_overview_image)
+        self.spectrometer.image_cropped_stream.connect(self.update_cropped_image)
         self.spectrometer.raw_spectrum_stream.connect(self.raw_spectrum_recieved)
         self.spectrometer.dark_spectrum_stream.connect(self.dark_spectrum_recieved)
         self.spectrometer.emission_spectrum_stream.connect(self.emission_spectrum_recieved)
@@ -377,11 +407,8 @@ class MainWindow(QWidget):
         self.ui.spectrum_stop_x_input.returnPressed.connect(lambda: self.restart_acquisition(calibration_compromised = True))
         self.ui.spectrum_line_input.returnPressed.connect(lambda: self.restart_acquisition(calibration_compromised = True))
         self.ui.spectrum_lines_input.returnPressed.connect(lambda: self.restart_acquisition(calibration_compromised = True))
-
-        self.ui.image_scale_overview_input.returnPressed.connect(self.restart_acquisition)
-        self.ui.image_scale_cropped_input.returnPressed.connect(self.restart_acquisition)
-        self.ui.image_camera_no_input.returnPressed.connect(self.restart_acquisition)
-        self.ui.image_crop_box.clicked.connect(self.restart_acquisition)
+        self.ui.image_downsampling_overview_input.returnPressed.connect(lambda: self.restart_acquisition(calibration_compromised = True))
+        self.ui.image_camera_no_input.returnPressed.connect(lambda: self.restart_acquisition(calibration_compromised = True))
 
 
 
@@ -418,11 +445,10 @@ class MainWindow(QWidget):
 
 
         # GET CURSOR DATA FROM FRAMES/PLOTS
-        #proxy = pg.SignalProxy(self.ui.raw_plot.scene().sigMouseMoved, rateLimit=60, slot=self.cursor_in_plot)
-        #pg.SignalProxy(self.ui.raw_plot.scene().sigMouseMoved, rateLimit=60, slot=lambda: print('hello'))
+        self.ui.image_overview_view.scene().sigMouseMoved.connect(self.cursor_in_overview_image)
         self.ui.raw_plot.scene().sigMouseMoved.connect(self.cursor_in_raw_plot)
-
         self.ui.calc_plot_3.scene().sigMouseMoved.connect(self.cursor_in_calc_plot_3)
+
 
         # EXPERIMENT CONTROLS
         # MENU
@@ -482,7 +508,8 @@ class MainWindow(QWidget):
             self.ui.acquisition_button.setStyleSheet("border-bottom-width: 2px;background-color:#14274e; color:#f1f6f9; border-radius: 0px;border-style: solid;border-color: #f1f6f9;font-family: helvetica;")
             self.ui.calibration_button.setStyleSheet("border-bottom-width: 0px;background-color:#14274e; color:#f1f6f9; border-radius: 0px;border-style: solid;border-color: #f1f6f9;font-family: helvetica;")
             self.ui.experiment_button.setStyleSheet("border-bottom-width: 0px;background-color:#14274e; color:#f1f6f9; border-radius: 0px;border-style: solid;border-color: #f1f6f9;font-family: helvetica;")
-            self.ui.image_label.show()
+            self.ui.image_overview_view.show()
+            self.ui.image_cropped_view.show()
             self.ui.main_menu_calibration_tab.hide()
             self.ui.side_plots_frame.hide()
 
@@ -491,7 +518,8 @@ class MainWindow(QWidget):
             self.ui.acquisition_button.setStyleSheet("border-bottom-width: 0px;background-color:#14274e; color:#f1f6f9; border-radius: 0px;border-style: solid;border-color: #f1f6f9;font-family: helvetica;")
             self.ui.calibration_button.setStyleSheet("border-bottom-width: 2px;background-color:#14274e; color:#f1f6f9; border-radius: 0px;border-style: solid;border-color: #f1f6f9;font-family: helvetica;")
             self.ui.experiment_button.setStyleSheet("border-bottom-width: 0px;background-color:#14274e; color:#f1f6f9; border-radius: 0px;border-style: solid;border-color: #f1f6f9;font-family: helvetica;")
-            self.ui.image_label.hide()
+            self.ui.image_overview_view.hide()
+            self.ui.image_cropped_view.hide()
             self.ui.main_menu_calibration_tab.show()
             self.ui.side_plots_frame.show()
             self.clear_spectra()
@@ -502,7 +530,7 @@ class MainWindow(QWidget):
             self.ui.acquisition_button.setStyleSheet("border-bottom-width: 0px;background-color:#14274e; color:#f1f6f9; border-radius: 0px;border-style: solid;border-color: #f1f6f9;font-family: helvetica;")
             self.ui.calibration_button.setStyleSheet("border-bottom-width: 0px;background-color:#14274e; color:#f1f6f9; border-radius: 0px;border-style: solid;border-color: #f1f6f9;font-family: helvetica;")
             self.ui.experiment_button.setStyleSheet("border-bottom-width: 2px;background-color:#14274e; color:#f1f6f9; border-radius: 0px;border-style: solid;border-color: #f1f6f9;font-family: helvetica;")
-            self.ui.image_label.hide()
+            self.ui.image_overview_view.hide()
             self.ui.main_menu_calibration_tab.show()
             self.ui.side_plots_frame.show()
             self.clear_spectra()
@@ -759,18 +787,11 @@ class MainWindow(QWidget):
         self.no_of_lines = config['SpectrometerConfig'].getint('no_of_lines')
 
         # Image
-        self.scale_overview = config['SpectrometerConfig'].getint('scale_overview')
-        self.scale_cropped = config['SpectrometerConfig'].getint('scale_cropped')
-        self.crop = config['SpectrometerConfig'].getboolean('crop')
-        if(self.crop):
-            self.scale = self.scale_cropped
-        else:
-            self.scale = self.scale_overview
         self.cam_no = config['SpectrometerConfig'].getint('cam_no')
 
 
         #if(config['SpectrometerConfig'].getboolean('pixel_wavelength_calibrated')):
-        if(1):
+        if(config.has_section('PixelWavelengthCalibration')):
             pixel_wavelength_calibration_pixels = self.string_to_numpy_array(config['PixelWavelengthCalibration']['pixel_wavelength_points_pixels'])
             pixel_wavelength_calibration_wavelengths = self.string_to_numpy_array(config['PixelWavelengthCalibration']['pixel_wavelength_points_wavelengths'])
             self.pixels = self.string_to_numpy_array(config['PixelWavelengthCalibration']['pixels'])
@@ -784,7 +805,7 @@ class MainWindow(QWidget):
             self.pixel_wavelength_calibrated = True
             self.set_pixel_wavelength_coeffs_labels(A = float('%.3g' % coeffs[0]), B = float('%.3g' % coeffs[1]), C = float('%.3g' % coeffs[2]), D = float('%.3g' % coeffs[3]))
 
-            if(1):
+            if(config.has_section('SpectralSensitivityCalibration')):
                 black_body_temperature = config['SpectralSensitivityCalibration'].getfloat('black_body_temperature')
                 intensities_uncorrected = self.string_to_numpy_array(config['SpectralSensitivityCalibration']['uncorrected_intensity_data'])
                 self.spectral_sensitivity = self.string_to_numpy_array(config['SpectralSensitivityCalibration']['spectral_sensitivity'])
@@ -845,9 +866,7 @@ class MainWindow(QWidget):
                                         'no_of_lines' : self.no_of_lines,
                                         'start_x' : self.start_x,
                                         'stop_x' : self.stop_x,
-                                        'scale_overview' : self.scale_overview,
-                                        'scale_cropped' : self.scale_cropped,
-                                        'crop' : self.crop,
+                                        'downsampling' : self.downsampling,
                                         'cam_no' : self.cam_no}
 
     def update_spectrometer_settings(self):
@@ -862,9 +881,7 @@ class MainWindow(QWidget):
         self.spectrometer.set_no_of_lines(self.no_of_lines)
         self.spectrometer.set_start_x(self.start_x)
         self.spectrometer.set_stop_x(self.stop_x)
-        self.spectrometer.set_scale_overview(self.scale_overview)
-        self.spectrometer.set_scale_cropped(self.scale_cropped)
-        self.spectrometer.set_crop(self.crop)
+        self.spectrometer.set_downsampling(self.downsampling)
         self.spectrometer.set_cam_no(self.cam_no)
         self.spectrometer.apply()
 
@@ -881,22 +898,24 @@ class MainWindow(QWidget):
         self.height = int(re.sub("\D","",self.ui.detector_height_input.text()))
 
         # Spectrum config
-        self.rotation_global = float(re.sub("\D","",self.ui.spectrum_rotation_global_input.text()))
-        self.rotation_spectrum = float(re.sub("\D","",self.ui.spectrum_rotation_spectrum_input.text()))
+        self.rotation_global = self.float_from_string(self.ui.spectrum_rotation_global_input.text())
+        self.rotation_spectrum = self.float_from_string(self.ui.spectrum_rotation_spectrum_input.text())
+        print(self.rotation_spectrum)
         self.start_x = int(re.sub("\D","",self.ui.spectrum_start_x_input.text()))
         self.stop_x = int(re.sub("\D","",self.ui.spectrum_stop_x_input.text()))
         self.central_line = int(re.sub("\D","",self.ui.spectrum_line_input.text()))
         self.no_of_lines = int(re.sub("\D","",self.ui.spectrum_lines_input.text()))
 
         # Image
-        self.scale_overview = int(re.sub("\D","",self.ui.image_scale_overview_input.text()))
-        self.scale_cropped = int(re.sub("\D","",self.ui.image_scale_cropped_input.text()))
-        self.crop = bool(self.ui.image_crop_box.isChecked())
-        if(self.crop):
-            self.scale = self.scale_cropped
-        else:
-            self.scale = self.scale_overview
+        self.downsampling = self.float_from_string(self.ui.image_downsampling_overview_input.text())
         self.cam_no = int(re.sub("\D","",self.ui.image_camera_no_input.text()))
+
+    def float_from_string(self, string):
+        numeric_const_pattern = '[-+]? (?: (?: \d* \. \d+ ) | (?: \d+ \.? ) )(?: [Ee] [+-]? \d+ ) ?'
+        rx = re.compile(numeric_const_pattern, re.VERBOSE)
+        float_found = rx.findall(string)
+
+        return float(float_found[0])
 
     def update_text_in_acquisition_input_form(self):
         self.ui.spectrometer_name_input.setText(self.spectrometer_name)
@@ -909,7 +928,6 @@ class MainWindow(QWidget):
         self.ui.detector_height_input.setText(str(self.height))
 
         # Spectrum config
-        print("update_text_in_acquisition_input_form" + str(self.rotation_global))
         self.ui.spectrum_rotation_global_input.setText(str(self.rotation_global))
         self.ui.spectrum_rotation_spectrum_input.setText(str(self.rotation_spectrum))
         self.ui.spectrum_start_x_input.setText(str(self.start_x))
@@ -918,13 +936,7 @@ class MainWindow(QWidget):
         self.ui.spectrum_lines_input.setText(str(self.no_of_lines))
 
         # Image
-        self.ui.image_scale_overview_input.setText(str(self.scale_overview))
-        self.ui.image_scale_cropped_input.setText(str(self.scale_cropped))
-
-        if(self.crop):
-            self.ui.image_crop_box.setChecked(True)
-        else:
-            self.ui.image_crop_box.setChecked(False)
+        self.ui.image_downsampling_overview_input.setText(str(self.downsampling))
         self.ui.image_camera_no_input.setText(str(self.cam_no))
 
     def set_wavelengths(self):
@@ -945,6 +957,15 @@ class MainWindow(QWidget):
             self.ui.calc_plot_2_combo_lambda_label.setText('Pixel #')
             self.ui.calc_plot_3_lambda_label.setText('Pixel #')
 
+    def cursor_in_overview_image(self,evt):
+        mousePoint = self.overview_view.mapSceneToView(evt)
+        if(int(np.round(mousePoint.x(),1)+self.width*self.downsampling)>0
+        and int(np.round(mousePoint.x(),1)+self.width*self.downsampling)<self.width*self.downsampling
+        and int(np.round(mousePoint.y(),1)) > 0
+        and round(mousePoint.y(),1) <self.height*self.downsampling):
+            x_val = (1/self.downsampling)*int(np.round(mousePoint.x(),1)+self.width/2)
+            y_val = (1/self.downsampling)*int(np.round(mousePoint.y(),1))
+            self.ui.cursor_overview_label.setText("x: {}, y: {}".format(x_val, y_val))
 
     def cursor_in_raw_plot(self,evt):
         mousePoint = self.vb_raw.mapSceneToView(evt)
