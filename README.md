@@ -17,7 +17,7 @@ qimage2ndarray==1.8.3\
 matplotlib==3.1.0\
 opencv_contrib_python==4.1.2.30\
 pyqtgraph==0.11.0\
-PyQt5==5.15.1\
+PyQt5==5.15.1
 
 ### USAGE
 #### Startup
