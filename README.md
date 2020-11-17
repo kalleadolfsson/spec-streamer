@@ -2,6 +2,7 @@
 
 ### GOAL
 The primary goal of the project is to develop an intuitive software that allows for advanced spectral analysis with USB-camera-based spectrometers.
+The project is related to the website spec-prints.com which contains instructions of how to build spectrometers from low cost materials.
 
 ### CONTRIBUTION
 
