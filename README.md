@@ -22,9 +22,9 @@ PyQt5==5.15.1\
 ### USAGE
 #### Startup
 Run command:
-´´´python
+```python
 python3 main_window.py
-´´´
+```
 
 A prerequisite for the software to start, is that a USB-camera device with opencv-compatibility is connected. Although compatibility depends primarily on the camera device used, Windows and Linux appears to have better openCV support than Mac (where some openCV functions are not supported).
 
