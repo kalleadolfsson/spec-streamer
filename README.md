@@ -21,6 +21,11 @@ PyQt5==5.15.1\
 
 ### USAGE
 #### Startup
+Run command:
+´´´python
+python3 main_window.py
+´´´
+
 A prerequisite for the software to start, is that a USB-camera device with opencv-compatibility is connected. Although compatibility depends primarily on the camera device used, Windows and Linux appears to have better openCV support than Mac (where some openCV functions are not supported).
 
 Connecting a USB camera (or if there is an integrated USB-camera available) is normally all it takes for the software to start up and serve continuous video stream and a line plot. If the software is percieved as slow/non-responsive it is likely due to too large images being served in the video stream and this can be reduced (without reducing spectral resolution) by reducing the downsampling parameter.
