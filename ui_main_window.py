@@ -127,7 +127,7 @@ class Ui_Form(object):
         self.spectrometer_name_label.setStyleSheet("color: #24262b;")
         self.spectrometer_name_label.setObjectName("spectrometer_name_label")
         self.spectrometer_name_input = QtWidgets.QLineEdit(self.acquisition_frame)
-        self.spectrometer_name_input.setGeometry(QtCore.QRect(326, 181, 181, 21))
+        self.spectrometer_name_input.setGeometry(QtCore.QRect(312, 181, 211, 21))
         self.spectrometer_name_input.setMouseTracking(True)
         self.spectrometer_name_input.setStyleSheet("background-color: white;\n"
 "border-radius: 1px;\n"
@@ -495,7 +495,9 @@ class Ui_Form(object):
 "border-width: 1px;\n"
 "border-color: #8d93ab;\n"
 "background-color: #f1f6f9;\n"
-"padding: 0px;")
+"padding: 0px;\n"
+"margin: 0px;")
+        self.image_overview_view.setLineWidth(0)
         self.image_overview_view.setObjectName("image_overview_view")
         self.image_cropped_view = GraphicsLayoutWidget(self.main_menu_acquisition_tab)
         self.image_cropped_view.setGeometry(QtCore.QRect(680, 450, 540, 260))
@@ -508,7 +510,7 @@ class Ui_Form(object):
 "background-color: #f1f6f9;")
         self.image_cropped_view.setObjectName("image_cropped_view")
         self.gridLayoutWidget_2 = QtWidgets.QWidget(self.main_menu_acquisition_tab)
-        self.gridLayoutWidget_2.setGeometry(QtCore.QRect(355, 90, 171, 61))
+        self.gridLayoutWidget_2.setGeometry(QtCore.QRect(355, 88, 171, 61))
         self.gridLayoutWidget_2.setMouseTracking(True)
         self.gridLayoutWidget_2.setObjectName("gridLayoutWidget_2")
         self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget_2)
@@ -915,6 +917,7 @@ class Ui_Form(object):
 "")
         self.calibration_menu_pixel_wavelength_button.setObjectName("calibration_menu_pixel_wavelength_button")
         self.calibration_menu_spectral_sensitivity_button = QtWidgets.QPushButton(self.main_menu_calibration_tab)
+        self.calibration_menu_spectral_sensitivity_button.setEnabled(False)
         self.calibration_menu_spectral_sensitivity_button.setGeometry(QtCore.QRect(290, 64, 141, 32))
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -1679,7 +1682,7 @@ class Ui_Form(object):
         self.scrollArea.setWidget(self.container_widget)
 
         self.retranslateUi(Form)
-        self.main_menu_tab.setCurrentIndex(0)
+        self.main_menu_tab.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(Form)
         Form.setTabOrder(self.detector_gain_input, self.detector_averages_input)
         Form.setTabOrder(self.detector_averages_input, self.detector_integration_time_input)

@@ -194,7 +194,7 @@ border: 0px;</string>
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <property name="tabBarAutoHide">
       <bool>true</bool>
@@ -308,9 +308,9 @@ border-color: #626470;</string>
        <widget class="QLineEdit" name="spectrometer_name_input">
         <property name="geometry">
          <rect>
-          <x>326</x>
+          <x>312</x>
           <y>181</y>
-          <width>181</width>
+          <width>211</width>
           <height>21</height>
          </rect>
         </property>
@@ -1083,7 +1083,11 @@ border-style: solid;
 border-width: 1px;
 border-color: #8d93ab;
 background-color: #f1f6f9;
-padding: 0px;</string>
+padding: 0px;
+margin: 0px;</string>
+       </property>
+       <property name="lineWidth">
+        <number>0</number>
        </property>
       </widget>
       <widget class="GraphicsLayoutWidget" name="image_cropped_view">
@@ -1109,7 +1113,7 @@ background-color: #f1f6f9;</string>
        <property name="geometry">
         <rect>
          <x>355</x>
-         <y>90</y>
+         <y>88</y>
          <width>171</width>
          <height>61</height>
         </rect>
@@ -1993,6 +1997,9 @@ border-style:solid;
        </property>
       </widget>
       <widget class="QPushButton" name="calibration_menu_spectral_sensitivity_button">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>290</x>

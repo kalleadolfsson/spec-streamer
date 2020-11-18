@@ -53,6 +53,7 @@ class MainWindow(QWidget):
         #data_stream_to_thread = pyqtSignal(int)
         # Read acquisition settings from spectrometer conf file if available
         self.read_from_file = False
+        self.resolution_checked = False
         # initial GUI params
 
         self.spectrometer = Spectrometer()
@@ -82,6 +83,7 @@ class MainWindow(QWidget):
             self.spectral_sensitivity_calibrated = False
         self.pause_acquisition()
         self.read_acquisition_input_form()
+        self.update_text_in_acquisition_input_form()
         self.set_wavelengths()
         self.update_spectrometer_settings()
         self.setup_plots()
@@ -107,13 +109,16 @@ class MainWindow(QWidget):
 
 
     def setup_imaging(self):
+
         # Overview image
         self.ui.image_overview_view.setWindowTitle('pyqtgraph example: ImageItem')
-        self.overview_view = self.ui.image_overview_view.addViewBox()
+        self.overview_view = self.ui.image_overview_view.addViewBox(border=None)
         self.overview_view.setAspectLocked(True)
         self.overview_image = pg.ImageItem(border='w')
+        #border=None
         #self.overview_view.setBackgroundColor("#f1f6f9")
         #self.overview_view.setBorder(color="#8d93ab", width=0, style=QtCore.Qt.SolidLine)
+
         self.overview_view.invertY()
         self.overview_view.addItem(self.overview_image)
         self.overview_image.rotate(90)
@@ -131,6 +136,14 @@ class MainWindow(QWidget):
     def update_overview_image(self, img = ''):
         self.overview_view.enableAutoRange(True)
         self.overview_image.setImage(img)
+        if(self.resolution_checked == False):
+            if(self.height > img.shape[0]/self.downsampling):
+                self.height = int(round(img.shape[0]/self.downsampling))
+            if(self.width > img.shape[1]/self.downsampling):
+                self.width = int(round(img.shape[1]/self.downsampling))
+            self.resolution_checked = True
+            self.update_text_in_acquisition_input_form()
+
 
     def update_cropped_image(self, img = ''):
         self.overview_view.enableAutoRange(True)
@@ -894,21 +907,57 @@ class MainWindow(QWidget):
         self.integration_time = int(re.sub("\D","",self.ui.detector_integration_time_input.text()))
         self.averages = int(re.sub("\D","",self.ui.detector_averages_input.text()))
         self.gain = int(re.sub("\D","",self.ui.detector_gain_input.text()))
-        self.width = int(re.sub("\D","",self.ui.detector_width_input.text()))
-        self.height = int(re.sub("\D","",self.ui.detector_height_input.text()))
+
+        width_temp = int(re.sub("\D","",self.ui.detector_width_input.text()))
+        height_temp = int(re.sub("\D","",self.ui.detector_height_input.text()))
+        if(width_temp != self.width or height_temp != self.height ):
+            self.resolution_checked = False
+        self.width = width_temp
+        self.height = height_temp
 
         # Spectrum config
         self.rotation_global = self.float_from_string(self.ui.spectrum_rotation_global_input.text())
         self.rotation_spectrum = self.float_from_string(self.ui.spectrum_rotation_spectrum_input.text())
-        print(self.rotation_spectrum)
         self.start_x = int(re.sub("\D","",self.ui.spectrum_start_x_input.text()))
         self.stop_x = int(re.sub("\D","",self.ui.spectrum_stop_x_input.text()))
+
         self.central_line = int(re.sub("\D","",self.ui.spectrum_line_input.text()))
         self.no_of_lines = int(re.sub("\D","",self.ui.spectrum_lines_input.text()))
 
         # Image
         self.downsampling = self.float_from_string(self.ui.image_downsampling_overview_input.text())
         self.cam_no = int(re.sub("\D","",self.ui.image_camera_no_input.text()))
+
+        self.check_limits()
+
+    def check_limits(self):
+        if(self.no_of_lines > self.height-60):
+            self.no_of_lines = int(round(self.height-60))
+
+        if(self.start_x >= self.stop_x):
+            self.start_x = self.stop_x-2
+        if(self.stop_x >= self.width):
+            self.stop_x = self.width-2
+            self.start_x = self.stop_x-2
+        if(self.start_x <= 0):
+            self.start_x = 2
+            self.stop_x = self.start_x-2
+
+        keep_trying = True
+        while(keep_trying == True):
+            checks_out = True
+            if(self.central_line + round(self.no_of_lines/2)  >= self.height):
+                checks_out = False
+                self.central_line = self.central_line - 1
+            if(self.central_line - round(self.no_of_lines/2)  <= 0):
+                checks_out = False
+                self.central_line = self.central_line + 1
+            if(checks_out == True):
+                keep_trying = False
+
+        if(self.downsampling >1):
+            self.downsampling = 1
+
 
     def float_from_string(self, string):
         numeric_const_pattern = '[-+]? (?: (?: \d* \. \d+ ) | (?: \d+ \.? ) )(?: [Ee] [+-]? \d+ ) ?'

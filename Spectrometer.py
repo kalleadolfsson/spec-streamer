@@ -49,8 +49,6 @@ class Spectrometer(QThread):
     def run(self):
         self.setup()
         self.cap = cv2.VideoCapture(self.cam_no)
-        # The following commands does not seems to work on all platforms (although I haven't found alternatives)
-        # (worked for me on Windows systems, not on Mac OS)
         self.set_video_capture_settings()
 
         while(True):
@@ -75,11 +73,6 @@ class Spectrometer(QThread):
 
             if(self.rotation_global!= 0):
                 # Global rotation (center image is center of rotation)
-                """
-                M = cv2.getRotationMatrix2D((round((self.width)/2),round((self.height)/2)) , self.rotation_global, 1.0)
-                (h, w) = image.shape[:2]
-                image = cv2.warpAffine(image, M, (w, h))
-                """
                 image = imutils.rotate(image, self.rotation_global)
 
             if(self.rotation_spectrum!= 0):
@@ -157,9 +150,9 @@ class Spectrometer(QThread):
             image_cropped = image[self.central_line-round(self.no_of_lines/2)-30:self.central_line+round(self.no_of_lines/2)+30, self.width-self.stop_x+5:self.width-self.start_x-5]
 
 
-            # Send QImage as signal
+            # Send numpy array as signal
             self.image_overview_stream.emit(image_overview_downsampled)
-            # Send QImage as signal
+            # Send numpy array as signal
             self.image_cropped_stream.emit(image_cropped)
 
     def downsample_image(self, image):
@@ -198,12 +191,14 @@ class Spectrometer(QThread):
         # The following commands does not seems to work on all platforms (although I haven't found alternatives)
         # (worked for me on Windows systems, not on Mac OS)
         self.cap.set(cv2.CAP_PROP_AUTO_EXPOSURE, 0.25)      # 0.75 -> Auto exposure, 0.25 -> Manual exposure
+        
         self.cap.set(cv2.CAP_PROP_EXPOSURE,-1)
         self.cap.set(cv2.CAP_PROP_GAIN, 1)
 
         # set width and height
         self.cap.set(3,self.width)
         self.cap.set(4,self.height)
+        print('set Video')
 
     @pyqtSlot()
     def terminate(self):
@@ -215,12 +210,16 @@ class Spectrometer(QThread):
 
     @pyqtSlot()
     def unpause(self):
+        if(self.stream_open):
+            self.set_video_capture_settings()
         self.stream = True
+
 
     @pyqtSlot()
     def apply(self):
         self.setup()
         print('updated')
+
     # Set acquisition properties
     @pyqtSlot(int)
     def set_integration_time(self, integration_time = 20):
