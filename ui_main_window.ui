@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1323</width>
-    <height>849</height>
+    <width>1222</width>
+    <height>782</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
   <widget class="QScrollArea" name="scrollArea">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>-60</x>
      <y>0</y>
      <width>1330</width>
      <height>840</height>
@@ -70,10 +70,10 @@ border-width: 0px;</string>
      </property>
      <property name="geometry">
       <rect>
-       <x>27</x>
+       <x>30</x>
        <y>67</y>
        <width>1291</width>
-       <height>781</height>
+       <height>721</height>
       </rect>
      </property>
      <property name="sizePolicy">
@@ -194,7 +194,7 @@ border: 0px;</string>
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <property name="tabBarAutoHide">
       <bool>true</bool>
@@ -206,7 +206,7 @@ border: 0px;</string>
       <widget class="QPushButton" name="load_acquisition_settings_button">
        <property name="geometry">
         <rect>
-         <x>42</x>
+         <x>94</x>
          <y>20</y>
          <width>71</width>
          <height>25</height>
@@ -235,7 +235,7 @@ border-color: #626470;</string>
       <widget class="QPushButton" name="save_acquisition_settings_button">
        <property name="geometry">
         <rect>
-         <x>114</x>
+         <x>166</x>
          <y>20</y>
          <width>71</width>
          <height>25</height>
@@ -264,8 +264,8 @@ border-color: #626470;</string>
       <widget class="QFrame" name="acquisition_frame">
        <property name="geometry">
         <rect>
-         <x>2</x>
-         <y>70</y>
+         <x>51</x>
+         <y>55</y>
          <width>541</width>
          <height>351</height>
         </rect>
@@ -1093,10 +1093,10 @@ margin: 0px;</string>
       <widget class="GraphicsLayoutWidget" name="image_cropped_view">
        <property name="geometry">
         <rect>
-         <x>680</x>
-         <y>450</y>
-         <width>540</width>
-         <height>260</height>
+         <x>679</x>
+         <y>440</y>
+         <width>541</width>
+         <height>191</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -1112,8 +1112,8 @@ background-color: #f1f6f9;</string>
       <widget class="QWidget" name="gridLayoutWidget_2">
        <property name="geometry">
         <rect>
-         <x>355</x>
-         <y>88</y>
+         <x>404</x>
+         <y>73</y>
          <width>171</width>
          <height>61</height>
         </rect>
@@ -1210,8 +1210,8 @@ border-width:0px,</string>
       <widget class="QFrame" name="calibration_flow_frame">
        <property name="geometry">
         <rect>
-         <x>43</x>
-         <y>80</y>
+         <x>93</x>
+         <y>57</y>
          <width>491</width>
          <height>331</height>
         </rect>
@@ -1972,8 +1972,8 @@ border-width: 0px;</string>
       <widget class="QPushButton" name="calibration_menu_pixel_wavelength_button">
        <property name="geometry">
         <rect>
-         <x>140</x>
-         <y>64</y>
+         <x>190</x>
+         <y>41</y>
          <width>141</width>
          <height>32</height>
         </rect>
@@ -2002,8 +2002,8 @@ border-style:solid;
        </property>
        <property name="geometry">
         <rect>
-         <x>290</x>
-         <y>64</y>
+         <x>340</x>
+         <y>41</y>
          <width>141</width>
          <height>32</height>
         </rect>
@@ -2028,8 +2028,8 @@ border-style:solid;</string>
       <widget class="QFrame" name="calibration_menu_frame">
        <property name="geometry">
         <rect>
-         <x>160</x>
-         <y>66</y>
+         <x>210</x>
+         <y>43</y>
          <width>241</width>
          <height>31</height>
         </rect>
@@ -2058,8 +2058,8 @@ border-style:solid;
       <widget class="QFrame" name="experiment_flow_frame">
        <property name="geometry">
         <rect>
-         <x>43</x>
-         <y>80</y>
+         <x>93</x>
+         <y>56</y>
          <width>491</width>
          <height>331</height>
         </rect>
@@ -2313,8 +2313,8 @@ padding: 10px;</string>
       <widget class="QFrame" name="experiment_menu_frame">
        <property name="geometry">
         <rect>
-         <x>163</x>
-         <y>60</y>
+         <x>213</x>
+         <y>36</y>
          <width>241</width>
          <height>31</height>
         </rect>
@@ -2334,8 +2334,8 @@ border-style:solid;
       <widget class="QPushButton" name="experiment_menu_emission_button">
        <property name="geometry">
         <rect>
-         <x>290</x>
-         <y>64</y>
+         <x>340</x>
+         <y>40</y>
          <width>113</width>
          <height>32</height>
         </rect>
@@ -2360,8 +2360,8 @@ border-style:solid;</string>
       <widget class="QPushButton" name="experiment_menu_transmission_button">
        <property name="geometry">
         <rect>
-         <x>168</x>
-         <y>64</y>
+         <x>218</x>
+         <y>40</y>
          <width>113</width>
          <height>32</height>
         </rect>
@@ -2389,9 +2389,9 @@ border-style:solid;
     <widget class="QFrame" name="main_header_frame">
      <property name="geometry">
       <rect>
-       <x>-7</x>
+       <x>53</x>
        <y>20</y>
-       <width>1331</width>
+       <width>1271</width>
        <height>91</height>
       </rect>
      </property>
@@ -2519,10 +2519,10 @@ font-family: helvetica;
     <widget class="QFrame" name="raw_plot_frame">
      <property name="geometry">
       <rect>
-       <x>16</x>
-       <y>510</y>
+       <x>66</x>
+       <y>486</y>
        <width>561</width>
-       <height>341</height>
+       <height>291</height>
       </rect>
      </property>
      <property name="mouseTracking">
@@ -2546,7 +2546,7 @@ border-width: 0px;</string>
         <x>5</x>
         <y>19</y>
         <width>541</width>
-        <height>311</height>
+        <height>261</height>
        </rect>
       </property>
       <property name="mouseTracking">
@@ -2700,7 +2700,7 @@ color:#9ba4b4;</string>
     <widget class="QLabel" name="spec_tools_label">
      <property name="geometry">
       <rect>
-       <x>1210</x>
+       <x>1190</x>
        <y>0</y>
        <width>141</width>
        <height>20</height>
@@ -2765,8 +2765,8 @@ font-family: helvetica;
     <widget class="QPushButton" name="save_raw_plot_txt_button">
      <property name="geometry">
       <rect>
-       <x>520</x>
-       <y>530</y>
+       <x>570</x>
+       <y>506</y>
        <width>41</width>
        <height>21</height>
       </rect>
@@ -2794,8 +2794,8 @@ border-color: #626470;</string>
     <widget class="QPushButton" name="save_raw_plot_png_button">
      <property name="geometry">
       <rect>
-       <x>477</x>
-       <y>530</y>
+       <x>527</x>
+       <y>506</y>
        <width>41</width>
        <height>21</height>
       </rect>
@@ -2823,10 +2823,10 @@ border-color: #626470;</string>
     <widget class="QFrame" name="side_plots_frame">
      <property name="geometry">
       <rect>
-       <x>670</x>
-       <y>130</y>
+       <x>640</x>
+       <y>120</y>
        <width>641</width>
-       <height>711</height>
+       <height>661</height>
       </rect>
      </property>
      <property name="mouseTracking">
@@ -2848,7 +2848,7 @@ border-width: 0px;</string>
       <property name="geometry">
        <rect>
         <x>3</x>
-        <y>5</y>
+        <y>-8</y>
         <width>631</width>
         <height>351</height>
        </rect>
@@ -2982,7 +2982,7 @@ border-width: 0px;</string>
       <property name="geometry">
        <rect>
         <x>583</x>
-        <y>17</y>
+        <y>4</y>
         <width>41</width>
         <height>21</height>
        </rect>
@@ -3011,7 +3011,7 @@ border-color: #626470;</string>
       <property name="geometry">
        <rect>
         <x>540</x>
-        <y>193</y>
+        <y>180</y>
         <width>41</width>
         <height>21</height>
        </rect>
@@ -3040,7 +3040,7 @@ border-color: #626470;</string>
       <property name="geometry">
        <rect>
         <x>3</x>
-        <y>15</y>
+        <y>2</y>
         <width>631</width>
         <height>341</height>
        </rect>
@@ -3183,9 +3183,9 @@ border-color: #626470;</string>
       <property name="geometry">
        <rect>
         <x>3</x>
-        <y>379</y>
+        <y>365</y>
         <width>631</width>
-        <height>341</height>
+        <height>291</height>
        </rect>
       </property>
       <property name="mouseTracking">
@@ -3203,7 +3203,7 @@ border-color: #626470;</string>
          <x>30</x>
          <y>20</y>
          <width>591</width>
-         <height>311</height>
+         <height>261</height>
         </rect>
        </property>
        <property name="mouseTracking">
@@ -3329,7 +3329,7 @@ border-color: #626470;</string>
       <property name="geometry">
        <rect>
         <x>3</x>
-        <y>5</y>
+        <y>-8</y>
         <width>631</width>
         <height>351</height>
        </rect>
@@ -3563,7 +3563,7 @@ border-color: #626470;</string>
       <property name="geometry">
        <rect>
         <x>583</x>
-        <y>400</y>
+        <y>386</y>
         <width>41</width>
         <height>21</height>
        </rect>
@@ -3592,7 +3592,7 @@ border-color: #626470;</string>
       <property name="geometry">
        <rect>
         <x>540</x>
-        <y>400</y>
+        <y>386</y>
         <width>41</width>
         <height>21</height>
        </rect>
@@ -3621,7 +3621,7 @@ border-color: #626470;</string>
       <property name="geometry">
        <rect>
         <x>540</x>
-        <y>17</y>
+        <y>4</y>
         <width>41</width>
         <height>21</height>
        </rect>
@@ -3650,7 +3650,7 @@ border-color: #626470;</string>
       <property name="geometry">
        <rect>
         <x>583</x>
-        <y>193</y>
+        <y>180</y>
         <width>41</width>
         <height>21</height>
        </rect>
