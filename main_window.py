@@ -1034,7 +1034,7 @@ class MainWindow(QWidget):
 
     # checks relevant checkbox to show user that a spectrum has been stored
     def setCheckBox(self, specCheck):
-        check_path = os.path.join('gui_images', "green_check.png")
+        check_path =  "green_check.png"#os.path.join('gui_images', "green_check.png")
         if(self.plot_acquisition_mode == 'experiment'):
             if(specCheck == 0):
                 self.ui.experiment_check_label_1.setPixmap(QtGui.QPixmap(check_path))
