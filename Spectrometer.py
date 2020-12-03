@@ -204,15 +204,12 @@ class Spectrometer(QThread):
         # The following commands does not seems to work on all platforms (although I haven't found alternatives)
         # (worked for me on Windows systems, not on Mac OS)
         self.cap.set(cv2.CAP_PROP_AUTO_EXPOSURE, 0.25)      # 0.75 -> Auto exposure, 0.25 -> Manual exposure
-<<<<<<< Updated upstream
         
         #self.cap.set(cv2.CAP_PROP_EXPOSURE,-1)
         #sself.cap.set(cv2.CAP_PROP_GAIN, 0)
-=======
 
         self.cap.set(cv2.CAP_PROP_EXPOSURE,-1)
         self.cap.set(cv2.CAP_PROP_GAIN, 1)
->>>>>>> Stashed changes
 
         # set width and height
         self.cap.set(3,self.width)
