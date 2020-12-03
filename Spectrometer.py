@@ -68,9 +68,22 @@ class Spectrometer(QThread):
             # read image in BGR format
             ret, image = self.cap.read()
 
-            # convert image to RGB format
-            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-
+            empty_image = True
+            attempts = 0
+            while(empty_image):
+                try:
+                    # convert image to RGB format
+                    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+                    empty_image = False
+                except:
+                    attempts = attempts + 1 
+                    print(str(attempts) + " attempts")
+                if(attempts > 20):
+                    print("Video connection failed")
+                    self.cap.release()
+                    self.run()
+                    break
+                    
             if(self.rotation_global!= 0):
                 # Global rotation (center image is center of rotation)
                 image = imutils.rotate(image, self.rotation_global)
@@ -192,8 +205,8 @@ class Spectrometer(QThread):
         # (worked for me on Windows systems, not on Mac OS)
         self.cap.set(cv2.CAP_PROP_AUTO_EXPOSURE, 0.25)      # 0.75 -> Auto exposure, 0.25 -> Manual exposure
         
-        self.cap.set(cv2.CAP_PROP_EXPOSURE,-1)
-        self.cap.set(cv2.CAP_PROP_GAIN, 1)
+        #self.cap.set(cv2.CAP_PROP_EXPOSURE,-1)
+        #sself.cap.set(cv2.CAP_PROP_GAIN, 0)
 
         # set width and height
         self.cap.set(3,self.width)
