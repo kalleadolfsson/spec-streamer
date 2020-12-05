@@ -168,7 +168,8 @@ class Calibration:
           data_header = data_header + "Row 3: Uncorrected intensity data\nRow 4: Spectral sensitivity\n"
           np.vstack([data, self.uncorrected_intensity_data])
           np.vstack([data, self.spectral_sensitivity])
-
-      joined_header = time_header+pixel_wavelength_header+spectral_sensitivity_header+data_header
+          joined_header = time_header+pixel_wavelength_header+spectral_sensitivity_header+data_header
+      else:
+          joined_header = time_header+pixel_wavelength_header+data_header
 
       np.savetxt(save_txt_path, data, fmt='%.2f', delimiter=',', header=joined_header)

@@ -309,8 +309,8 @@ class MainWindow(QWidget):
         self.ui.pixel_wavelength_list.takeItem(self.ui.pixel_wavelength_list.row(item))
 
     def add_pixel_wavelength_item(self):
-        pixel_temp = int(re.sub("\D","",self.ui.pixel_input.text()))
-        wavelength_temp = float(re.sub("\D","",self.ui.wavelength_input.text()))
+        pixel_temp = self.float_from_string(self.ui.pixel_input.text())
+        wavelength_temp = self.float_from_string(self.ui.wavelength_input.text())
         item = "{}                            {} ".format(pixel_temp, wavelength_temp)
         self.ui.pixel_wavelength_list.addItem(item)
         self.ui.pixel_input.setText('')
