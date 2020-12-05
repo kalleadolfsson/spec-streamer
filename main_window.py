@@ -244,7 +244,7 @@ class MainWindow(QWidget):
         self.ui.calibration_back_button.hide()
 
     def set_calibration_flow_labels(self,stage = ''):
-        pixel_wavelength_label_text = ['Acquire spectra','Identify peaks', 'Get projection']
+        pixel_wavelength_label_text = ['Acquire spectra (optional)','Identify peaks', 'Get projection']
         spectral_sensitivity_label_text = ['Acquire spectra','Set black-body', 'Get spectral sensitivity']
 
         labels =    [self.ui.calibration_step_1_label,
@@ -334,7 +334,7 @@ class MainWindow(QWidget):
         self.ui.calibration_next_button.show()
         self.set_calibration_flow_labels(stage = 0)
 
-    def spectral_sensitivity_next(self):
+    def _sensitivity_next(self):
         if(self.spectral_sensitivity_stage == 0):
             self.spectral_sensitivity_stage = self.spectral_sensitivity_stage + 1
             self.ui.calibration_back_button.show()
@@ -389,7 +389,7 @@ class MainWindow(QWidget):
     def setup_gui_signals(self):
 
         # VIP
-        self.ui.spec_tools_label.setText("by spec-tools")
+        self.ui.spec_it_label.setText("spec-it.org")
 
         # ACQUISITION CONTROLS
         # set live_button callback clicked  function
@@ -713,6 +713,7 @@ class MainWindow(QWidget):
             self.ui.calibration_menu_spectral_sensitivity_button.setStyleSheet("color: #24262b;border-bottom-width: 0px;border-color: #24262b;border-style:solid;")
 
         elif(choice == 'spectral_sensitivity'):
+            print('First stage')
             self.spectral_sensitivity_stage = 0
             self.calibration_start_pane()
 

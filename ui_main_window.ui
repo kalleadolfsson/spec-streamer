@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1217</width>
-    <height>782</height>
+    <width>1229</width>
+    <height>754</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
   <widget class="QScrollArea" name="scrollArea">
    <property name="geometry">
     <rect>
-     <x>-60</x>
+     <x>0</x>
      <y>0</y>
      <width>1330</width>
      <height>840</height>
@@ -70,10 +70,10 @@ border-width: 0px;</string>
      </property>
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>70</y>
+       <x>-4</x>
+       <y>49</y>
        <width>1291</width>
-       <height>721</height>
+       <height>701</height>
       </rect>
      </property>
      <property name="sizePolicy">
@@ -194,7 +194,7 @@ border: 0px;</string>
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <property name="tabBarAutoHide">
       <bool>true</bool>
@@ -207,7 +207,7 @@ border: 0px;</string>
        <property name="geometry">
         <rect>
          <x>94</x>
-         <y>18</y>
+         <y>8</y>
          <width>71</width>
          <height>25</height>
         </rect>
@@ -236,7 +236,7 @@ border-color: #626470;</string>
        <property name="geometry">
         <rect>
          <x>166</x>
-         <y>18</y>
+         <y>8</y>
          <width>71</width>
          <height>25</height>
         </rect>
@@ -265,7 +265,7 @@ border-color: #626470;</string>
        <property name="geometry">
         <rect>
          <x>51</x>
-         <y>55</y>
+         <y>45</y>
          <width>541</width>
          <height>351</height>
         </rect>
@@ -1049,7 +1049,7 @@ border-color: #8d93ab;</string>
        <property name="geometry">
         <rect>
          <x>680</x>
-         <y>62</y>
+         <y>52</y>
          <width>91</width>
          <height>16</height>
         </rect>
@@ -1070,7 +1070,7 @@ border-color: #8d93ab;</string>
        <property name="geometry">
         <rect>
          <x>680</x>
-         <y>77</y>
+         <y>67</y>
          <width>540</width>
          <height>340</height>
         </rect>
@@ -1094,7 +1094,7 @@ margin: 0px;</string>
        <property name="geometry">
         <rect>
          <x>679</x>
-         <y>440</y>
+         <y>430</y>
          <width>541</width>
          <height>191</height>
         </rect>
@@ -1113,7 +1113,7 @@ background-color: #f1f6f9;</string>
        <property name="geometry">
         <rect>
          <x>404</x>
-         <y>73</y>
+         <y>63</y>
          <width>171</width>
          <height>61</height>
         </rect>
@@ -1211,7 +1211,7 @@ border-width:0px,</string>
        <property name="geometry">
         <rect>
          <x>93</x>
-         <y>57</y>
+         <y>56</y>
          <width>491</width>
          <height>331</height>
         </rect>
@@ -1311,9 +1311,9 @@ color: white;</string>
        <widget class="QLabel" name="calibration_step_1_label">
         <property name="geometry">
          <rect>
-          <x>30</x>
+          <x>20</x>
           <y>13</y>
-          <width>141</width>
+          <width>161</width>
           <height>31</height>
          </rect>
         </property>
@@ -1450,7 +1450,8 @@ border-width: 0px;</string>
                </font>
               </property>
               <property name="styleSheet">
-               <string notr="true">color:#14274e</string>
+               <string notr="true">color:#14274e;
+opacity: 0.5;</string>
               </property>
               <property name="text">
                <string>1.</string>
@@ -1962,18 +1963,18 @@ border-width: 0px;</string>
        <zorder>calibration_step_1_label</zorder>
        <zorder>calibration_step_2_label</zorder>
        <zorder>calibration_step_3_label</zorder>
-       <zorder>calibration_plot_acquisition_flow_frame</zorder>
        <zorder>calibration_pixel_wavelength_polynomial_frame</zorder>
-       <zorder>calibration_back_button</zorder>
        <zorder>calibration_next_button</zorder>
        <zorder>calibration_set_black_body_frame</zorder>
        <zorder>calibration_identify_peaks_frame</zorder>
+       <zorder>calibration_plot_acquisition_flow_frame</zorder>
+       <zorder>calibration_back_button</zorder>
       </widget>
       <widget class="QPushButton" name="calibration_menu_pixel_wavelength_button">
        <property name="geometry">
         <rect>
          <x>190</x>
-         <y>41</y>
+         <y>40</y>
          <width>141</width>
          <height>32</height>
         </rect>
@@ -1998,12 +1999,12 @@ border-style:solid;
       </widget>
       <widget class="QPushButton" name="calibration_menu_spectral_sensitivity_button">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
          <x>340</x>
-         <y>41</y>
+         <y>40</y>
          <width>141</width>
          <height>32</height>
         </rect>
@@ -2029,7 +2030,7 @@ border-style:solid;</string>
        <property name="geometry">
         <rect>
          <x>210</x>
-         <y>43</y>
+         <y>42</y>
          <width>241</width>
          <height>31</height>
         </rect>
@@ -2048,8 +2049,8 @@ border-style:solid;
       </widget>
       <zorder>calibration_flow_frame</zorder>
       <zorder>calibration_menu_frame</zorder>
-      <zorder>calibration_menu_spectral_sensitivity_button</zorder>
       <zorder>calibration_menu_pixel_wavelength_button</zorder>
+      <zorder>calibration_menu_spectral_sensitivity_button</zorder>
      </widget>
      <widget class="QWidget" name="main_menu_experiment_tab">
       <attribute name="title">
@@ -2389,10 +2390,10 @@ border-style:solid;
     <widget class="QFrame" name="main_header_frame">
      <property name="geometry">
       <rect>
-       <x>53</x>
-       <y>20</y>
+       <x>-1</x>
+       <y>-1</y>
        <width>1271</width>
-       <height>91</height>
+       <height>81</height>
       </rect>
      </property>
      <property name="mouseTracking">
@@ -2414,8 +2415,8 @@ background-color:#14274e</string>
     <widget class="QPushButton" name="calibration_button">
      <property name="geometry">
       <rect>
-       <x>565</x>
-       <y>67</y>
+       <x>511</x>
+       <y>38</y>
        <width>161</width>
        <height>35</height>
       </rect>
@@ -2449,8 +2450,8 @@ font-family: helvetica;
     <widget class="QLabel" name="spec_streamer_label">
      <property name="geometry">
       <rect>
-       <x>505</x>
-       <y>22</y>
+       <x>451</x>
+       <y>1</y>
        <width>241</width>
        <height>31</height>
       </rect>
@@ -2484,8 +2485,8 @@ padding:0px;</string>
     <widget class="QPushButton" name="acquisition_button">
      <property name="geometry">
       <rect>
-       <x>442</x>
-       <y>67</y>
+       <x>388</x>
+       <y>38</y>
        <width>111</width>
        <height>35</height>
       </rect>
@@ -2520,10 +2521,10 @@ font-family: helvetica;
     <widget class="QFrame" name="raw_plot_frame">
      <property name="geometry">
       <rect>
-       <x>66</x>
-       <y>486</y>
+       <x>36</x>
+       <y>465</y>
        <width>561</width>
-       <height>291</height>
+       <height>281</height>
       </rect>
      </property>
      <property name="mouseTracking">
@@ -2545,7 +2546,7 @@ border-width: 0px;</string>
       <property name="geometry">
        <rect>
         <x>5</x>
-        <y>19</y>
+        <y>10</y>
         <width>541</width>
         <height>261</height>
        </rect>
@@ -2654,7 +2655,7 @@ border-width: 0px;</string>
       <property name="geometry">
        <rect>
         <x>60</x>
-        <y>30</y>
+        <y>20</y>
         <width>91</width>
         <height>16</height>
        </rect>
@@ -2675,8 +2676,8 @@ border-width: 0px;</string>
     <widget class="QLabel" name="spec_streamer_v_label">
      <property name="geometry">
       <rect>
-       <x>750</x>
-       <y>27</y>
+       <x>696</x>
+       <y>6</y>
        <width>31</width>
        <height>20</height>
       </rect>
@@ -2698,11 +2699,11 @@ color:#9ba4b4;</string>
       <string>v1.0</string>
      </property>
     </widget>
-    <widget class="QLabel" name="spec_tools_label">
+    <widget class="QLabel" name="spec_it_label">
      <property name="geometry">
       <rect>
-       <x>1190</x>
-       <y>0</y>
+       <x>1150</x>
+       <y>9</y>
        <width>141</width>
        <height>20</height>
       </rect>
@@ -2718,10 +2719,11 @@ color:#9ba4b4;</string>
      <property name="styleSheet">
       <string notr="true">background-color:white;
 font-family: helvetica;
-color:#14274e;</string>
+color:#fff;
+background-color:#14274e</string>
      </property>
      <property name="text">
-      <string>by spec-tools</string>
+      <string>spec-it.org</string>
      </property>
      <property name="openExternalLinks">
       <bool>true</bool>
@@ -2730,8 +2732,8 @@ color:#14274e;</string>
     <widget class="QPushButton" name="experiment_button">
      <property name="geometry">
       <rect>
-       <x>723</x>
-       <y>67</y>
+       <x>669</x>
+       <y>38</y>
        <width>161</width>
        <height>35</height>
       </rect>
@@ -2766,8 +2768,8 @@ font-family: helvetica;
     <widget class="QPushButton" name="save_raw_plot_txt_button">
      <property name="geometry">
       <rect>
-       <x>570</x>
-       <y>506</y>
+       <x>540</x>
+       <y>475</y>
        <width>41</width>
        <height>21</height>
       </rect>
@@ -2795,8 +2797,8 @@ border-color: #626470;</string>
     <widget class="QPushButton" name="save_raw_plot_png_button">
      <property name="geometry">
       <rect>
-       <x>527</x>
-       <y>506</y>
+       <x>497</x>
+       <y>475</y>
        <width>41</width>
        <height>21</height>
       </rect>
@@ -2824,8 +2826,8 @@ border-color: #626470;</string>
     <widget class="QFrame" name="side_plots_frame">
      <property name="geometry">
       <rect>
-       <x>640</x>
-       <y>120</y>
+       <x>586</x>
+       <y>89</y>
        <width>641</width>
        <height>661</height>
       </rect>
