@@ -1794,7 +1794,7 @@ class Ui_Form(object):
         self.raw_plot_label.setText(_translate("Form", "Raw spectrum"))
         self.raw_plot_lambda_label.setText(_translate("Form", "λ (nm)"))
         self.cursor_raw_label.setText(_translate("Form", "Cursor position"))
-        self.spec_streamer_v_label.setText(_translate("Form", "v1.0"))
+        self.spec_streamer_v_label.setText(_translate("Form", "v0.9"))
         self.spec_it_label.setText(_translate("Form", "spec-it.org"))
         self.experiment_button.setText(_translate("Form", "Experiment"))
         self.save_raw_plot_txt_button.setText(_translate("Form", ".txt"))

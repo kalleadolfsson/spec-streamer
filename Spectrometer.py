@@ -226,10 +226,7 @@ class Spectrometer(QThread):
 
     @pyqtSlot()
     def unpause(self):
-        if(self.stream_open):
-            self.set_video_capture_settings()
         self.stream = True
-
 
     @pyqtSlot()
     def apply(self):

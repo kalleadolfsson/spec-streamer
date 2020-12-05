@@ -334,7 +334,7 @@ class MainWindow(QWidget):
         self.ui.calibration_next_button.show()
         self.set_calibration_flow_labels(stage = 0)
 
-    def _sensitivity_next(self):
+    def spectral_sensitivity_next(self):
         if(self.spectral_sensitivity_stage == 0):
             self.spectral_sensitivity_stage = self.spectral_sensitivity_stage + 1
             self.ui.calibration_back_button.show()
@@ -353,6 +353,7 @@ class MainWindow(QWidget):
             self.spectrometer.set_spectral_sensitivity(spectral_sensitivity = spectral_sensitivty)
             self.set_calibration_flow_labels(stage = 2)
             self.spectral_sensitivity_calibrated = True
+            print("I',")
             self.restart_acquisition()
 
     def spectral_sensitivity_back(self):
@@ -667,19 +668,19 @@ class MainWindow(QWidget):
             self.resetCheckBox()
             self.ui.calibration_acquire_dark_spectrum_button.show()
             self.ui.calibration_acquire_reference_spectrum_button.show()
-            self.ui.calibration_acquire_transmission_spectrum_button.show()
+            self.ui.calibration_acquire_transmission_spectrum_button.hide()
             self.ui.calibration_acquire_emission_spectrum_button.hide()
 
             self.ui.calibration_no_1_label.show()
             self.ui.calibration_no_2_label.show()
-            self.ui.calibration_no_3_label.show()
-
-            self.ui.save_calc_plot_2_png_button.show()
-            self.ui.save_calc_plot_2_txt_button.show()
+            self.ui.calibration_no_3_label.hide()
 
             self.ui.calibration_check_label_1.show()
             self.ui.calibration_check_label_2.show()
-            self.ui.calibration_check_label_3.show()
+            self.ui.calibration_check_label_3.hide()
+
+            self.ui.save_calc_plot_2_png_button.show()
+            self.ui.save_calc_plot_2_txt_button.show()
 
 
             self.update_plot(plot_line = self.calc_plot_1_line, data = self.intensitiesDark)
@@ -713,7 +714,6 @@ class MainWindow(QWidget):
             self.ui.calibration_menu_spectral_sensitivity_button.setStyleSheet("color: #24262b;border-bottom-width: 0px;border-color: #24262b;border-style:solid;")
 
         elif(choice == 'spectral_sensitivity'):
-            print('First stage')
             self.spectral_sensitivity_stage = 0
             self.calibration_start_pane()
 
@@ -723,21 +723,23 @@ class MainWindow(QWidget):
 
             self.clear_spectra()
             self.resetCheckBox()
+
             self.ui.calibration_acquire_dark_spectrum_button.show()
             self.ui.calibration_acquire_reference_spectrum_button.show()
-            self.ui.calibration_acquire_transmission_spectrum_button.show()
+            self.ui.calibration_acquire_transmission_spectrum_button.hide()
             self.ui.calibration_acquire_emission_spectrum_button.hide()
 
             self.ui.calibration_no_1_label.show()
             self.ui.calibration_no_2_label.show()
-            self.ui.calibration_no_3_label.show()
-
-            self.ui.save_calc_plot_2_png_button.show()
-            self.ui.save_calc_plot_2_txt_button.show()
+            self.ui.calibration_no_3_label.hide()
 
             self.ui.calibration_check_label_1.show()
             self.ui.calibration_check_label_2.show()
-            self.ui.calibration_check_label_3.show()
+            self.ui.calibration_check_label_3.hide()
+
+
+            self.ui.save_calc_plot_2_png_button.show()
+            self.ui.save_calc_plot_2_txt_button.show()
 
 
             self.update_plot(plot_line = self.calc_plot_1_line, data = self.intensitiesDark)

@@ -2696,7 +2696,7 @@ font-family: helvetica;
 color:#9ba4b4;</string>
      </property>
      <property name="text">
-      <string>v1.0</string>
+      <string>v0.9</string>
      </property>
     </widget>
     <widget class="QLabel" name="spec_it_label">
