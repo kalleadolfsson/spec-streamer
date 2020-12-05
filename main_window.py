@@ -528,6 +528,7 @@ class MainWindow(QWidget):
             self.ui.side_plots_frame.hide()
 
         elif(choice == 'calibration'):
+            self.calibration_menu_switch()
             self.ui.main_menu_tab.setCurrentIndex(1)
             self.ui.acquisition_button.setStyleSheet("border-bottom-width: 0px;background-color:#14274e; color:#f1f6f9; border-radius: 0px;border-style: solid;border-color: #f1f6f9;font-family: helvetica;")
             self.ui.calibration_button.setStyleSheet("border-bottom-width: 2px;background-color:#14274e; color:#f1f6f9; border-radius: 0px;border-style: solid;border-color: #f1f6f9;font-family: helvetica;")
@@ -539,7 +540,9 @@ class MainWindow(QWidget):
             self.clear_spectra()
             self.plot_acquisition_mode = 'calibration'
 
+
         elif(choice == 'experiment'):
+            self.experiment_menu_switch()
             self.ui.main_menu_tab.setCurrentIndex(2)
             self.ui.acquisition_button.setStyleSheet("border-bottom-width: 0px;background-color:#14274e; color:#f1f6f9; border-radius: 0px;border-style: solid;border-color: #f1f6f9;font-family: helvetica;")
             self.ui.calibration_button.setStyleSheet("border-bottom-width: 0px;background-color:#14274e; color:#f1f6f9; border-radius: 0px;border-style: solid;border-color: #f1f6f9;font-family: helvetica;")
@@ -708,7 +711,7 @@ class MainWindow(QWidget):
 
             self.ui.calc_plot_1_combo_label.setText("Dark")
             self.ui.calc_plot_2_combo_label.setText("Reference")
-            self.ui.calc_plot_3_label.setText("Transmission")
+            self.ui.calc_plot_3_label.setText("Pixel-wavelength residuals")
 
             self.ui.calibration_menu_pixel_wavelength_button.setStyleSheet("color: #24262b;border-bottom-width: 2px;border-color: #24262b;border-style:solid;")
             self.ui.calibration_menu_spectral_sensitivity_button.setStyleSheet("color: #24262b;border-bottom-width: 0px;border-color: #24262b;border-style:solid;")
@@ -767,7 +770,7 @@ class MainWindow(QWidget):
 
             self.ui.calc_plot_1_combo_label.setText("Dark")
             self.ui.calc_plot_2_combo_label.setText("Reference")
-            self.ui.calc_plot_3_label.setText("Transmission")
+            self.ui.calc_plot_3_label.setText("Generated black-body spectrum")
 
             self.ui.calibration_menu_pixel_wavelength_button.setStyleSheet("color: #24262b;border-bottom-width: 0px;border-color: #24262b;border-style:solid;")
             self.ui.calibration_menu_spectral_sensitivity_button.setStyleSheet("color: #24262b;border-bottom-width: 2px;border-color: #24262b;border-style:solid;")
