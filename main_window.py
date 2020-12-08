@@ -685,6 +685,8 @@ class MainWindow(QWidget):
             self.ui.save_calc_plot_2_png_button.show()
             self.ui.save_calc_plot_2_txt_button.show()
 
+            print(np.shape(self.waves))
+            print(np.shape(self.intensitiesDark))
 
             self.update_plot(plot_line = self.calc_plot_1_line, data = self.intensitiesDark)
             self.update_plot(plot_line = self.calc_plot_1_combo_line, data = self.intensitiesDark)
@@ -1085,6 +1087,12 @@ class MainWindow(QWidget):
         plot_line.setData(self.waves,data)
 
     def clear_spectra(self):
+        self.pause_acquisition()
+        self.intensitiesRaw = np.zeros(len(self.waves))
+        self.intensitiesDark = np.zeros(len(self.waves))
+        self.intensitiesReference = np.zeros(len(self.waves))
+        self.intensitiesEmission = np.zeros(len(self.waves))
+        self.intensitiesTransmission = np.zeros(len(self.waves))
         self.setup_plots()
         self.resetCheckBox()
         self.unpause_acquisition()
