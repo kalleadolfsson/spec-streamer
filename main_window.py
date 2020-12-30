@@ -685,9 +685,6 @@ class MainWindow(QWidget):
             self.ui.save_calc_plot_2_png_button.show()
             self.ui.save_calc_plot_2_txt_button.show()
 
-            print(np.shape(self.waves))
-            print(np.shape(self.intensitiesDark))
-
             self.update_plot(plot_line = self.calc_plot_1_line, data = self.intensitiesDark)
             self.update_plot(plot_line = self.calc_plot_1_combo_line, data = self.intensitiesDark)
             self.update_plot(plot_line = self.calc_plot_2_line, data = self.intensitiesReference)
@@ -793,7 +790,7 @@ class MainWindow(QWidget):
         self.spectrometer_name = config['SpectrometerConfig']['spectrometer_name']
 
         # Detector
-        self.integration_time = config['SpectrometerConfig'].getint('integration_time')
+        self.integration_time_ms = config['SpectrometerConfig'].getint('integration_time')
         self.averages = config['SpectrometerConfig'].getint('averages')
         self.gain = config['SpectrometerConfig'].getint('gain')
         self.width = config['SpectrometerConfig'].getint('width')
@@ -876,7 +873,7 @@ class MainWindow(QWidget):
     def update_settings_config_parser(self):
         # Setup configparser for writing to config file
         self.config['SpectrometerConfig'] = {'spectrometer_name': self.spectrometer_name,
-                                        'integration_time' : self.integration_time,
+                                        'integration_time' : self.integration_time_ms,
                                         'averages' : self.averages,
                                         'gain' : self.gain,
                                         'width' : self.width,
@@ -891,7 +888,7 @@ class MainWindow(QWidget):
                                         'cam_no' : self.cam_no}
 
     def update_spectrometer_settings(self):
-        self.spectrometer.set_integration_time(self.integration_time)
+        self.spectrometer.set_integration_time(self.integration_time_ms)
         self.spectrometer.set_averages(self.averages)
         self.spectrometer.set_gain(self.gain)
         self.spectrometer.set_width(self.width)
@@ -912,7 +909,7 @@ class MainWindow(QWidget):
         self.spectrometer_name = self.ui.spectrometer_name_input.text()
 
         # Detector
-        self.integration_time = int(re.sub("\D","",self.ui.detector_integration_time_input.text()))
+        self.integration_time_ms = int(re.sub("\D","",self.ui.detector_integration_time_input.text()))
         self.averages = int(re.sub("\D","",self.ui.detector_averages_input.text()))
         self.gain = int(re.sub("\D","",self.ui.detector_gain_input.text()))
 
@@ -978,7 +975,7 @@ class MainWindow(QWidget):
         self.ui.spectrometer_name_input.setText(self.spectrometer_name)
 
         # Detector
-        self.ui.detector_integration_time_input.setText(str(self.integration_time))
+        self.ui.detector_integration_time_input.setText(str(self.integration_time_ms))
         self.ui.detector_averages_input.setText(str(self.averages))
         self.ui.detector_gain_input.setText(str(self.gain))
         self.ui.detector_width_input.setText(str(self.width))
