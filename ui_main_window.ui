@@ -194,7 +194,7 @@ border: 0px;</string>
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <property name="tabBarAutoHide">
       <bool>true</bool>
@@ -1981,7 +1981,7 @@ border-width: 0px;</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>-1</pointsize>
+         <pointsize>13</pointsize>
         </font>
        </property>
        <property name="styleSheet">
@@ -1989,7 +1989,7 @@ border-width: 0px;</string>
 border-bottom-width: 2px;
 border-color: #24262b;
 border-style:solid;
-font-size:14px;</string>
+</string>
        </property>
        <property name="text">
         <string>Pixel-Wavelength</string>
@@ -2009,7 +2009,7 @@ font-size:14px;</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>-1</pointsize>
+         <pointsize>13</pointsize>
         </font>
        </property>
        <property name="styleSheet">
@@ -2017,7 +2017,7 @@ font-size:14px;</string>
 border-bottom-width: 0px;
 border-color: #24262b;
 border-style:solid;
-font-size: 14px;</string>
+</string>
        </property>
        <property name="text">
         <string>Spectral sensitivity</string>
@@ -2340,7 +2340,7 @@ border-style:solid;
        </property>
        <property name="font">
         <font>
-         <pointsize>-1</pointsize>
+         <pointsize>13</pointsize>
         </font>
        </property>
        <property name="styleSheet">
@@ -2348,7 +2348,7 @@ border-style:solid;
 border-bottom-width: 0px;
 border-color: #24262b;
 border-style:solid;
-font-size: 14px;</string>
+</string>
        </property>
        <property name="text">
         <string>Emission</string>
@@ -2365,15 +2365,14 @@ font-size: 14px;</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>-1</pointsize>
+         <pointsize>13</pointsize>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">color: #24262b;
 border-bottom-width: 2px;
 border-color: #24262b;
-border-style:solid;
-font-size: 14px;</string>
+border-style:solid;</string>
        </property>
        <property name="text">
         <string>Transmission</string>

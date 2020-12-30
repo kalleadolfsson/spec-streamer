@@ -907,25 +907,25 @@ class Ui_Form(object):
         self.calibration_menu_pixel_wavelength_button = QtWidgets.QPushButton(self.main_menu_calibration_tab)
         self.calibration_menu_pixel_wavelength_button.setGeometry(QtCore.QRect(170, 40, 161, 32))
         font = QtGui.QFont()
-        font.setPointSize(-1)
+        font.setPointSize(13)
         self.calibration_menu_pixel_wavelength_button.setFont(font)
         self.calibration_menu_pixel_wavelength_button.setStyleSheet("color: #24262b;\n"
 "border-bottom-width: 2px;\n"
 "border-color: #24262b;\n"
 "border-style:solid;\n"
-"font-size:14px;")
+"")
         self.calibration_menu_pixel_wavelength_button.setObjectName("calibration_menu_pixel_wavelength_button")
         self.calibration_menu_spectral_sensitivity_button = QtWidgets.QPushButton(self.main_menu_calibration_tab)
         self.calibration_menu_spectral_sensitivity_button.setEnabled(True)
         self.calibration_menu_spectral_sensitivity_button.setGeometry(QtCore.QRect(340, 40, 171, 32))
         font = QtGui.QFont()
-        font.setPointSize(-1)
+        font.setPointSize(13)
         self.calibration_menu_spectral_sensitivity_button.setFont(font)
         self.calibration_menu_spectral_sensitivity_button.setStyleSheet("color: #24262b;\n"
 "border-bottom-width: 0px;\n"
 "border-color: #24262b;\n"
 "border-style:solid;\n"
-"font-size: 14px;")
+"")
         self.calibration_menu_spectral_sensitivity_button.setObjectName("calibration_menu_spectral_sensitivity_button")
         self.calibration_menu_frame = QtWidgets.QFrame(self.main_menu_calibration_tab)
         self.calibration_menu_frame.setGeometry(QtCore.QRect(210, 42, 241, 31))
@@ -1086,24 +1086,23 @@ class Ui_Form(object):
         self.experiment_menu_emission_button = QtWidgets.QPushButton(self.main_menu_experiment_tab)
         self.experiment_menu_emission_button.setGeometry(QtCore.QRect(340, 40, 113, 32))
         font = QtGui.QFont()
-        font.setPointSize(-1)
+        font.setPointSize(13)
         self.experiment_menu_emission_button.setFont(font)
         self.experiment_menu_emission_button.setStyleSheet("color: #24262b;\n"
 "border-bottom-width: 0px;\n"
 "border-color: #24262b;\n"
 "border-style:solid;\n"
-"font-size: 14px;")
+"")
         self.experiment_menu_emission_button.setObjectName("experiment_menu_emission_button")
         self.experiment_menu_transmission_button = QtWidgets.QPushButton(self.main_menu_experiment_tab)
         self.experiment_menu_transmission_button.setGeometry(QtCore.QRect(218, 40, 113, 32))
         font = QtGui.QFont()
-        font.setPointSize(-1)
+        font.setPointSize(13)
         self.experiment_menu_transmission_button.setFont(font)
         self.experiment_menu_transmission_button.setStyleSheet("color: #24262b;\n"
 "border-bottom-width: 2px;\n"
 "border-color: #24262b;\n"
-"border-style:solid;\n"
-"font-size: 14px;")
+"border-style:solid;")
         self.experiment_menu_transmission_button.setObjectName("experiment_menu_transmission_button")
         self.main_menu_tab.addTab(self.main_menu_experiment_tab, "")
         self.main_header_frame = QtWidgets.QFrame(self.container_widget)
@@ -1679,7 +1678,7 @@ class Ui_Form(object):
         self.scrollArea.setWidget(self.container_widget)
 
         self.retranslateUi(Form)
-        self.main_menu_tab.setCurrentIndex(1)
+        self.main_menu_tab.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(Form)
         Form.setTabOrder(self.detector_gain_input, self.detector_averages_input)
         Form.setTabOrder(self.detector_averages_input, self.detector_integration_time_input)
