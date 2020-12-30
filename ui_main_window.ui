@@ -1973,17 +1973,15 @@ border-width: 0px;</string>
       <widget class="QPushButton" name="calibration_menu_pixel_wavelength_button">
        <property name="geometry">
         <rect>
-         <x>190</x>
+         <x>170</x>
          <y>40</y>
-         <width>141</width>
+         <width>161</width>
          <height>32</height>
         </rect>
        </property>
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <pointsize>-1</pointsize>
         </font>
        </property>
        <property name="styleSheet">
@@ -1991,7 +1989,7 @@ border-width: 0px;</string>
 border-bottom-width: 2px;
 border-color: #24262b;
 border-style:solid;
-</string>
+font-size:14px;</string>
        </property>
        <property name="text">
         <string>Pixel-Wavelength</string>
@@ -2005,22 +2003,21 @@ border-style:solid;
         <rect>
          <x>340</x>
          <y>40</y>
-         <width>141</width>
+         <width>171</width>
          <height>32</height>
         </rect>
        </property>
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <pointsize>-1</pointsize>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">color: #24262b;
 border-bottom-width: 0px;
 border-color: #24262b;
-border-style:solid;</string>
+border-style:solid;
+font-size: 14px;</string>
        </property>
        <property name="text">
         <string>Spectral sensitivity</string>
@@ -2343,16 +2340,15 @@ border-style:solid;
        </property>
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <pointsize>-1</pointsize>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">color: #24262b;
 border-bottom-width: 0px;
 border-color: #24262b;
-border-style:solid;</string>
+border-style:solid;
+font-size: 14px;</string>
        </property>
        <property name="text">
         <string>Emission</string>
@@ -2369,9 +2365,7 @@ border-style:solid;</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <pointsize>-1</pointsize>
         </font>
        </property>
        <property name="styleSheet">
@@ -2379,7 +2373,7 @@ border-style:solid;</string>
 border-bottom-width: 2px;
 border-color: #24262b;
 border-style:solid;
-</string>
+font-size: 14px;</string>
        </property>
        <property name="text">
         <string>Transmission</string>

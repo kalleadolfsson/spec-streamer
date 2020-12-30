@@ -115,7 +115,7 @@ class Spectrometer(QThread):
                 elif (self.acquireEmission):
                     #self.intensitiesEmission = self.intensities-self.intensitiesDark
                     intensities_temp = self.intensities-self.intensitiesDark
-                    self.intensitiesDark = np.divide(intensities_temp, self.spectral_sensitivity, out=np.zeros_like(intensities_temp), where=self.spectral_sensitivity!=0)
+                    self.intensitiesEmission = np.divide(intensities_temp, self.spectral_sensitivity, out=np.zeros_like(intensities_temp), where=self.spectral_sensitivity!=0)
 
                     self.acquireEmission = False
                     self.emission_spectrum_stream.emit(self.intensitiesEmission)
@@ -143,7 +143,8 @@ class Spectrometer(QThread):
                 #    self.updateCalcPlot()
 
                 self.cntr = 0
-                self.raw_spectrum_stream.emit((self.intensities-self.intensitiesDark)/self.spectral_sensitivity)
+                self.raw_spectrum_stream.emit(self.intensities)
+                #self.raw_spectrum_stream.emit((self.intensities-self.intensitiesDark)/self.spectral_sensitivity)
 
 
             self.cntr = self.cntr + 1
@@ -203,13 +204,13 @@ class Spectrometer(QThread):
     def set_video_capture_settings(self):
         # The following commands does not seems to work on all platforms (although I haven't found alternatives)
         # (worked for me on Windows systems, not on Mac OS)
-        self.cap.set(cv2.CAP_PROP_AUTO_EXPOSURE, 0.25)      # 0.75 -> Auto exposure, 0.25 -> Manual exposure
 
-        #self.cap.set(cv2.CAP_PROP_EXPOSURE,-1)
-        #sself.cap.set(cv2.CAP_PROP_GAIN, 0)
+        # Set to manual exposure (0.75 -> Auto exposure, 0.25 -> Manual exposure)
+        self.cap.set(cv2.CAP_PROP_AUTO_EXPOSURE, 0.25)
 
-        self.cap.set(cv2.CAP_PROP_EXPOSURE,-1)
-        self.cap.set(cv2.CAP_PROP_GAIN, 1)
+        # Set gain and exposure time
+        self.cap.set(cv2.CAP_PROP_EXPOSURE,np.log(self.integration_time_ms*1e-3)/np.log(2))
+        self.cap.set(cv2.CAP_PROP_GAIN, np.log(self.gain*1e-3)/np.log(2))
 
         # set width and height
         self.cap.set(3,self.width)
@@ -236,7 +237,7 @@ class Spectrometer(QThread):
     # Set acquisition properties
     @pyqtSlot(int)
     def set_integration_time(self, integration_time = 20):
-        self.integration_time = integration_time
+        self.integration_time_ms = integration_time
 
     @pyqtSlot(int)
     def set_averages(self, averages = 5):
