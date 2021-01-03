@@ -16,6 +16,7 @@ import configparser
 
 #import numpy and math for easy data handling
 import numpy as np
+np.set_printoptions(threshold=sys.maxsize)
 import math
 import imutils
 
@@ -207,6 +208,7 @@ class Spectrometer(QThread):
 
         # Set to manual exposure (0.75 -> Auto exposure, 0.25 -> Manual exposure)
         self.cap.set(cv2.CAP_PROP_AUTO_EXPOSURE, 0.25)
+        self.cap.set(cv2.CAP_PROP_CONVERT_RGB, False)
 
         # Set gain and exposure time
         self.cap.set(cv2.CAP_PROP_EXPOSURE,np.log(self.integration_time_ms*1e-3)/np.log(2))
@@ -232,6 +234,8 @@ class Spectrometer(QThread):
     @pyqtSlot()
     def apply(self):
         self.setup()
+        if(self.stream_open):
+            self.set_video_capture_settings()
         print('updated')
 
     # Set acquisition properties
