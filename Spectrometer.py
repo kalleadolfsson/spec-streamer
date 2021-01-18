@@ -49,7 +49,7 @@ class Spectrometer(QThread):
 
     def run(self):
         self.setup()
-        self.cap = cv2.VideoCapture(0)
+        self.cap = cv2.VideoCapture(1)
         self.set_video_capture_settings()
 
         while(True):
