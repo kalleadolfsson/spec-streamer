@@ -11,6 +11,7 @@ import math as m
 
 from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
+np.set_printoptions(threshold=sys.maxsize)
 
 class Calibration:
   def __init__(self):
@@ -38,9 +39,9 @@ class Calibration:
       self.pixels = pixels
       self.pixels_set = True
 
-  def set_pixel_wavelength_points(self, pixels = '', wavelengths = ''):
-      self.pixel_wavelength_points_pixels = pixels
-      self.pixel_wavelength_points_wavelengths = wavelengths
+  def set_pixel_wavelength_points(self, calibration_pixels = '', calibration_wavelengths = ''):
+      self.pixel_wavelength_points_pixels = calibration_pixels
+      self.pixel_wavelength_points_wavelengths = calibration_wavelengths
       self.pixel_wavelength_points_set = True
 
   def set_wavelengths(self, wavelengths = ''):
@@ -58,6 +59,7 @@ class Calibration:
                              self.pixel_wavelength_points_wavelengths)
       self.popt = popt
       self.wavelengths = self._pixel_wavelength_model(self.pixels, *popt)
+            self.wavelengths = np.round(self.wavelengths,2)
       self.pixel_wavelength_calibrated = True
       return self.wavelengths, self.popt
 

@@ -54,7 +54,7 @@ class Spectrometer(QThread):
 
         while(True):
             self.viewCam()
-            time.sleep(0.05)
+            time.sleep(0.04)
 
 
     def stop(self):
@@ -264,7 +264,7 @@ class Spectrometer(QThread):
         self.rotation_global = rotation_global
 
     @pyqtSlot(int)
-    def set_rotation_spectrum(self, rotation_spectrum = 177):
+    def set_rotation_spectrum(self, rotation_spectrum = 180):
         self.rotation_spectrum = rotation_spectrum
 
     @pyqtSlot(int)
@@ -276,7 +276,7 @@ class Spectrometer(QThread):
         self.no_of_lines = no_of_lines
 
     @pyqtSlot(int)
-    def set_start_x(self, start_x = 750):
+    def set_start_x(self, start_x = 5):
         self.start_x = start_x
 
     @pyqtSlot(int)
